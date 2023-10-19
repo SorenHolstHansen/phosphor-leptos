@@ -7,7 +7,7 @@ readme = "README.md"
 repository = "https://github.com/SorenHolstHansen/phosphor-leptos"
 keywords = ["icons", "leptos", "phosphor"]
 edition = "2021"
-license-file = "MIT"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
