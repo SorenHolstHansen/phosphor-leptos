@@ -18,13 +18,17 @@ cargo add phosphor-leptos
 
 ## Usage
 
-```html
-use leptos::*; use phosphor_leptos::{IconWeight, Horse, Heart, Cube};
-#[component] fn MyComponent() -> impl IntoView { view! {
-<Horse />
-<Heart color="#AE2983" weight="{IconWeight::Fill}" size="32px" />
-<Cube color="teal" weight="{IconWeight::Duotone}" />
-} }
+```rs
+use leptos::*;
+use phosphor_leptos::{IconWeight, Horse, Heart, Cube};
+#[component]
+fn MyComponent() -> impl IntoView {
+    view! {
+        <Horse />
+        <Heart color="#AE2983" weight="{IconWeight::Fill}" size="32px" />
+        <Cube color="teal" weight="{IconWeight::Duotone}" />
+    }
+}
 ```
 
 ### Props
