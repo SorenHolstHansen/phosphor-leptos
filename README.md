@@ -25,8 +25,8 @@ use phosphor_leptos::{IconWeight, Horse, Heart, Cube};
 fn MyComponent() -> impl IntoView {
     view! {
         <Horse />
-        <Heart color="#AE2983" weight="{IconWeight::Fill}" size="32px" />
-        <Cube color="teal" weight="{IconWeight::Duotone}" />
+        <Heart color="#AE2983" weight=IconWeight::Fill size="32px" />
+        <Cube color="teal" weight=IconWeight::Duotone />
     }
 }
 ```
