@@ -57,7 +57,7 @@ pub fn {component_name}(
 const OUTPUT_DIR: &str = "src/icons";
 const ASSETS_DIR: &str = "core/assets";
 
-fn main() {
+pub fn run() {
     let svg_tag_regex = Regex::new(r"<svg.*?>").unwrap();
     let svg_closing_tag_regex = Regex::new(r"</svg>").unwrap();
     // Clean up the icons folder

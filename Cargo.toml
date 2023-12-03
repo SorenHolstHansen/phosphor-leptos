@@ -8,12 +8,12 @@ repository = "https://github.com/SorenHolstHansen/phosphor-leptos"
 keywords = ["icons", "leptos", "phosphor"]
 edition = "2021"
 license = "MIT"
+exclude = ["/core"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 leptos = "0.5.1"
 
-[build-dependencies]
-regex = "1.10.2"
-convert_case = "0.6.0"
+[workspace]
+members = ["xtask"]
