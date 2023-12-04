@@ -1,6 +1,6 @@
 [package]
 name = "phosphor-leptos"
-version = "0.1.0"
+version = "0.1.1"
 description = "phosphor icons for leptos"
 authors = ["Søren H. Hansen"]
 readme = "README.md"
