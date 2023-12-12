@@ -1,5 +1,6 @@
+//! GENERATED FILE
+
 use crate::IconWeight;
-/// GENERATED FILE
 use leptos::*;
 
 #[component]

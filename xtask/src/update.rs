@@ -13,7 +13,7 @@ fn match_case(weight_name: &str, svg: &str) -> String {
 fn template(icon_name: &str, icon_weights: Vec<(String, String)>) -> String {
     let component_name = icon_name.to_case(Case::UpperCamel);
     format!(
-        r#"/// GENERATED FILE
+        r#"//! GENERATED FILE
 
 use leptos::*;
 use crate::IconWeight;
