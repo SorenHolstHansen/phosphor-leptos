@@ -21,8 +21,8 @@ use crate::IconWeight;
 #[component]
 pub fn {component_name}(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
-    #[prop(into, default = MaybeSignal::Static("1em".to_string()))] size: MaybeSignal<String>,
-    #[prop(into, default = MaybeSignal::Static("currentColor".to_string()))] color: MaybeSignal<String>,
+    #[prop(into, default = TextProp::from("1em"))] size: TextProp,
+    #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>
 ) -> impl IntoView {{
     let body = move || {{
@@ -36,8 +36,8 @@ pub fn {component_name}(
     view! {{
         <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            width=size.clone()
-            height=size
+            width=size.get()
+            height=size.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
@@ -113,7 +113,7 @@ pub fn run() {
             r#"mod icons;
 pub use icons::*;
             
-#[derive(Clone)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum IconWeight {{
     {}
 }}
