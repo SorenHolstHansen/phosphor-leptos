@@ -1,7 +1,12 @@
 mod icons;
 pub use icons::*;
-            
-#[derive(Clone)]
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum IconWeight {
-    Fill, Duotone, Thin, Bold, Light, Regular
+    Bold,
+    Duotone,
+    Fill,
+    Light,
+    Regular,
+    Thin,
 }
