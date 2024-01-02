@@ -11,8 +11,10 @@ pub fn GooglePlayLogo(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M225.79,110.7,58,14.65a20.24,20.24,0,0,0-20.12.06A19.62,19.62,0,0,0,28,31.84V224.16a19.62,19.62,0,0,0,9.91,17.13,20.22,20.22,0,0,0,20.12.06l167.76-96a19.76,19.76,0,0,0,0-34.6ZM52,203V53l75,75ZM144,145l12.4,12.4-58,33.2ZM98.41,65.43l58,33.2L144,111ZM178,145l-17-17,17-17,29.72,17Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M221.89,117.69,54.05,21.62a12,12,0,0,0-12.13,0A11.69,11.69,0,0,0,36,31.87V224.13a11.69,11.69,0,0,0,5.92,10.21,12,12,0,0,0,12.13,0l167.77-96a11.76,11.76,0,0,0,.07-20.66Zm-52.44-20.8L144,122.34,50.4,28.75ZM44,222.33V33.67L138.34,128Zm6.4,4.92L144,133.66l25.45,25.45Zm167.51-95.88L176.65,155l-27-27,27-27L218,124.66a3.77,3.77,0,0,1-.07,6.71Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

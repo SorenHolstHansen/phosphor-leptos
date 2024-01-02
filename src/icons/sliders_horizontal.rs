@@ -11,8 +11,10 @@ pub fn SlidersHorizontal(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M40,92H70.06a36,36,0,0,0,67.88,0H216a12,12,0,0,0,0-24H137.94a36,36,0,0,0-67.88,0H40a12,12,0,0,0,0,24Zm64-24A12,12,0,1,1,92,80,12,12,0,0,1,104,68Zm112,96H201.94a36,36,0,0,0-67.88,0H40a12,12,0,0,0,0,24h94.06a36,36,0,0,0,67.88,0H216a12,12,0,0,0,0-24Zm-48,24a12,12,0,1,1,12-12A12,12,0,0,1,168,188Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M40,84H76.29a28,28,0,0,0,55.42,0H216a4,4,0,0,0,0-8H131.71a28,28,0,0,0-55.42,0H40a4,4,0,0,0,0,8Zm64-24A20,20,0,1,1,84,80,20,20,0,0,1,104,60ZM216,172H195.71a28,28,0,0,0-55.42,0H40a4,4,0,0,0,0,8H140.29a28,28,0,0,0,55.42,0H216a4,4,0,0,0,0-8Zm-48,24a20,20,0,1,1,20-20A20,20,0,0,1,168,196Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

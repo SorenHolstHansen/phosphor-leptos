@@ -11,8 +11,10 @@ pub fn HouseLine(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M240,204H228V115.55a20.07,20.07,0,0,0-6.44-14.7L141.61,25.38l-.16-.15a19.93,19.93,0,0,0-26.91,0l-.17.15L34.44,100.85A20.07,20.07,0,0,0,28,115.55V204H16a12,12,0,0,0,0,24H240a12,12,0,0,0,0-24ZM52,117.28l76-71.75,76,71.75V204H164V160a20,20,0,0,0-20-20H112a20,20,0,0,0-20,20v44H52ZM140,204H116V164h24Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M240,212H220V115.54a12,12,0,0,0-3.87-8.82L136.07,31.13a12,12,0,0,0-16.2.05L39.93,106.67A12,12,0,0,0,36,115.54V212H16a4,4,0,0,0,0,8H240a4,4,0,0,0,0-8ZM44,115.54a4.09,4.09,0,0,1,1.36-3L125.3,37.05a4,4,0,0,1,5.33,0l80.06,75.58a4,4,0,0,1,1.31,3V212H156V160a12,12,0,0,0-12-12H112a12,12,0,0,0-12,12v52H44ZM148,212H108V160a4,4,0,0,1,4-4h32a4,4,0,0,1,4,4Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

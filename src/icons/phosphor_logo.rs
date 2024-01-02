@@ -11,8 +11,10 @@ pub fn PhosphorLogo(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M220,96a76.08,76.08,0,0,0-76-76H64A12,12,0,0,0,52,32V160a84.09,84.09,0,0,0,84,84,12,12,0,0,0,12-12V171.89A76.09,76.09,0,0,0,220,96ZM76,77.81,115.48,148H76Zm48,36.38L84.52,44H124ZM77.22,172H124v46.79A60.18,60.18,0,0,1,77.22,172ZM148,147.83V44.17a52,52,0,0,1,0,103.66Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M144,28H64a4,4,0,0,0-4,4V160a76.08,76.08,0,0,0,76,76,4,4,0,0,0,4-4V164h4a68,68,0,0,0,0-136ZM68,47.27,129.16,156H68Zm64,97.46L70.84,36H132ZM68.13,164H132v63.88A68.1,68.1,0,0,1,68.13,164ZM144,156h-4V36h4a60,60,0,0,1,0,120Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

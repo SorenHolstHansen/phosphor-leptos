@@ -11,8 +11,10 @@ pub fn PokerChip(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,144a36,36,0,1,1,36-36A36,36,0,0,1,128,164Zm33.06-86A59.51,59.51,0,0,0,140,69.21V44.87a83.55,83.55,0,0,1,38.28,15.88ZM116,69.21A59.51,59.51,0,0,0,94.94,78L77.72,60.75A83.55,83.55,0,0,1,116,44.87ZM78,94.94A59.51,59.51,0,0,0,69.21,116H44.87A83.59,83.59,0,0,1,60.75,77.72ZM69.21,140A59.51,59.51,0,0,0,78,161.06L60.75,178.28A83.59,83.59,0,0,1,44.87,140Zm25.73,38A59.51,59.51,0,0,0,116,186.79v24.34a83.55,83.55,0,0,1-38.28-15.88ZM140,186.79A59.51,59.51,0,0,0,161.06,178l17.22,17.22A83.55,83.55,0,0,1,140,211.13Zm38-25.73A59.51,59.51,0,0,0,186.79,140h24.34a83.59,83.59,0,0,1-15.88,38.28ZM186.79,116A59.51,59.51,0,0,0,178,94.94l17.22-17.22A83.59,83.59,0,0,1,211.13,116Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M128,28A100,100,0,1,0,228,128,100.11,100.11,0,0,0,128,28Zm0,152a52,52,0,1,1,52-52A52.06,52.06,0,0,1,128,180Zm39.47-97.13A59.7,59.7,0,0,0,132,68.15V36.09a91.64,91.64,0,0,1,58.13,24.12ZM124,68.15A59.7,59.7,0,0,0,88.53,82.87L65.87,60.21A91.64,91.64,0,0,1,124,36.09ZM82.87,88.53A59.7,59.7,0,0,0,68.15,124H36.09A91.64,91.64,0,0,1,60.21,65.87ZM68.15,132a59.7,59.7,0,0,0,14.72,35.47L60.21,190.13A91.64,91.64,0,0,1,36.09,132Zm20.38,41.13A59.7,59.7,0,0,0,124,187.85v32.06a91.64,91.64,0,0,1-58.13-24.12ZM132,187.85a59.7,59.7,0,0,0,35.47-14.72l22.66,22.66A91.64,91.64,0,0,1,132,219.91Zm41.13-20.38A59.7,59.7,0,0,0,187.85,132h32.06a91.64,91.64,0,0,1-24.12,58.13ZM187.85,124a59.7,59.7,0,0,0-14.72-35.47l22.66-22.66A91.64,91.64,0,0,1,219.91,124Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

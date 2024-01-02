@@ -11,8 +11,10 @@ pub fn EyeClosed(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M234.42,162A12,12,0,1,1,213.58,174l-16.86-29.5a127.19,127.19,0,0,1-30.17,13.86L171.84,190a12,12,0,0,1-9.87,13.8,11.22,11.22,0,0,1-2,.17,12,12,0,0,1-11.82-10L143,163.17a136.5,136.5,0,0,1-30.06,0L107.84,194A12,12,0,0,1,96,204a11.22,11.22,0,0,1-2-.17A12,12,0,0,1,84.16,190l5.29-31.72a127.19,127.19,0,0,1-30.17-13.86L42.42,174A12,12,0,1,1,21.58,162L40,129.85a159.73,159.73,0,0,1-17.31-18.31A12,12,0,0,1,41.34,96.46C57.38,116.32,85.44,140,128,140s70.62-23.68,86.66-43.54a12,12,0,0,1,18.67,15.08A159.73,159.73,0,0,1,216,129.85Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M226,171.47a3.92,3.92,0,0,1-2,.53,4,4,0,0,1-3.47-2l-21.15-37a120,120,0,0,1-41.91,19.53L164,191.34a4,4,0,0,1-3.29,4.6,3.79,3.79,0,0,1-.67.06,4,4,0,0,1-3.94-3.34l-6.41-38.5a128.17,128.17,0,0,1-43.28,0L100,192.66A4,4,0,0,1,96,196a3.88,3.88,0,0,1-.67-.06,4,4,0,0,1-3.29-4.6l6.48-38.83A120,120,0,0,1,56.62,133L35.47,170A4,4,0,0,1,32,172a3.92,3.92,0,0,1-2-.53A4,4,0,0,1,28.53,166l21.68-37.94a148.24,148.24,0,0,1-21.32-21.56,4,4,0,1,1,6.22-5C52.25,122.71,82.29,148,128,148s75.75-25.29,92.89-46.51a4,4,0,1,1,6.22,5,148.24,148.24,0,0,1-21.32,21.56L227.47,166A4,4,0,0,1,226,171.47Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

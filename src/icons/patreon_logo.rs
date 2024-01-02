@@ -11,8 +11,10 @@ pub fn PatreonLogo(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M170,36a73.68,73.68,0,0,0-50,19.53A20,20,0,0,0,100,36H64A20,20,0,0,0,44,56V208a20,20,0,0,0,20,20h36a20,20,0,0,0,20-20V164.5A74,74,0,1,0,170,36ZM96,204H68V60H96Zm74-44a50,50,0,1,1,50-50A50.06,50.06,0,0,1,170,160Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M176,44a60,60,0,1,0,60,60A60.07,60.07,0,0,0,176,44Zm0,112a52,52,0,1,1,52-52A52.06,52.06,0,0,1,176,156ZM80,44H64A12,12,0,0,0,52,56V208a12,12,0,0,0,12,12H80a12,12,0,0,0,12-12V56A12,12,0,0,0,80,44Zm4,164a4,4,0,0,1-4,4H64a4,4,0,0,1-4-4V56a4,4,0,0,1,4-4H80a4,4,0,0,1,4,4Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

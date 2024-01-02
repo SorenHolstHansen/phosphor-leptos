@@ -11,8 +11,10 @@ pub fn CaretCircleDoubleRight(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M204.4,51.6a108,108,0,1,0,0,152.8A108.16,108.16,0,0,0,204.4,51.6Zm-17,135.82a84,84,0,1,1,0-118.84A84.12,84.12,0,0,1,187.42,187.42Zm-58.93-67.91a12,12,0,0,1,0,17l-32,32a12,12,0,0,1-17-17L103,128,79.49,104.47a12,12,0,1,1,17-17Zm56,17-32,32a12,12,0,0,1-17-17L159,128l-23.52-23.53a12,12,0,1,1,17-17l32,32A12,12,0,0,1,184.51,136.49Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M198.71,57.29A100,100,0,1,0,57.29,198.71,100,100,0,1,0,198.71,57.29Zm-5.66,135.76A92,92,0,1,1,220,128,91.37,91.37,0,0,1,193.05,193.05Zm-70.22-67.88a4,4,0,0,1,0,5.66l-32,32a4,4,0,0,1-5.66-5.66L114.34,128,85.17,98.83a4,4,0,0,1,5.66-5.66Zm56,0a4,4,0,0,1,0,5.66l-32,32a4,4,0,0,1-5.66-5.66L170.34,128,141.17,98.83a4,4,0,0,1,5.66-5.66Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

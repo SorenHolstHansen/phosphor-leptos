@@ -11,8 +11,10 @@ pub fn TextAUnderline(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M58.89,178.86a12,12,0,0,0,16-5.75L90.44,140h75.12l15.58,33.11a12,12,0,0,0,21.72-10.22l-64-136a12,12,0,0,0-21.72,0l-64,136A12,12,0,0,0,58.89,178.86ZM128,60.18,154.27,116H101.73ZM228,216a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,216Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M62.3,171.62a4,4,0,0,0,5.32-1.92L85.36,132h85.28l17.74,37.7a4,4,0,1,0,7.24-3.4l-64-136a4,4,0,0,0-7.24,0l-64,136A4,4,0,0,0,62.3,171.62ZM128,41.39,166.87,124H89.13ZM220,216a4,4,0,0,1-4,4H40a4,4,0,0,1,0-8H216A4,4,0,0,1,220,216Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

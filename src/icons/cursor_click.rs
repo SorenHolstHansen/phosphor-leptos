@@ -11,8 +11,10 @@ pub fn CursorClick(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M84,16V12a12,12,0,0,1,24,0v4a12,12,0,0,1-24,0ZM16,108a12,12,0,0,0,0-24H12a12,12,0,0,0,0,24ZM128.2,39.38a12,12,0,0,0,15.18-7.59l4-12a12,12,0,0,0-22.76-7.58l-4,12A12,12,0,0,0,128.2,39.38Zm-104,81.24-12,4a12,12,0,1,0,7.58,22.76l12-4a12,12,0,1,0-7.58-22.76Zm197.93,60.55a20,20,0,0,1,0,28.29l-12.68,12.68a20,20,0,0,1-28.29,0l-45.51-45.51L118.54,216h0a19.81,19.81,0,0,1-18.27,12l-1,0a19.81,19.81,0,0,1-18-13.74L29,54.16A20,20,0,0,1,54.16,29L214.24,81.27A20,20,0,0,1,216,118.54l-39.37,17.12Zm-19.8,14.14L155.5,148.47A20,20,0,0,1,161.67,116l35-15.21L54.29,54.29l46.49,142.37,15.21-35A20,20,0,0,1,130.6,150a19.74,19.74,0,0,1,3.74-.36,20,20,0,0,1,14.13,5.86l46.84,46.84Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M166.82,137.16a4,4,0,0,1,1.23-6.5l44.76-19.46a12,12,0,0,0-1.05-22.33L51.68,36.6A12,12,0,0,0,36.6,51.68L88.87,211.76A11.88,11.88,0,0,0,99.67,220h.59a11.85,11.85,0,0,0,10.94-7.19l19.46-44.76a4,4,0,0,1,6.5-1.23l49.67,49.67a12,12,0,0,0,17,0l12.69-12.69a12,12,0,0,0,0-17Zm44,61-12.69,12.69a4,4,0,0,1-5.65,0l-49.67-49.67a12,12,0,0,0-8.48-3.52,11.44,11.44,0,0,0-2.25.22,12,12,0,0,0-8.76,7l-19.46,44.76a4,4,0,0,1-7.39-.35L44.21,49.2a4,4,0,0,1,5-5L209.27,96.48a3.95,3.95,0,0,1,.35,7.38l-44.76,19.47a12,12,0,0,0-3.7,19.49l49.67,49.67A4,4,0,0,1,210.83,198.14ZM92,24V16a4,4,0,0,1,8,0v8a4,4,0,0,1-8,0ZM12,96a4,4,0,0,1,4-4h8a4,4,0,0,1,0,8H16A4,4,0,0,1,12,96ZM124.42,30.21l8-16a4,4,0,0,1,7.16,3.58l-8,16a4,4,0,0,1-7.16-3.58Zm-88.84,96a4,4,0,0,1-1.79,5.37l-16,8A4.05,4.05,0,0,1,16,140a4,4,0,0,1-1.79-7.58l16-8A4,4,0,0,1,35.58,126.21Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

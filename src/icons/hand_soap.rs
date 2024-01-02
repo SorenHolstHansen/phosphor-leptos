@@ -11,8 +11,10 @@ pub fn HandSoap(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M188,97.68V92a36,36,0,0,0-36-36H140V36h28a4,4,0,0,1,4,4,12,12,0,0,0,24,0,28,28,0,0,0-28-28H104a12,12,0,0,0,0,24h12V56H104A36,36,0,0,0,68,92v5.68A44.06,44.06,0,0,0,36,140v76a20,20,0,0,0,20,20H200a20,20,0,0,0,20-20V140A44.06,44.06,0,0,0,188,97.68ZM104,80h48a12,12,0,0,1,12,12v4H92V92A12,12,0,0,1,104,80Zm92,132H60V140a20,20,0,0,1,20-20h96a20,20,0,0,1,20,20Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M180,100.23V88a28,28,0,0,0-28-28H132V28h36a12,12,0,0,1,12,12,4,4,0,0,0,8,0,20,20,0,0,0-20-20H104a4,4,0,0,0,0,8h20V60H104A28,28,0,0,0,76,88v12.23A36,36,0,0,0,44,136v80a12,12,0,0,0,12,12H200a12,12,0,0,0,12-12V136A36,36,0,0,0,180,100.23ZM104,68h48a20,20,0,0,1,20,20v12H84V88A20,20,0,0,1,104,68ZM204,216a4,4,0,0,1-4,4H56a4,4,0,0,1-4-4V136a28,28,0,0,1,28-28h96a28,28,0,0,1,28,28Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

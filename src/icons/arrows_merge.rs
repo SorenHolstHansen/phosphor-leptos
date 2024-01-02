@@ -11,8 +11,10 @@ pub fn ArrowsMerge(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M196,40v64a12,12,0,0,1-3.51,8.49L140,165V203l11.51-11.52a12,12,0,0,1,17,17l-32,32a12,12,0,0,1-17,0l-32-32a12,12,0,0,1,17-17L116,203V165L63.51,112.49A12,12,0,0,1,60,104V40a12,12,0,0,1,24,0V99l44,44,44-44V40a12,12,0,0,1,24,0Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M188,40v64a4,4,0,0,1-1.17,2.83L132,161.66v60.68l25.17-25.17a4,4,0,0,1,5.66,5.66l-32,32a4,4,0,0,1-5.66,0l-32-32a4,4,0,0,1,5.66-5.66L124,222.34V161.66L69.17,106.83A4,4,0,0,1,68,104V40a4,4,0,0,1,8,0v62.34l52,52,52-52V40a4,4,0,0,1,8,0Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

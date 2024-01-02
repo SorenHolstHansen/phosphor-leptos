@@ -11,8 +11,10 @@ pub fn YinYang(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20ZM44,128a84.09,84.09,0,0,1,84-84,36,36,0,0,1,0,72,60,60,0,0,0-58.81,71.9A83.73,83.73,0,0,1,44,128Zm84,84a36,36,0,0,1,0-72,60,60,0,0,0,58.81-71.9A83.94,83.94,0,0,1,128,212Zm16-36a16,16,0,1,1-16-16A16,16,0,0,1,144,176ZM112,80a16,16,0,1,1,16,16A16,16,0,0,1,112,80Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M128,28A100,100,0,1,0,228,128,100.11,100.11,0,0,0,128,28ZM36,128a92.1,92.1,0,0,1,92-92,44,44,0,0,1,0,88,52,52,0,0,0-37.44,88A92.14,92.14,0,0,1,36,128Zm92,92a44,44,0,0,1,0-88,52,52,0,0,0,37.44-88A92,92,0,0,1,128,220Zm8-44a8,8,0,1,1-8-8A8,8,0,0,1,136,176ZM120,80a8,8,0,1,1,8,8A8,8,0,0,1,120,80Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn CloudSlash(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M56.88,31.93A12,12,0,1,0,39.12,48.07L71.79,84A68,68,0,0,0,72,220h88a91.26,91.26,0,0,0,30.66-5.24l8.46,9.31a12,12,0,0,0,17.76-16.14ZM160,196H72a44,44,0,0,1-1.8-87.95A91.91,91.91,0,0,0,68,128a12,12,0,0,0,24,0,68.22,68.22,0,0,1,2.66-18.84l77.88,85.67A68.67,68.67,0,0,1,160,196Zm92-68a91.32,91.32,0,0,1-17.53,54,12,12,0,1,1-19.41-14.11,68,68,0,0,0-89.57-98.53,12,12,0,0,1-12.2-20.66A92,92,0,0,1,252,128Z"></path>
@@ -38,18 +40,21 @@ IconWeight::Thin => view! {
     <path d="M51,37.31A4,4,0,0,0,45,42.69L86.16,87.93q-1.38,2.55-2.59,5.19A60,60,0,1,0,72,212h88a83.19,83.19,0,0,0,32.88-6.69L205,218.69a4,4,0,1,0,5.92-5.38ZM160,204H72a52,52,0,0,1,0-104,52.92,52.92,0,0,1,8.54.72A84.21,84.21,0,0,0,76,128a4,4,0,0,0,8,0,76,76,0,0,1,7.9-33.76L187.13,199A75.37,75.37,0,0,1,160,204Zm84-76a83.86,83.86,0,0,1-21.34,55.94,4,4,0,1,1-6-5.33A76,76,0,0,0,115,66.75a4,4,0,0,1-4.74-6.45A84,84,0,0,1,244,128Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

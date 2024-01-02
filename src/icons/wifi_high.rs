@@ -11,8 +11,10 @@ pub fn WifiHigh(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M144,204a16,16,0,1,1-16-16A16,16,0,0,1,144,204ZM239.61,83.91a176,176,0,0,0-223.22,0,12,12,0,1,0,15.23,18.55,152,152,0,0,1,192.76,0,12,12,0,1,0,15.23-18.55Zm-32.16,35.73a128,128,0,0,0-158.9,0,12,12,0,0,0,14.9,18.81,104,104,0,0,1,129.1,0,12,12,0,0,0,14.9-18.81ZM175.07,155.3a80.05,80.05,0,0,0-94.14,0,12,12,0,0,0,14.14,19.4,56,56,0,0,1,65.86,0,12,12,0,1,0,14.14-19.4Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M136,204a8,8,0,1,1-8-8A8,8,0,0,1,136,204ZM234.54,90.1a168,168,0,0,0-213.08,0,4,4,0,1,0,5.08,6.18,160,160,0,0,1,202.92,0,4,4,0,0,0,5.08-6.18Zm-32.06,35.81a120,120,0,0,0-149,0,4,4,0,0,0,5,6.27,112,112,0,0,1,139,0,4,4,0,0,0,5-6.27Zm-32.13,35.86a72,72,0,0,0-84.7,0,4,4,0,1,0,4.7,6.46,64.07,64.07,0,0,1,75.3,0,4,4,0,0,0,5.58-.87A4,4,0,0,0,170.35,161.77Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

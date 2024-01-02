@@ -11,8 +11,10 @@ pub fn NyTimesLogo(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M192,148a16,16,0,1,1-16-16A16,16,0,0,1,192,148Zm-4-40a11.84,11.84,0,0,1-5.07-1.13L118.25,76.69a68,68,0,0,0-57.83,59.89l65.93-35.17A12,12,0,0,1,144,112v98.11a67.71,67.71,0,0,0,44.75-35.52,12,12,0,1,1,21.42,10.82,91.54,91.54,0,0,1-76,50.38A12.13,12.13,0,0,1,132,236c-.35,0-.68,0-1-.05-1,0-2,.05-3,.05A92,92,0,0,1,46.36,101.61,40,40,0,0,1,68,28a11.84,11.84,0,0,1,5.07,1.13l117.24,54.7A16,16,0,0,0,188,52a12,12,0,0,1,0-24,40,40,0,0,1,0,80ZM80,192.12V153.33l-17.39,9.28A68.13,68.13,0,0,0,80,192.12ZM120,132l-16,8.53v67.08a67.1,67.1,0,0,0,16,3.9ZM86.5,61.88,65.69,52.17a16,16,0,0,0-5.58,29.74A92,92,0,0,1,86.5,61.88Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M172,140a8,8,0,1,1-8,8A8,8,0,0,1,172,140Zm14.31-40.38L119.57,68.48A76,76,0,0,0,52,144c0,1.32,0,2.64.1,3.95l74-39.48A4,4,0,0,1,132,112V219.88a75.64,75.64,0,0,0,68.52-53.08,4,4,0,1,1,7.63,2.4A84,84,0,1,1,57.57,98.25,32,32,0,0,1,68,36a4,4,0,0,1,1.69.38L188.85,92A24,24,0,0,0,188,44a4,4,0,0,1,0-8,32,32,0,0,1,0,64A4,4,0,0,1,186.31,99.62Zm-62.31,19-24,12.8v83.16a75.45,75.45,0,0,0,24,5.26ZM53.05,156.51a76.15,76.15,0,0,0,39,54.4V135.73Zm54-93.86L67.15,44a24,24,0,0,0-4.6,47.36c1.1-1.37,2.22-2.71,3.41-4A83.89,83.89,0,0,1,107.08,62.65Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

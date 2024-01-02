@@ -11,8 +11,10 @@ pub fn Vignette(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M216,36H40A20,20,0,0,0,20,56V200a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V56A20,20,0,0,0,216,36Zm-4,160H44V60H212ZM81.43,166.05C94,175.05,110.56,180,128,180s34-4.95,46.57-13.95C188.19,156.32,196,142.45,196,128s-7.81-28.32-21.43-38C162,81,145.44,76,128,76S94,81,81.43,90C67.81,99.68,60,113.55,60,128S67.81,156.32,81.43,166.05ZM128,100c23.85,0,44,12.82,44,28s-20.15,28-44,28-44-12.82-44-28S104.15,100,128,100Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M216,44H40A12,12,0,0,0,28,56V200a12,12,0,0,0,12,12H216a12,12,0,0,0,12-12V56A12,12,0,0,0,216,44Zm4,156a4,4,0,0,1-4,4H40a4,4,0,0,1-4-4V56a4,4,0,0,1,4-4H216a4,4,0,0,1,4,4ZM128,76c-37.5,0-68,23.33-68,52s30.5,52,68,52,68-23.33,68-52S165.5,76,128,76Zm0,96c-33.08,0-60-19.74-60-44s26.92-44,60-44,60,19.74,60,44S161.08,172,128,172Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

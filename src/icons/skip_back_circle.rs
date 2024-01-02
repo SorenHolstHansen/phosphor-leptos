@@ -11,8 +11,10 @@ pub fn SkipBackCircle(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212ZM165.82,77.5a12,12,0,0,0-12.18.32L108,106.35V88a12,12,0,0,0-24,0v80a12,12,0,0,0,24,0V149.65l45.64,28.53A12,12,0,0,0,172,168V88A12,12,0,0,0,165.82,77.5ZM148,146.35,118.64,128,148,109.65Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M128,28A100,100,0,1,0,228,128,100.11,100.11,0,0,0,128,28Zm0,192a92,92,0,1,1,92-92A92.1,92.1,0,0,1,128,220ZM161.94,84.5a4,4,0,0,0-4.06.11L100,120.78V88a4,4,0,0,0-8,0v80a4,4,0,0,0,8,0V135.22l57.88,36.17A4,4,0,0,0,160,172a4.06,4.06,0,0,0,1.94-.5A4,4,0,0,0,164,168V88A4,4,0,0,0,161.94,84.5ZM156,160.78,103.55,128,156,95.22Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

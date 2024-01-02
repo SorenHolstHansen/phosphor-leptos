@@ -11,8 +11,10 @@ pub fn TestTube(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M240.49,83.51l-60-60a12,12,0,0,0-17,0L34.28,152.75a48.77,48.77,0,0,0,69,69L214.48,110.49l21.31-7.11a12,12,0,0,0,4.7-19.87ZM86.28,204.75a24.77,24.77,0,0,1-35-35l28.13-28.13c7.73-2.41,19.58-3,35.06,5a83.94,83.94,0,0,0,21.95,8ZM204.2,88.62a12.15,12.15,0,0,0-4.69,2.89l-38.89,38.9c-7.73,2.41-19.58,3-35.06-5a83.94,83.94,0,0,0-21.94-8L172,49l37.79,37.79Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M234.83,89.18l-60-60a4,4,0,0,0-5.66,0L39.94,158.41A40.78,40.78,0,0,0,97.6,216.08L210.16,103.5l23.1-7.7a4,4,0,0,0,1.57-6.62ZM91.94,210.42A32.77,32.77,0,1,1,45.6,164.07L75,134.63c9.2-3.38,23.94-5.08,43.11,4.93,12.09,6.31,22.74,8.48,31.66,8.48,1.64,0,3.2-.09,4.73-.22ZM206.74,96.21a4.06,4.06,0,0,0-1.57,1L165,137.39c-9.2,3.38-23.94,5.08-43.11-4.93-14.3-7.47-26.58-9.13-36.38-8.27L172,37.66l52.6,52.6Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

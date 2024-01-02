@@ -11,8 +11,10 @@ pub fn Sunglasses(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M200,36a12,12,0,0,0,0,24,12,12,0,0,1,12,12v52H44V72A12,12,0,0,1,56,60a12,12,0,0,0,0-24A36,36,0,0,0,20,72v92a48,48,0,0,0,96,0V148h24v16a48,48,0,0,0,96,0V72A36,36,0,0,0,200,36Zm11.18,134.21L189,148h23v16A24,24,0,0,1,211.18,170.21ZM44,164v-7l30.21,30.21A24,24,0,0,1,44,164Zm48,0a24,24,0,0,1-.82,6.21L69,148H92Zm72,0v-7l30.21,30.21A24,24,0,0,1,164,164Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M200,44a4,4,0,0,0,0,8,20,20,0,0,1,20,20v60H36V72A20,20,0,0,1,56,52a4,4,0,0,0,0-8A28,28,0,0,0,28,72v92a40,40,0,0,0,80,0V140h40v24a40,40,0,0,0,80,0V72A28,28,0,0,0,200,44ZM36,164V140h2.34l49.27,49.26A32,32,0,0,1,36,164Zm64,0a31.83,31.83,0,0,1-6.74,19.61L49.66,140H100Zm56,0V140h2.34l49.27,49.26A32,32,0,0,1,156,164Zm57.26,19.61L169.66,140H220v24A31.83,31.83,0,0,1,213.26,183.61Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

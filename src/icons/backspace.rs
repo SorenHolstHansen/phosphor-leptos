@@ -11,8 +11,10 @@ pub fn Backspace(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M216,36H68.53a20.09,20.09,0,0,0-17.15,9.71L5.71,121.83a12,12,0,0,0,0,12.34l45.67,76.12A20.09,20.09,0,0,0,68.53,220H216a20,20,0,0,0,20-20V56A20,20,0,0,0,216,36Zm-4,160H70.8L30,128,70.8,60H212ZM103.51,143.51,119,128l-15.52-15.51a12,12,0,0,1,17-17L136,111l15.51-15.52a12,12,0,0,1,17,17L153,128l15.52,15.51a12,12,0,0,1-17,17L136,145l-15.51,15.52a12,12,0,0,1-17-17Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M216,44H68.53a12.06,12.06,0,0,0-10.29,5.83L12.57,125.94a4,4,0,0,0,0,4.12l45.67,76.11A12.06,12.06,0,0,0,68.53,212H216a12,12,0,0,0,12-12V56A12,12,0,0,0,216,44Zm4,156a4,4,0,0,1-4,4H68.53a4,4,0,0,1-3.43-1.94L20.67,128,65.1,53.94A4,4,0,0,1,68.53,52H216a4,4,0,0,1,4,4Zm-57.17-93.17L141.66,128l21.17,21.17a4,4,0,0,1-5.66,5.66L136,133.66l-21.17,21.17a4,4,0,0,1-5.66-5.66L130.34,128l-21.17-21.17a4,4,0,0,1,5.66-5.66L136,122.34l21.17-21.17a4,4,0,1,1,5.66,5.66Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

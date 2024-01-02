@@ -11,8 +11,10 @@ pub fn FloppyDiskBack(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M208,28H91.31a19.86,19.86,0,0,0-14.14,5.86L33.86,77.17A19.86,19.86,0,0,0,28,91.31V208a20,20,0,0,0,20,20H208a20,20,0,0,0,20-20V48A20,20,0,0,0,208,28Zm-4,176H52V93L93,52h71V76H100a12,12,0,0,0,0,24h68a20,20,0,0,0,20-20V52h16Zm-76-88a36,36,0,1,0,36,36A36,36,0,0,0,128,116Zm0,48a12,12,0,1,1,12-12A12,12,0,0,1,128,164Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M208,36H91.31a12,12,0,0,0-8.48,3.51L39.52,82.83A11.9,11.9,0,0,0,36,91.31V208a12,12,0,0,0,12,12H208a12,12,0,0,0,12-12V48A12,12,0,0,0,208,36Zm4,172a4,4,0,0,1-4,4H48a4,4,0,0,1-4-4V91.31a4,4,0,0,1,1.17-2.82L88.48,45.17A4,4,0,0,1,91.31,44H172V80a4,4,0,0,1-4,4H88a4,4,0,0,0,0,8h80a12,12,0,0,0,12-12V44h28a4,4,0,0,1,4,4Zm-84-92a36,36,0,1,0,36,36A36,36,0,0,0,128,116Zm0,64a28,28,0,1,1,28-28A28,28,0,0,1,128,180Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

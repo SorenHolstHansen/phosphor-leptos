@@ -11,8 +11,10 @@ pub fn RoadHorizon(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M237.88,202.46a12,12,0,0,1-16.34-4.58L153,76H140v4a12,12,0,0,1-24,0V76H103L34.46,197.88a12,12,0,1,1-20.92-11.76L75.48,76H24a12,12,0,0,1,0-24H232a12,12,0,0,1,0,24H180.52l61.94,110.12A12,12,0,0,1,237.88,202.46ZM128,108a12,12,0,0,0-12,12v16a12,12,0,0,0,24,0V120A12,12,0,0,0,128,108Zm0,56a12,12,0,0,0-12,12v16a12,12,0,0,0,24,0V176A12,12,0,0,0,128,164Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M235.49,190a4,4,0,0,1-1.53,5.45,4.07,4.07,0,0,1-2,.51,4,4,0,0,1-3.49-2L157.66,68H132V80a4,4,0,0,1-8,0V68H98.34L27.49,194A4,4,0,0,1,24,196a4.07,4.07,0,0,1-2-.51A4,4,0,0,1,20.51,190L89.16,68H24a4,4,0,0,1,0-8H232a4,4,0,0,1,0,8H166.84ZM128,116a4,4,0,0,0-4,4v16a4,4,0,0,0,8,0V120A4,4,0,0,0,128,116Zm0,56a4,4,0,0,0-4,4v16a4,4,0,0,0,8,0V176A4,4,0,0,0,128,172Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn Knife(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M234.64,29.37a32,32,0,0,0-45.26,0l-.1.1L15.41,207.79a12,12,0,0,0,5.89,20.1A159.13,159.13,0,0,0,57.19,232c34.21,0,68.42-11.11,100.55-32.9,32.29-21.9,51.09-46.74,51.87-47.78a12,12,0,0,0-1.11-15.7l-16-16,42.29-45.08A32.09,32.09,0,0,0,234.64,29.37Zm-91,150.25C112.74,200.43,81,209.85,49,207.77L146.6,107.64l37.13,37.16A222.39,222.39,0,0,1,143.67,179.62Zm74-121.94-.26.27-41.89,44.66L163.37,90.44l43-44.12a8,8,0,0,1,11.28,11.36Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M229,35a24,24,0,0,0-34,0L21.14,213.4a4,4,0,0,0,2,6.7,150.65,150.65,0,0,0,34,3.9c32.64,0,65.34-10.65,96.12-31.52,31.2-21.15,49.21-45,50-46a4,4,0,0,0-.37-5.24l-21.48-21.5L229,69A24.09,24.09,0,0,0,229,35ZM194.65,144.41a226.48,226.48,0,0,1-45.89,41.44C110.83,211.57,71.58,220.94,32,213.75L146.53,96.24Zm28.68-81.07a.76.76,0,0,0-.09.09L175.7,114.11l-23.58-23.6,48.57-49.83a16,16,0,0,1,22.64,22.66Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

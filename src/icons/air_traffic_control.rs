@@ -11,8 +11,10 @@ pub fn AirTrafficControl(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M232.38,60.52A20,20,0,0,0,216,52H140V28h12a12,12,0,0,0,0-24H104a12,12,0,0,0,0,24h12V52H40A20,20,0,0,0,21.2,78.83l26.19,72A20.06,20.06,0,0,0,66.18,164H92v60a12,12,0,0,0,24,0V164h24v60a12,12,0,0,0,24,0V164h25.82a20.06,20.06,0,0,0,18.79-13.17l26.19-72A20,20,0,0,0,232.38,60.52ZM114,140,102.38,76h51.24L142,140ZM45.71,76H78l11.64,64H69ZM187,140H166.38L178,76h32.27Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M225.83,65.11A12,12,0,0,0,216,60H132V20h20a4,4,0,0,0,0-8H104a4,4,0,0,0,0,8h20V60H40A12,12,0,0,0,28.72,76.1l26.19,72A12,12,0,0,0,66.18,156H100v68a4,4,0,0,0,8,0V156h40v68a4,4,0,0,0,8,0V156h33.82a12,12,0,0,0,11.27-7.9l26.19-72A12,12,0,0,0,225.83,65.11ZM107.34,148,92.79,68h70.42l-14.55,80Zm-44.92-2.63-26.18-72A4,4,0,0,1,40,68H84.66L99.2,148h-33A4,4,0,0,1,62.42,145.37Zm157.34-72-26.18,72a4,4,0,0,1-3.76,2.63h-33l14.55-80H216a4,4,0,0,1,3.76,5.37Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

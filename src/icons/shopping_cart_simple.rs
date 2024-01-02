@@ -11,8 +11,10 @@ pub fn ShoppingCartSimple(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M100,216a20,20,0,1,1-20-20A20,20,0,0,1,100,216Zm84-20a20,20,0,1,0,20,20A20,20,0,0,0,184,196ZM235.47,75.53l-27.29,88.7A27.87,27.87,0,0,1,181.41,184H82.93A28.13,28.13,0,0,1,56,163.69L21.81,44H12a12,12,0,0,1,0-24H24.82A20.08,20.08,0,0,1,44.05,34.51L51.34,60H224a12,12,0,0,1,11.47,15.53ZM207.75,84H58.19l20.89,73.1a4,4,0,0,0,3.85,2.9h98.48a4,4,0,0,0,3.83-2.82Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M92,216a12,12,0,1,1-12-12A12,12,0,0,1,92,216Zm92-12a12,12,0,1,0,12,12A12,12,0,0,0,184,204ZM227.82,73.18l-28.52,92.7A19.9,19.9,0,0,1,180.18,180H84.07a20.08,20.08,0,0,1-19.23-14.51L28.67,38.9A4,4,0,0,0,24.82,36H8a4,4,0,0,1,0-8H24.82a12.05,12.05,0,0,1,11.54,8.7L45.3,68H224a4,4,0,0,1,3.82,5.18ZM218.58,76h-171l24.94,87.3A12.05,12.05,0,0,0,84.07,172h96.11a11.94,11.94,0,0,0,11.47-8.47Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

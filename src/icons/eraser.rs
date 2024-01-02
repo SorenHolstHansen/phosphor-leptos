@@ -11,8 +11,10 @@ pub fn Eraser(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M216,204H141l86.84-86.84a28,28,0,0,0,0-39.6L186.43,36.19a28,28,0,0,0-39.6,0L28.19,154.82a28,28,0,0,0,0,39.6l30.06,30.07A12,12,0,0,0,66.74,228H216a12,12,0,0,0,0-24ZM163.8,53.16a4,4,0,0,1,5.66,0l41.38,41.38a4,4,0,0,1,0,5.65L160,151l-47-47ZM71.71,204,45.16,177.45a4,4,0,0,1,0-5.65L96,121l47,47-36,36Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M222.15,83.22,180.77,41.85a20,20,0,0,0-28.28,0L33.85,160.48a20,20,0,0,0,0,28.29l30.06,30.06A4,4,0,0,0,66.74,220H216a4,4,0,0,0,0-8H121.66L222.15,111.51A20,20,0,0,0,222.15,83.22ZM110.34,212H68.4L39.51,183.11a12,12,0,0,1,0-17L96,109.65,154.35,168ZM216.49,105.85,160,162.34,101.65,104l56.49-56.48a12,12,0,0,1,17,0l41.37,41.37A12,12,0,0,1,216.49,105.85Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn AndroidLogo(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M180,156a16,16,0,1,1-16-16A16,16,0,0,1,180,156ZM92,140a16,16,0,1,0,16,16A16,16,0,0,0,92,140Zm152,28v24a20,20,0,0,1-20,20H32a20,20,0,0,1-20-20V169.13A117.35,117.35,0,0,1,45.72,86.69L23.51,64.49a12,12,0,0,1,17-17L64.3,71.33A114.35,114.35,0,0,1,127.59,52H128a115.15,115.15,0,0,1,63.89,19.14l23.62-23.63a12,12,0,0,1,17,17l-22,22A115.18,115.18,0,0,1,244,168Zm-24,0a92,92,0,0,0-92.33-92C77.12,76.18,36,118,36,169.13V188H220Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M172,156a8,8,0,1,1-8-8A8,8,0,0,1,172,156Zm-80-8a8,8,0,1,0,8,8A8,8,0,0,0,92,148Zm144,20v24a12,12,0,0,1-12,12H32a12,12,0,0,1-12-12V169.13A109.43,109.43,0,0,1,57.18,86.84l-28-28a4,4,0,0,1,5.66-5.66L63.41,81.75A106.63,106.63,0,0,1,127.62,60H128a107.16,107.16,0,0,1,64.78,21.57l28.39-28.4a4,4,0,1,1,5.66,5.66L199,86.64c1.78,1.56,3.52,3.17,5.21,4.86A107.25,107.25,0,0,1,236,168Zm-8,0A100,100,0,0,0,128,68h-.35C72.7,68.19,28,113.56,28,169.13V192a4,4,0,0,0,4,4H224a4,4,0,0,0,4-4Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

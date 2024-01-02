@@ -11,8 +11,10 @@ pub fn FigmaLogo(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M190.15,96A44,44,0,0,0,160,20H88A44,44,0,0,0,57.85,96a43.9,43.9,0,0,0,1.23,65.12A48,48,0,1,0,140,196V167.17A44,44,0,0,0,190.15,96ZM180,64a20,20,0,0,1-20,20H140V44h20A20,20,0,0,1,180,64ZM68,64A20,20,0,0,1,88,44h28V84H88A20,20,0,0,1,68,64Zm20,84a20,20,0,0,1,0-40h28v40H88Zm28,48a24,24,0,1,1-24-24h24Zm44-48a20,20,0,1,1,20-20A20,20,0,0,1,160,148Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M176.46,96A36,36,0,0,0,160,28H88A36,36,0,0,0,71.54,96a36,36,0,0,0,1.56,64.76A40,40,0,1,0,132,196V150.59A36,36,0,1,0,176.46,96ZM188,64a28,28,0,0,1-28,28H132V36h28A28,28,0,0,1,188,64Zm-56,36h5.41a36.41,36.41,0,0,0-5.41,5.41ZM60,64A28,28,0,0,1,88,36h36V92H88A28,28,0,0,1,60,64Zm64,132a32,32,0,1,1-32-32h32Zm0-40H88a28,28,0,0,1,0-56h36Zm36,0a28,28,0,1,1,28-28A28,28,0,0,1,160,156Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

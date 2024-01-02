@@ -11,8 +11,10 @@ pub fn MagnetStraight(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M200,36H160a20,20,0,0,0-20,20v88a12,12,0,0,1-24,0V56A20,20,0,0,0,96,36H56A20,20,0,0,0,36,56v88a92,92,0,0,0,92,92h.71c50.34-.38,91.3-42.1,91.3-93V56A20,20,0,0,0,200,36Zm-4,24V84H164V60ZM92,60V84H60V60Zm36.52,152H128a68,68,0,0,1-68-68V108H92v36a36,36,0,0,0,72,0V108h32v35C196,180.77,165.73,211.72,128.52,212Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M200,44H160a12,12,0,0,0-12,12v88a20,20,0,0,1-40,0V56A12,12,0,0,0,96,44H56A12,12,0,0,0,44,56v88a84,84,0,0,0,84,84h.64c46-.34,83.36-38.47,83.36-85V56A12,12,0,0,0,200,44Zm-40,8h40a4,4,0,0,1,4,4V92H156V56A4,4,0,0,1,160,52ZM56,52H96a4,4,0,0,1,4,4V92H52V56A4,4,0,0,1,56,52Zm72.58,168H128a76,76,0,0,1-76-76V100h48v44a28,28,0,0,0,56,0V100h48v43C204,185.15,170.17,219.69,128.58,220Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

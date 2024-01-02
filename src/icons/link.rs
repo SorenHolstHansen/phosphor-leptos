@@ -11,8 +11,10 @@ pub fn Link(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M136.37,187.53a12,12,0,0,1,0,17l-5.94,5.94a60,60,0,0,1-84.88-84.88l24.12-24.11A60,60,0,0,1,152,99,12,12,0,1,1,136,117a36,36,0,0,0-49.37,1.47L62.53,142.55a36,36,0,0,0,50.92,50.92l5.94-5.94A12,12,0,0,1,136.37,187.53Zm74.08-142a60.09,60.09,0,0,0-84.88,0l-5.94,5.94a12,12,0,0,0,17,17l5.94-5.94a36,36,0,0,1,50.92,50.92l-24.11,24.12A36,36,0,0,1,120,139,12,12,0,1,0,104,157a60,60,0,0,0,82.3-2.43l24.12-24.11A60.09,60.09,0,0,0,210.45,45.55Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M134.71,189.19a4,4,0,0,1,0,5.66l-9.94,9.94a52,52,0,0,1-73.56-73.56l24.12-24.12a52,52,0,0,1,71.32-2.1,4,4,0,1,1-5.32,6A44,44,0,0,0,81,112.77L56.87,136.89a44,44,0,0,0,62.24,62.24l9.94-9.94A4,4,0,0,1,134.71,189.19Zm70.08-138a52.07,52.07,0,0,0-73.56,0l-9.94,9.94A4,4,0,1,0,127,66.81l9.94-9.94a44,44,0,0,1,62.24,62.24L175,143.23A44,44,0,0,1,114.67,145a4,4,0,1,0-5.32,6,52,52,0,0,0,71.32-2.1l24.12-24.12A52.07,52.07,0,0,0,204.79,51.21Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

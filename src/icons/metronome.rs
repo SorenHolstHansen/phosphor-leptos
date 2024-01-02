@@ -11,8 +11,10 @@ pub fn Metronome(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M219.05,201.94l-27.4-86.12,25.23-27.75a12,12,0,0,0-17.76-16.14L183.24,89.39l-15.1-47.45A19.93,19.93,0,0,0,149.08,28H106.91A19.93,19.93,0,0,0,87.85,41.94l-50.91,160A20,20,0,0,0,56,228H200a20,20,0,0,0,19.06-26.06ZM179.25,156H155.12L173,136.34ZM109.83,52h36.33l18.42,57.91L122.69,156H76.74ZM61.47,204l7.63-24H186.89l7.63,24Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M182.63,113.85,211,82.69A4,4,0,1,0,205,77.31L179.82,105l-19.3-60.68A12,12,0,0,0,149.08,36H106.92a12,12,0,0,0-11.44,8.36l-50.9,160A12,12,0,0,0,56,220H200a12,12,0,0,0,11.43-15.64ZM190.19,164H137l39.37-43.31ZM103.1,46.79A4,4,0,0,1,106.92,44h42.16a4,4,0,0,1,3.82,2.79l20.71,65.09L126.23,164H65.81ZM203.22,210.36A4,4,0,0,1,200,212H56a4,4,0,0,1-3.81-5.21L63.27,172H192.73l11.07,34.79A4,4,0,0,1,203.22,210.36Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

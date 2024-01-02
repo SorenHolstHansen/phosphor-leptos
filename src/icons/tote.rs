@@ -11,8 +11,10 @@ pub fn Tote(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M239,66.75a20.12,20.12,0,0,0-15-6.75H179.83A52,52,0,0,0,76.17,60H32.08A20,20,0,0,0,12.14,82.35l14.25,120A20.06,20.06,0,0,0,46.33,220H209.67a20.06,20.06,0,0,0,19.94-17.65l14.25-120A20,20,0,0,0,239,66.75ZM128,36a28,28,0,0,1,27.71,24H100.29A28,28,0,0,1,128,36Zm78.19,160H49.81L36.5,84H76v20a12,12,0,0,0,24,0V84h56v20a12,12,0,0,0,24,0V84h39.5Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M233,72.06A12.11,12.11,0,0,0,223.92,68H172V64a44,44,0,0,0-88,0v4H32.08A12.11,12.11,0,0,0,23,72.06a12,12,0,0,0-2.94,9.35l14.26,120a12,12,0,0,0,12,10.59H209.67a12,12,0,0,0,12-10.59l14.26-120A12,12,0,0,0,233,72.06ZM92,64a36,36,0,0,1,72,0v4H92ZM228,80.46l-14.25,120a4,4,0,0,1-4.05,3.54H46.33a4,4,0,0,1-4-3.54L28,80.46a3.9,3.9,0,0,1,1-3.09A4.08,4.08,0,0,1,32.08,76H84v28a4,4,0,0,0,8,0V76h72v28a4,4,0,0,0,8,0V76h51.92A4.08,4.08,0,0,1,227,77.37,3.9,3.9,0,0,1,228,80.46Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

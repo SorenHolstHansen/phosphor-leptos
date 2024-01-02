@@ -11,8 +11,10 @@ pub fn CloudLightning(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M156,12A80.22,80.22,0,0,0,82.39,60.36,56.76,56.76,0,0,0,76,60a56,56,0,0,0,0,112h30.81l-13.1,21.82A12,12,0,0,0,104,212h18.81l-13.1,21.82a12,12,0,1,0,20.58,12.35l24-40A12,12,0,0,0,144,188H125.19l9.6-16H156a80,80,0,0,0,0-160Zm0,136H76a32,32,0,0,1,0-64h.28c-.11,1.1-.2,2.2-.26,3.3a12,12,0,1,0,24,1.39A56.06,56.06,0,1,1,156,148Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M156,20A72.19,72.19,0,0,0,87.51,69.39,48,48,0,1,0,76,164h44.94l-20.37,33.94A4,4,0,0,0,104,204h32.94l-20.37,33.94a4,4,0,0,0,6.86,4.12l24-40A4,4,0,0,0,144,196H111.06l19.2-32H156a72,72,0,0,0,0-144Zm0,136H76a40,40,0,1,1,9.43-78.88A71.63,71.63,0,0,0,84,87.77a4,4,0,0,0,8,.46A64.06,64.06,0,1,1,156,156Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

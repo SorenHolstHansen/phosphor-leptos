@@ -11,8 +11,10 @@ pub fn MicrosoftPowerpointLogo(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M96,92H80a12,12,0,0,0-12,12v48a12,12,0,0,0,24,0v-4h4a28,28,0,0,0,0-56Zm0,32H92v-8h4a4,4,0,0,1,0,8ZM136,20A107.49,107.49,0,0,0,55.5,56H36A20,20,0,0,0,16,76V180a20,20,0,0,0,20,20H55.5A108,108,0,1,0,136,20Zm0,24a84.12,84.12,0,0,1,83.13,72H168V76a20,20,0,0,0-20-20H92.68A83.67,83.67,0,0,1,136,44ZM40,80H144v96H40Zm96,132a83.67,83.67,0,0,1-43.32-12H148a20,20,0,0,0,20-20V140h51.13A84.12,84.12,0,0,1,136,212Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M96,100H80a4,4,0,0,0-4,4v48a4,4,0,0,0,8,0V140H96a20,20,0,0,0,0-40Zm0,32H84V108H96a12,12,0,0,1,0,24ZM136,28A100.3,100.3,0,0,0,56,68H40A12,12,0,0,0,28,80v96a12,12,0,0,0,12,12H56A100,100,0,1,0,136,28Zm91.91,96H156V80a12,12,0,0,0-12-12h-4V36.09A92.13,92.13,0,0,1,227.91,124ZM132,36.1V68H66.26A92.36,92.36,0,0,1,132,36.1ZM36,176V80a4,4,0,0,1,4-4H144a4,4,0,0,1,4,4v96a4,4,0,0,1-4,4H40A4,4,0,0,1,36,176Zm30.26,12H132v31.9A92.36,92.36,0,0,1,66.26,188ZM140,219.91V188h4a12,12,0,0,0,12-12V132h71.91A92.13,92.13,0,0,1,140,219.91Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

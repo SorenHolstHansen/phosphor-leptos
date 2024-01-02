@@ -11,8 +11,10 @@ pub fn GlobeStand(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M128,172A76,76,0,1,0,52,96,76.08,76.08,0,0,0,128,172Zm0-128A52,52,0,1,1,76,96,52.06,52.06,0,0,1,128,44Zm12,167.38V220h20a12,12,0,0,1,0,24H96a12,12,0,0,1,0-24h20v-8.62A116,116,0,0,1,12,97.12,115.3,115.3,0,0,1,44.29,15.69,12,12,0,1,1,61.6,32.31,92,92,0,0,0,191.69,162.39a12,12,0,1,1,16.62,17.31A115.12,115.12,0,0,1,140,211.38Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M128,172A76,76,0,1,0,52,96,76.08,76.08,0,0,0,128,172Zm0-144A68,68,0,1,1,60,96,68.07,68.07,0,0,1,128,28Zm74.89,140.28a4,4,0,0,1-.12,5.65,107.31,107.31,0,0,1-70.77,30V228h28a4,4,0,0,1,0,8H96a4,4,0,0,1,0-8h28V203.92A108,108,0,0,1,50.06,21.23a4,4,0,1,1,5.77,5.54,100,100,0,0,0,141.4,141.39A4,4,0,0,1,202.89,168.28Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn TagChevron(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M240.63,116.91,198,52.91A19.93,19.93,0,0,0,181.32,44H24a12,12,0,0,0-9.88,18.82l45,65.18-45,65.18A12,12,0,0,0,24,212H181.32A19.93,19.93,0,0,0,198,203.09l42.67-64A19.94,19.94,0,0,0,240.63,116.91ZM179.18,188H46.87l33.65-48.74a1.63,1.63,0,0,0,.11-.17,19.91,19.91,0,0,0,0-22.18,1.63,1.63,0,0,0-.11-.17L46.87,68H179.18l40,60Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M234,121.34l-42.67-64a12,12,0,0,0-10-5.34H24a4,4,0,0,0-3.29,6.27l46.61,67.51a4,4,0,0,1,0,4.39L20.71,197.73A4,4,0,0,0,24,204H181.33a12,12,0,0,0,10-5.34l42.67-64A12,12,0,0,0,234,121.34Zm-6.66,8.88-42.66,64a4,4,0,0,1-3.33,1.78H31.62L74,134.66a12,12,0,0,0,0-13.37L31.62,60H181.33a4,4,0,0,1,3.33,1.78l42.66,64A4,4,0,0,1,227.32,130.22Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn SmileyNervous(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M184.49,176.49a12,12,0,0,1-17,0L160,169l-7.51,7.52a12,12,0,0,1-17,0L128,169l-7.51,7.52a12,12,0,0,1-17,0L96,169l-7.51,7.52a12,12,0,0,1-17-17l16-16a12,12,0,0,1,17,0L112,151l7.51-7.52a12,12,0,0,1,17,0L144,151l7.51-7.52a12,12,0,0,1,17,0l16,16A12,12,0,0,1,184.49,176.49ZM236,128A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128ZM92,124a16,16,0,1,0-16-16A16,16,0,0,0,92,124Zm72,0a16,16,0,1,0-16-16A16,16,0,0,0,164,124Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M178.83,165.17a4,4,0,0,1-5.66,5.66L160,157.66l-13.17,13.17a4,4,0,0,1-5.66,0L128,157.66l-13.17,13.17a4,4,0,0,1-5.66,0L96,157.66,82.83,170.83a4,4,0,0,1-5.66-5.66l16-16a4,4,0,0,1,5.66,0L112,162.34l13.17-13.17a4,4,0,0,1,5.66,0L144,162.34l13.17-13.17a4,4,0,0,1,5.66,0ZM228,128A100,100,0,1,1,128,28,100.11,100.11,0,0,1,228,128Zm-8,0a92,92,0,1,0-92,92A92.1,92.1,0,0,0,220,128ZM92,116a8,8,0,1,0-8-8A8,8,0,0,0,92,116Zm72,0a8,8,0,1,0-8-8A8,8,0,0,0,164,116Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

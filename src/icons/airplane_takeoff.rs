@@ -11,8 +11,10 @@ pub fn AirplaneTakeoff(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M180,216a12,12,0,0,1-12,12H24a12,12,0,1,1,0-24H168A12,12,0,0,1,180,216ZM251.79,89.88a12,12,0,0,1-5.64,8.1L98.75,186l-.13.07a43.74,43.74,0,0,1-52.2-5.94l-.19-.18-36-35.25A20,20,0,0,1,15.78,112l2.94-1.44a12,12,0,0,1,9.12-.59l26.5,8.94,14.15-8.56L50.42,92.78a20,20,0,0,1,5.7-33.05l.48-.2,7.15-2.7a12,12,0,0,1,8.4,0L124.29,76l49.93-29.8a43.8,43.8,0,0,1,56.43,10,1.84,1.84,0,0,1,.17.22L249.46,80.3A11.94,11.94,0,0,1,251.79,89.88Zm-29.61-5.54L212,71.29a19.89,19.89,0,0,0-25.54-4.48l-54.77,32.7a12,12,0,0,1-10.3,1l-46-16.94,21,20.4a12,12,0,0,1-2.15,18.87L62,142.29a12,12,0,0,1-10,1.1l-13.35-4.5,24.31,23.8a19.89,19.89,0,0,0,23.6,2.65Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M172,216a4,4,0,0,1-4,4H24a4,4,0,0,1,0-8H168A4,4,0,0,1,172,216ZM243.93,92.41a4,4,0,0,1-1.88,2.7l-147.41,88a36.15,36.15,0,0,1-18.2,4.95,35.78,35.78,0,0,1-24.55-9.79L15.73,142.89a12,12,0,0,1,3.44-19.68l3.07-1.5a4,4,0,0,1,3-.2l30,10.13L81.5,115.8,55.91,91a12,12,0,0,1,3.36-19.89l.16-.06,7.15-2.71a4,4,0,0,1,2.8,0L125.11,88.8,178.32,57a35.83,35.83,0,0,1,46.14,8.22l18.69,24A4,4,0,0,1,243.93,92.41Zm-9.87-1.85L218.21,70.24a27.85,27.85,0,0,0-35.81-6.33L127.58,96.64a4,4,0,0,1-3.44.32L68,76.31l-5.66,2.14a4,4,0,0,0-1,6.62,1.14,1.14,0,0,0,.11.11l29.35,28.49a4,4,0,0,1-.72,6.29L57.86,139.44a4,4,0,0,1-3.35.37l-30.23-10.2-1.67.82-.18.09a4,4,0,0,0-1.16,6.59L57.42,172.5a27.82,27.82,0,0,0,33.16,3.72Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

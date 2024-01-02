@@ -11,8 +11,10 @@ pub fn Club(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M186.79,84.06a60,60,0,1,0-117.58,0,60,60,0,1,0,19,117.73l-4,19.86A12,12,0,0,0,96,236h64a12,12,0,0,0,11.77-14.35l-4-19.86a60,60,0,1,0,19-117.73ZM184,180a35.88,35.88,0,0,1-24.78-9.88,12,12,0,0,0-20,11.06L145.36,212H110.64l6.16-30.82a12,12,0,0,0-20-11.06,36,36,0,1,1-12.65-60,12,12,0,0,0,14-18A35.68,35.68,0,0,1,92,72a36,36,0,1,1,65.88,20.08,12,12,0,0,0,14,18A36,36,0,1,1,184,180Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M184,92a52.88,52.88,0,0,0-8.26.65,52,52,0,1,0-95.48,0A52.88,52.88,0,0,0,72,92a52,52,0,1,0,31.38,93.48L92.17,222.85A4,4,0,0,0,96,228h64a4,4,0,0,0,3.83-5.15l-11.21-37.37A52,52,0,1,0,184,92Zm0,96a43.92,43.92,0,0,1-36.73-19.77,4,4,0,0,0-7.17,3.36L154.62,220H101.38l14.52-48.41a4,4,0,0,0-7.17-3.36,44,44,0,1,1-21.91-65.67,4,4,0,0,0,4.66-6,44,44,0,1,1,73,0,4,4,0,0,0,4.66,6A44,44,0,1,1,184,188Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

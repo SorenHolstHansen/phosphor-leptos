@@ -11,8 +11,10 @@ pub fn Ticket(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M228,108.4a20,20,0,0,0,16-19.59V64a20,20,0,0,0-20-20H32A20,20,0,0,0,12,64V88.81A20,20,0,0,0,28,108.4a20,20,0,0,1,0,39.2,20,20,0,0,0-16,19.59V192a20,20,0,0,0,20,20H224a20,20,0,0,0,20-20V167.19a20,20,0,0,0-16-19.59,20,20,0,0,1,0-39.2ZM36,170.34a44,44,0,0,0,0-84.68V68H84V188H36Zm184,0V188H108V68H220V85.66a44,44,0,0,0,0,84.68Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M226.4,100.56A12,12,0,0,0,236,88.81V64a12,12,0,0,0-12-12H32A12,12,0,0,0,20,64V88.81a12,12,0,0,0,9.6,11.75,28,28,0,0,1,0,54.88A12,12,0,0,0,20,167.19V192a12,12,0,0,0,12,12H224a12,12,0,0,0,12-12V167.19a12,12,0,0,0-9.6-11.75,28,28,0,0,1,0-54.88ZM28,192V167.19a4,4,0,0,1,3.2-3.91,36,36,0,0,0,0-70.56A4,4,0,0,1,28,88.81V64a4,4,0,0,1,4-4H92V196H32A4,4,0,0,1,28,192Zm168-64a36.09,36.09,0,0,0,28.8,35.28,4,4,0,0,1,3.2,3.91V192a4,4,0,0,1-4,4H100V60H224a4,4,0,0,1,4,4V88.81a4,4,0,0,1-3.2,3.91A36.09,36.09,0,0,0,196,128Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn LightningSlash(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M56.88,31.93A12,12,0,1,0,39.12,48.07L75.9,88.52,39.23,127.81a12,12,0,0,0,4.56,19.43l54.44,20.41-14,70a12,12,0,0,0,20.54,10.54l58.9-63.11,35.45,39a12,12,0,0,0,17.76-16.14Zm59.17,169,7.72-38.58a12,12,0,0,0-7.56-13.59L69,131.07l23.07-24.73,55.38,60.92ZM111.41,68.06a12,12,0,0,1-.59-17L151.23,7.81a12,12,0,0,1,20.54,10.54l-14,70,54.44,20.41a12,12,0,0,1,4.56,19.43l-16.82,18a12,12,0,0,1-17.55-16.37l4.58-4.91-47.19-17.69a12,12,0,0,1-7.56-13.59L140,55.07,128.37,67.48A12,12,0,0,1,111.41,68.06Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M51,37.31A4,4,0,0,0,45,42.69L86.77,88.6,45.08,133.27a4,4,0,0,0,1.52,6.47l60.81,22.81L92.08,239.22a4,4,0,0,0,6.84,3.51l64.83-69.46L205,218.69a4,4,0,1,0,5.92-5.38ZM102.68,227l13.24-66.2a4,4,0,0,0-2.52-4.53L55,134.36,92.17,94.54l66.18,72.79Zm8.71-158.9a4,4,0,0,1-.2-5.65l45.89-49.16a4,4,0,0,1,6.84,3.51L148.59,93.45l60.81,22.8a4,4,0,0,1,2.49,2.84,4,4,0,0,1-1,3.64l-22.3,23.89a4,4,0,0,1-5.85-5.45L201,121.64,142.6,99.74a4,4,0,0,1-2.52-4.52L153.32,29,117,67.89A4,4,0,0,1,111.39,68.08Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

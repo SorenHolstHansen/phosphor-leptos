@@ -11,8 +11,10 @@ pub fn GenderNonbinary(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M140,93V69.2l21.83,13.09a12,12,0,1,0,12.34-20.58L151.32,48l22.85-13.71a12,12,0,0,0-12.34-20.58L128,34,94.17,13.71A12,12,0,0,0,81.83,34.29L104.68,48,81.83,61.71A12,12,0,1,0,94.17,82.29L116,69.2V93a76,76,0,1,0,24,0ZM128,220a52,52,0,1,1,52-52A52.06,52.06,0,0,1,128,220Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M132,100.13V55.07l33.94,20.36a4,4,0,1,0,4.12-6.86L135.77,48l34.29-20.57a4,4,0,1,0-4.12-6.86L128,43.34,90.06,20.57a4,4,0,1,0-4.12,6.86L120.23,48,85.94,68.57a4,4,0,0,0,4.12,6.86L124,55.07v45.06a68,68,0,1,0,8,0ZM128,228a60,60,0,1,1,60-60A60.07,60.07,0,0,1,128,228Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

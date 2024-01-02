@@ -11,8 +11,10 @@ pub fn DiceFour(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M192,28H64A36,36,0,0,0,28,64V192a36,36,0,0,0,36,36H192a36,36,0,0,0,36-36V64A36,36,0,0,0,192,28Zm12,164a12,12,0,0,1-12,12H64a12,12,0,0,1-12-12V64A12,12,0,0,1,64,52H192a12,12,0,0,1,12,12ZM112,96A16,16,0,1,1,96,80,16,16,0,0,1,112,96Zm64,0a16,16,0,1,1-16-16A16,16,0,0,1,176,96Zm-64,64a16,16,0,1,1-16-16A16,16,0,0,1,112,160Zm64,0a16,16,0,1,1-16-16A16,16,0,0,1,176,160Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M192,36H64A28,28,0,0,0,36,64V192a28,28,0,0,0,28,28H192a28,28,0,0,0,28-28V64A28,28,0,0,0,192,36Zm20,156a20,20,0,0,1-20,20H64a20,20,0,0,1-20-20V64A20,20,0,0,1,64,44H192a20,20,0,0,1,20,20ZM108,100a8,8,0,1,1-8-8A8,8,0,0,1,108,100Zm56,0a8,8,0,1,1-8-8A8,8,0,0,1,164,100Zm-56,56a8,8,0,1,1-8-8A8,8,0,0,1,108,156Zm56,0a8,8,0,1,1-8-8A8,8,0,0,1,164,156Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

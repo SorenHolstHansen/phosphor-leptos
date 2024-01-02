@@ -11,8 +11,10 @@ pub fn BellSimpleZ(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M156,140a12,12,0,0,1-12,12H112a12,12,0,0,1-10-18.66L121.58,104H112a12,12,0,1,1,0-24h32a12,12,0,0,1,10,18.66L134.42,128H144A12,12,0,0,1,156,140Zm69.33,46A19.77,19.77,0,0,1,208,196H48a19.77,19.77,0,0,1-17.31-10,20.08,20.08,0,0,1,.05-20.06C39.39,151,44,129.58,44,104a84,84,0,0,1,168,0c0,25.57,4.59,47,13.27,61.93A20.08,20.08,0,0,1,225.34,186Zm-24-14C192.49,154,188,131.13,188,104a60,60,0,0,0-120,0c0,27.14-4.48,50-13.33,68ZM160,212H96a12,12,0,0,0,0,24h64a12,12,0,0,0,0-24Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M164,224a4,4,0,0,1-4,4H96a4,4,0,0,1,0-8h64A4,4,0,0,1,164,224Zm-20-84H119.47l27.86-41.78A4,4,0,0,0,144,92H112a4,4,0,0,0,0,8h24.53l-27.86,41.78A4,4,0,0,0,112,148h32a4,4,0,0,0,0-8Zm74.38,50A11.84,11.84,0,0,1,208,196H48A12,12,0,0,1,37.65,178C43.42,168,52,140.13,52,104a76,76,0,1,1,152,0c0,36.13,8.59,64,14.36,73.95A11.92,11.92,0,0,1,218.38,190Zm-6.95-8C204,169.17,196,139.31,196,104a68,68,0,1,0-136,0c0,35.32-8,65.17-15.44,78a4,4,0,0,0,0,4A3.91,3.91,0,0,0,48,188H208a3.91,3.91,0,0,0,3.44-2A4,4,0,0,0,211.43,182Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

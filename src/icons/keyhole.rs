@@ -11,8 +11,10 @@ pub fn Keyhole(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm0-144a44,44,0,0,0-32.94,73.16l-9.92,24.92A16,16,0,0,0,100,188h56a16,16,0,0,0,14.86-21.92l-9.92-24.92A44,44,0,0,0,128,68Zm7.59,74.38L144.2,164H111.8l8.61-21.62a12,12,0,0,0-4.11-14.16,20,20,0,1,1,23.4,0A12,12,0,0,0,135.59,142.38Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M128,28A100,100,0,1,0,228,128,100.11,100.11,0,0,0,128,28Zm0,192a92,92,0,1,1,92-92A92.1,92.1,0,0,1,128,220Zm36-108a36,36,0,1,0-59.55,27.22L92.57,169A8,8,0,0,0,100,180h56a8,8,0,0,0,7.43-11l-11.88-29.82A36.11,36.11,0,0,0,164,112Zm-21,27.42L156,172H100l13-32.58a4,4,0,0,0-1.37-4.72,28,28,0,1,1,32.78,0A4,4,0,0,0,143,139.42Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>
