@@ -11,8 +11,10 @@ pub fn MicrosoftExcelLogo(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M200,20H72A20,20,0,0,0,52,40V56H36A20,20,0,0,0,16,76V180a20,20,0,0,0,20,20H52v16a20,20,0,0,0,20,20H200a20,20,0,0,0,20-20V40A20,20,0,0,0,200,20Zm-32,88h28v40H168Zm28-24H168V76a20,20,0,0,0-20-20V44h48ZM76,44h48V56H76ZM40,80H144v96H40ZM76,200h48v12H76Zm72,12V200a20,20,0,0,0,20-20v-8h28v40ZM64.32,161.22a12,12,0,0,1-1.54-16.9L76.38,128l-13.6-16.32A12,12,0,1,1,81.22,96.32L92,109.25l10.78-12.93a12,12,0,0,1,18.44,15.36L107.62,128l13.6,16.32a12,12,0,1,1-18.44,15.36L92,146.75,81.22,159.68a12,12,0,0,1-16.9,1.54Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M200,28H72A12,12,0,0,0,60,40V68H40A12,12,0,0,0,28,80v96a12,12,0,0,0,12,12H60v28a12,12,0,0,0,12,12H200a12,12,0,0,0,12-12V40A12,12,0,0,0,200,28Zm-44,72h48v56H156Zm48-60V92H156V80a12,12,0,0,0-12-12h-4V36h60A4,4,0,0,1,204,40ZM68,40a4,4,0,0,1,4-4h60V68H68ZM36,176V80a4,4,0,0,1,4-4H144a4,4,0,0,1,4,4v96a4,4,0,0,1-4,4H40A4,4,0,0,1,36,176Zm32,40V188h64v32H72A4,4,0,0,1,68,216Zm132,4H140V188h4a12,12,0,0,0,12-12V164h48v52A4,4,0,0,1,200,220ZM68.93,149.44,86.79,128,68.93,106.56a4,4,0,0,1,6.14-5.12L92,121.75l16.93-20.31a4,4,0,1,1,6.14,5.12L97.21,128l17.86,21.44a4,4,0,1,1-6.14,5.12L92,134.25,75.07,154.56A4,4,0,0,1,72,156a3.94,3.94,0,0,1-2.56-.93A4,4,0,0,1,68.93,149.44Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

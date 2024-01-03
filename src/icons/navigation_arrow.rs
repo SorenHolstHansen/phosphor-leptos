@@ -11,8 +11,10 @@ pub fn NavigationArrow(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M230.7,94.46,54.81,29.21l-.25-.09A20,20,0,0,0,29.12,54.56l.09.25L94.46,230.7A20,20,0,0,0,113.3,244h.35a20,20,0,0,0,18.77-14.12l22.93-74.53,74.53-22.93a20,20,0,0,0,.82-38ZM146.27,133A20,20,0,0,0,133,146.27L113,211.55,54.8,54.8,211.55,113Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M228,102,51.93,36.67A12,12,0,0,0,36.69,52L102,228a11.81,11.81,0,0,0,11.31,8h.22a11.82,11.82,0,0,0,11.26-8.47L148.32,151a4,4,0,0,1,2.65-2.65l76.56-23.55A12,12,0,0,0,228,102Zm-2.83,15.13-76.57,23.56a12,12,0,0,0-7.94,7.94l-23.55,76.56a3.89,3.89,0,0,1-3.76,2.82,3.93,3.93,0,0,1-3.85-2.69l0-.08L44.22,49.32a3.93,3.93,0,0,1,1-4.14A4,4,0,0,1,48,44a3.86,3.86,0,0,1,1.25.21l176.08,65.32a4,4,0,0,1-.13,7.6Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

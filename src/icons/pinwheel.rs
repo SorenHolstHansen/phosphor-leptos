@@ -11,8 +11,10 @@ pub fn Pinwheel(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M232.49,215.52l-44-44a64,64,0,0,0,35.59-81,12,12,0,0,0-15.38-7.17l-35.61,13A64,64,0,0,0,90.59,15.89a12,12,0,0,0-7.17,15.38l13,35.61a64,64,0,0,0-80.49,82.55,12,12,0,0,0,15.38,7.17l35.61-13a63.94,63.94,0,0,0,82.55,80.49,12,12,0,0,0,7.17-15.38l-12.95-35.59a63.53,63.53,0,0,0,15.7,3.16l56.17,56.17a12,12,0,0,0,17-17ZM129.38,39.78a40,40,0,0,1,7.43,68L110.7,36.05A39.81,39.81,0,0,1,129.38,39.78ZM36.05,129.32a40,40,0,0,1,71.75-26.11Zm74.59,70.92a40,40,0,0,1-7.43-68L129.32,204A39.83,39.83,0,0,1,110.64,200.24Zm36.45-51.51a39.86,39.86,0,0,1-14.87-11.92L204,110.7a40,40,0,0,1-56.88,38Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M226.83,221.17,173.35,167.7a56.83,56.83,0,0,0,9.79-2.6,56,56,0,0,0,33.47-71.77,4,4,0,0,0-5.13-2.39l-55.31,20.13a56.78,56.78,0,0,0,7.06-11.38,56,56,0,0,0-69.9-76.28,4,4,0,0,0-2.39,5.12l20.13,55.32a56.33,56.33,0,0,0-11.38-7.06,56,56,0,0,0-76.28,69.9A4,4,0,0,0,25.47,149a4,4,0,0,0,3.06.13L83.85,129a56,56,0,0,0,62.84,87.66,4,4,0,0,0,2.39-5.13L129,156.17a56.5,56.5,0,0,0,11.38,7.06,55.88,55.88,0,0,0,22.48,5.24l58.36,58.36a4,4,0,0,0,5.66-5.66ZM99.88,29.71a48,48,0,0,1,32.72,89.9Zm25.21,92.67-7.45,2.71-2.72-7.45,7.46-2.72ZM29.71,140.14a48,48,0,0,1,89.9-32.72Zm110.43,70.17a48,48,0,0,1-32.72-89.9Zm24.29-49.82a48.08,48.08,0,0,1-44-27.89l89.9-32.72a48,48,0,0,1-45.79,60.61Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

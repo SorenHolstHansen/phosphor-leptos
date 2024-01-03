@@ -11,8 +11,10 @@ pub fn HeartStraightBreak(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M225.84,54.16a62,62,0,0,0-87.6-.08L128,63.94l-10.24-9.86a62,62,0,0,0-87.66,87.7l89.35,90.64a12,12,0,0,0,17.1,0l89.29-90.58a62,62,0,0,0,0-87.68Zm-17,70.77-80.81,82-80.87-82a38,38,0,1,1,53.74-53.74l.16.16,9.67,9.31-7,6.76a12,12,0,0,0-.17,17.13L127,128l-7.52,7.51a12,12,0,1,0,17,17l16-16a12,12,0,0,0,0-17L129.13,96.16,155,71.29l.16-.16a38,38,0,1,1,53.68,53.8Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M220.21,59.8a54.06,54.06,0,0,0-76.34,0L128,75,112.18,59.8a54,54,0,0,0-76.4,76.35l89.37,90.66a4,4,0,0,0,5.7,0l89.36-90.64A54.07,54.07,0,0,0,220.21,59.8Zm-5.68,70.74L128,218.3,41.45,130.52a46,46,0,0,1,65.13-65l15.65,15.07-13,12.52A4,4,0,0,0,108,96a4,4,0,0,0,1.17,2.86L138.35,128l-13.18,13.17a4,4,0,1,0,5.66,5.66l16-16a4,4,0,0,0,0-5.66L117.71,96l31.77-30.58a46,46,0,1,1,65.05,65.08Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

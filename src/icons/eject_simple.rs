@@ -11,8 +11,10 @@ pub fn EjectSimple(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M236,208a12,12,0,0,1-12,12H32a12,12,0,1,1,0-24H224A12,12,0,0,1,236,208ZM22,160.57a20,20,0,0,1,2.52-21.32L106.16,38.43a28.08,28.08,0,0,1,43.68,0l81.65,100.82A20.1,20.1,0,0,1,215.91,172H40.09A19.9,19.9,0,0,1,22,160.57ZM48.3,148H207.7L131.2,53.53a4.11,4.11,0,0,0-6.4,0Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M228,208a4,4,0,0,1-4,4H32a4,4,0,0,1,0-8H224A4,4,0,0,1,228,208ZM29.2,157.12a12,12,0,0,1,1.51-12.83L112.37,43.46a20.1,20.1,0,0,1,31.26,0l81.66,100.83A12.1,12.1,0,0,1,215.92,164H40.08A12,12,0,0,1,29.2,157.12Zm7.22-3.44A4,4,0,0,0,40.08,156H215.92a4,4,0,0,0,3.66-2.32,4,4,0,0,0-.51-4.36L137.41,48.5a12.09,12.09,0,0,0-18.82,0L36.93,149.32A4,4,0,0,0,36.42,153.68Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

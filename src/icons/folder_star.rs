@@ -11,8 +11,10 @@ pub fn FolderStar(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M112.56,196H44V92H212v20a12,12,0,0,0,24,0V88a20,20,0,0,0-20-20H133.39l-26-29.29h0A20,20,0,0,0,92.41,32H40A20,20,0,0,0,20,52V200.62A19.41,19.41,0,0,0,39.38,220h73.18a12,12,0,0,0,0-24ZM44,56H90.61l10.67,12H44ZM243.44,158a12,12,0,0,0-10.52-8.34l-27.42-2.12L195,123.25a12,12,0,0,0-22,0L162.5,147.53l-27.42,2.12a12,12,0,0,0-6.72,21.22l20.58,17-6.25,25.26a12,12,0,0,0,17.73,13.22L184,212.46l23.58,13.88a12,12,0,0,0,17.73-13.22l-6.25-25.26,20.58-17A12,12,0,0,0,243.44,158ZM198,174.16a12,12,0,0,0-4,12.13l1.21,4.89-5.07-3a12.06,12.06,0,0,0-12.18,0l-5.07,3,1.21-4.89a12,12,0,0,0-4-12.13l-3.48-2.87,5-.39a12,12,0,0,0,10.1-7.21l2.33-5.4,2.33,5.4a12,12,0,0,0,10.09,7.21l5,.39Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M216,84a4,4,0,0,1,4,4v32a4,4,0,0,0,8,0V88a12,12,0,0,0-12-12H129.66L101.17,47.51A11.93,11.93,0,0,0,92.69,44H40A12,12,0,0,0,28,56V200.61A11.4,11.4,0,0,0,39.38,212h81.18a4,4,0,0,0,0-8H39.38A3.39,3.39,0,0,1,36,200.61V84ZM40,52H92.69a4,4,0,0,1,2.82,1.17L118.34,76H36V56A4,4,0,0,1,40,52ZM235.81,160.41a4,4,0,0,0-3.5-2.79l-32.24-2.49-12.4-28.72a4,4,0,0,0-7.34,0l-12.4,28.72-32.24,2.49a4,4,0,0,0-2.24,7.08l24.46,20.19L150.45,215a4,4,0,0,0,5.91,4.41L184,203.18l27.64,16.27a4,4,0,0,0,2,.55,4.05,4.05,0,0,0,2.39-.79,4,4,0,0,0,1.49-4.17l-7.46-30.15,24.46-20.19A4,4,0,0,0,235.81,160.41Zm-32.76,19.91a4,4,0,0,0-1.33,4.05l5.78,23.36L186,195.09a4,4,0,0,0-4.06,0L160.5,207.73l5.78-23.36a4,4,0,0,0-1.33-4.05l-18.76-15.48L171,162.92a4,4,0,0,0,3.36-2.4L184,138.1l9.68,22.42a4,4,0,0,0,3.36,2.4l24.77,1.92Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

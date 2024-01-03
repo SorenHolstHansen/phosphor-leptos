@@ -11,8 +11,10 @@ pub fn SuitcaseRolling(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M116,96v80a12,12,0,0,1-24,0V96a12,12,0,0,1,24,0Zm24,0v80a12,12,0,0,0,24,0V96a12,12,0,0,0-24,0Zm72-32V208a20,20,0,0,1-20,20H180v12a12,12,0,0,1-24,0V228H100v12a12,12,0,0,1-24,0V228H64a20,20,0,0,1-20-20V64A20,20,0,0,1,64,44H84V28A28,28,0,0,1,112,0h32a28,28,0,0,1,28,28V44h20A20,20,0,0,1,212,64ZM108,44h40V28a4,4,0,0,0-4-4H112a4,4,0,0,0-4,4Zm80,24H68V204H188Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M100,88v96a4,4,0,0,1-8,0V88a4,4,0,0,1,8,0Zm28-4a4,4,0,0,0-4,4v96a4,4,0,0,0,8,0V88A4,4,0,0,0,128,84Zm32,0a4,4,0,0,0-4,4v96a4,4,0,0,0,8,0V88A4,4,0,0,0,160,84Zm44-20V208a12,12,0,0,1-12,12H172v20a4,4,0,0,1-8,0V220H92v20a4,4,0,0,1-8,0V220H64a12,12,0,0,1-12-12V64A12,12,0,0,1,64,52H92V24A20,20,0,0,1,112,4h32a20,20,0,0,1,20,20V52h28A12,12,0,0,1,204,64ZM100,52h56V24a12,12,0,0,0-12-12H112a12,12,0,0,0-12,12Zm96,12a4,4,0,0,0-4-4H64a4,4,0,0,0-4,4V208a4,4,0,0,0,4,4H192a4,4,0,0,0,4-4Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

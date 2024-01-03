@@ -11,8 +11,10 @@ pub fn MediumLogo(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M68,60a68,68,0,1,0,68,68A68.07,68.07,0,0,0,68,60Zm0,112a44,44,0,1,1,44-44A44.05,44.05,0,0,1,68,172ZM184,60c-23.63,0-36,34.21-36,68s12.37,68,36,68,36-34.21,36-68S207.63,60,184,60Zm0,111.87c-3.74-2.16-12-17.09-12-43.87s8.26-41.71,12-43.87c3.74,2.16,12,17.09,12,43.87S187.74,169.71,184,171.87ZM256,72V184a12,12,0,0,1-24,0V72a12,12,0,0,1,24,0Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M72,68a60,60,0,1,0,60,60A60.07,60.07,0,0,0,72,68Zm0,112a52,52,0,1,1,52-52A52.06,52.06,0,0,1,72,180ZM184,68c-16,0-28,25.79-28,60s12,60,28,60,28-25.79,28-60S200,68,184,68Zm0,112c-9.46,0-20-21.36-20-52s10.54-52,20-52,20,21.36,20,52S193.46,180,184,180ZM244,72V184a4,4,0,0,1-8,0V72a4,4,0,0,1,8,0Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

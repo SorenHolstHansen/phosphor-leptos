@@ -11,8 +11,10 @@ pub fn CheckFat(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M246.15,65.46l-.07-.07L222.15,41.85a20,20,0,0,0-28.22-.06l-90,88.62L70,97.76a20,20,0,0,0-28.19.1l-24,24a20,20,0,0,0,0,28.26l71.62,72a20,20,0,0,0,28.29,0L246.15,93.74A20,20,0,0,0,246.15,65.46ZM103.61,202.33,37.64,136,56.05,117.6,90,150.24a20,20,0,0,0,28.12,0L208,61.61l18.32,18Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M240.47,71.09l-24-23.58a12,12,0,0,0-17,0l-92.71,91.34a4,4,0,0,1-5.66,0l0-.06L64.48,103.51a12,12,0,0,0-17,0l-24,24a12,12,0,0,0,0,17l71.61,72a12,12,0,0,0,17,0L240.49,88.08A12,12,0,0,0,240.47,71.09Zm-5.63,11.34L106.43,210.83a4,4,0,0,1-5.65,0l-71.61-72a4,4,0,0,1,0-5.66l24-24A4,4,0,0,1,56,108a4.09,4.09,0,0,1,2.9,1.21l36.66,35.29a12,12,0,0,0,16.93,0l92.71-91.33a4,4,0,0,1,5.68,0l24,23.58A4,4,0,0,1,234.84,82.43Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn FolderNotchOpen(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M248.23,112.31A20,20,0,0,0,232,104H220V88a20,20,0,0,0-20-20H132L105.34,48a20.12,20.12,0,0,0-12-4H40A20,20,0,0,0,20,64V208h0a12,12,0,0,0,12,12H211.1a12,12,0,0,0,11.33-8l28.49-81.47.06-.17A20,20,0,0,0,248.23,112.31ZM92,68l26.67,20a20.12,20.12,0,0,0,12,4H196v12H146.43a20,20,0,0,0-11.1,3.36l-19,12.64H69.42A19.91,19.91,0,0,0,50.9,132.44L44,148.77V68ZM202.59,196H50.1l22-52h45.51a20,20,0,0,0,11.1-3.36l19-12.64h78.73Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M241.72,113a11.88,11.88,0,0,0-9.73-5H212V88a12,12,0,0,0-12-12H130.66a4,4,0,0,1-2.4-.8L100.53,54.4a12.05,12.05,0,0,0-7.2-2.4H40A12,12,0,0,0,28,64V208h0a3.94,3.94,0,0,0,.69,2.24A4,4,0,0,0,32,212H211.09a4,4,0,0,0,3.79-2.74l28.49-85.47A11.86,11.86,0,0,0,241.72,113ZM40,60H93.33a4,4,0,0,1,2.4.8l27.73,20.8a12.07,12.07,0,0,0,7.2,2.4H200a4,4,0,0,1,4,4v20H146.42a12,12,0,0,0-6.66,2l-20,13.31a4,4,0,0,1-2.22.67H69.41a12,12,0,0,0-11.14,7.54L36,187.23V64A4,4,0,0,1,40,60Zm195.78,61.27L208.2,204H37.91L65.7,134.51A4,4,0,0,1,69.41,132h48.16a12,12,0,0,0,6.66-2l20-13.31a4,4,0,0,1,2.22-.67H232a4,4,0,0,1,3.79,5.27Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

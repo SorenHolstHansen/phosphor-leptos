@@ -11,8 +11,10 @@ pub fn Peace(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm84,108a83.43,83.43,0,0,1-9,37.84l-63-44.09V44.87A84.12,84.12,0,0,1,212,128ZM116,44.87v76.88L53,165.84a83.93,83.93,0,0,1,63-121ZM66.83,185.48,116,151.05v60.08A83.86,83.86,0,0,1,66.83,185.48ZM140,211.13V151.05l49.17,34.43A83.86,83.86,0,0,1,140,211.13Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M128,28A100,100,0,1,0,228,128,100.11,100.11,0,0,0,128,28Zm92,100a91.44,91.44,0,0,1-14.44,49.43L132,125.92V36.09A92.11,92.11,0,0,1,220,128ZM124,36.09v89.83L50.44,177.43A92,92,0,0,1,124,36.09ZM55,184l69-48.29v84.23A91.94,91.94,0,0,1,55,184Zm77,35.94V135.68L201,184A91.94,91.94,0,0,1,132,219.91Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn Rss(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M101.74,154.26A75.53,75.53,0,0,1,124,208a12,12,0,0,1-24,0,52,52,0,0,0-52-52,12,12,0,0,1,0-24A75.51,75.51,0,0,1,101.74,154.26ZM48,84a12,12,0,0,0,0,24A100,100,0,0,1,148,208a12,12,0,0,0,24,0A124,124,0,0,0,48,84Zm121.62,2.38A170.85,170.85,0,0,0,48,36a12,12,0,0,0,0,24,147,147,0,0,1,104.65,43.35A147,147,0,0,1,196,208a12,12,0,0,0,24,0A170.85,170.85,0,0,0,169.62,86.38ZM52,188a16,16,0,1,0,16,16A16,16,0,0,0,52,188Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M96.08,159.92A67.52,67.52,0,0,1,116,208a4,4,0,0,1-8,0,60,60,0,0,0-60-60,4,4,0,0,1,0-8A67.52,67.52,0,0,1,96.08,159.92ZM48,92a4,4,0,0,0,0,8A108,108,0,0,1,156,208a4,4,0,0,0,8,0A116,116,0,0,0,48,92Zm116,0A162.92,162.92,0,0,0,48,44a4,4,0,0,0,0,8A155,155,0,0,1,158.31,97.69,155,155,0,0,1,204,208a4,4,0,0,0,8,0A162.92,162.92,0,0,0,164,92ZM52,196a8,8,0,1,0,8,8A8,8,0,0,0,52,196Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

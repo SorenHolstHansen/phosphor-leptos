@@ -11,8 +11,10 @@ pub fn ThermometerCold(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M246.14,81.52l-14.72,4.79,9.1,12.52a12,12,0,1,1-19.42,14.11L212,100.42l-9.1,12.52a12,12,0,1,1-19.42-14.11l9.1-12.52-14.72-4.79a12,12,0,1,1,7.41-22.82L200,63.48V48a12,12,0,0,1,24,0V63.48l14.73-4.78a12,12,0,1,1,7.41,22.82ZM160,150.69a64,64,0,1,1-104,0V56a52,52,0,0,1,104,0ZM148,188a40,40,0,0,0-9.23-25.55,12,12,0,0,1-2.77-7.68V56a28,28,0,0,0-56,0v98.78a12,12,0,0,1-2.91,7.83A40,40,0,1,0,148,188Zm-28-20.78V120a12,12,0,0,0-24,0v47.22a24,24,0,1,0,24,0Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M247.67,73.92l-25.2,8.18L238,103.54a4,4,0,1,1-6.47,4.7L216,86.81l-15.57,21.43a4,4,0,0,1-3.24,1.65,4,4,0,0,1-3.23-6.35L209.53,82.1l-25.2-8.18a4,4,0,1,1,2.47-7.61L212,74.49V48a4,4,0,0,1,8,0V74.49l25.2-8.18a4,4,0,1,1,2.47,7.61ZM148,184a28,28,0,1,1-32-27.71V120a4,4,0,0,1,8,0v36.29A28,28,0,0,1,148,184Zm-8,0a20,20,0,1,0-20,20A20,20,0,0,0,140,184Zm40,0a60,60,0,1,1-96-48V48a36,36,0,0,1,72,0v88A60.06,60.06,0,0,1,180,184Zm-8,0a52.06,52.06,0,0,0-22.29-42.68A4,4,0,0,1,148,138V48a28,28,0,0,0-56,0v90a4,4,0,0,1-1.71,3.28A52,52,0,1,0,172,184Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

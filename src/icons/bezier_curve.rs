@@ -11,8 +11,10 @@ pub fn BezierCurve(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M224.28,141a100.61,100.61,0,0,0-31.4-49H240a12,12,0,0,0,0-24H161.94a36,36,0,0,0-67.88,0H16a12,12,0,0,0,0,24H63.12a100.61,100.61,0,0,0-31.4,49A36,36,0,1,0,56,143.74,76.66,76.66,0,0,1,97.15,98.53a36,36,0,0,0,61.7,0A76.66,76.66,0,0,1,200,143.74,36,36,0,1,0,224.28,141ZM40,188a12,12,0,1,1,12-12A12,12,0,0,1,40,188Zm88-96a12,12,0,1,1,12-12A12,12,0,0,1,128,92Zm88,96a12,12,0,1,1,12-12A12,12,0,0,1,216,188Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M217.83,148.07A92.6,92.6,0,0,0,165.53,84H240a4,4,0,0,0,0-8H155.71a28,28,0,0,0-55.42,0H16a4,4,0,0,0,0,8H90.47a92.6,92.6,0,0,0-52.3,64.07,28,28,0,1,0,8.07.64,84.51,84.51,0,0,1,55-60.36,28,28,0,0,0,53.46,0,84.53,84.53,0,0,1,55,60.36,28,28,0,1,0,8.07-.64ZM60,176a20,20,0,1,1-20-20A20,20,0,0,1,60,176Zm68-76a20,20,0,1,1,20-20A20,20,0,0,1,128,100Zm88,96a20,20,0,1,1,20-20A20,20,0,0,1,216,196Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

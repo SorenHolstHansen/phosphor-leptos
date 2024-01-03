@@ -11,8 +11,10 @@ pub fn Pill(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M219.26,36.77a57.28,57.28,0,0,0-81,0L36.77,138.26a57.26,57.26,0,0,0,81,81L219.26,117.74A57.33,57.33,0,0,0,219.26,36.77ZM100.78,202.26a33.26,33.26,0,1,1-47-47L96,113l47,47Zm101.5-101.49L160,143,113,96l42.27-42.26a33.26,33.26,0,0,1,47,47Zm-9.77-25.26a12,12,0,0,1,0,17l-24,24a12,12,0,1,1-17-17l24-24A12,12,0,0,1,192.51,75.51Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M186.84,85.17a4,4,0,0,1,0,5.66l-24,24a4,4,0,1,1-5.66-5.66l24-24A4,4,0,0,1,186.84,85.17Zm26.75,26.91L112.08,213.57a49.26,49.26,0,0,1-69.67-69.65L143.92,42.43a49.26,49.26,0,0,1,69.67,69.65ZM154.35,160,96,101.66,48.06,149.57a41.26,41.26,0,0,0,58.36,58.35ZM207.94,48.08a41.28,41.28,0,0,0-58.36,0L101.65,96,160,154.34l47.93-47.91A41.32,41.32,0,0,0,207.94,48.08Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

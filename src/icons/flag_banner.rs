@@ -11,8 +11,10 @@ pub fn FlagBanner(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M234.15,49.59A12,12,0,0,0,224,44H32a12,12,0,0,0-8.11,20.85L63,100.71,23.18,143.86A12,12,0,0,0,32,164H159.28l-26.11,54.84a12,12,0,1,0,21.66,10.32l80-168A12,12,0,0,0,234.15,49.59ZM170.71,140H59.41l29.41-31.86a12,12,0,0,0-.71-17L62.85,68H205Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M227.38,53.86A4,4,0,0,0,224,52H32a4,4,0,0,0-2.7,7l45,41.29L29.06,149.29A4,4,0,0,0,32,156H172l-31.56,66.28a4,4,0,0,0,1.89,5.33A3.92,3.92,0,0,0,144,228a4,4,0,0,0,3.61-2.28l80-168A4,4,0,0,0,227.38,53.86ZM175.76,148H41.14l41.8-45.29a4,4,0,0,0-.24-5.66L42.28,60H217.67Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn PenNibStraight(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M225.92,122.11c-.1-.19-.19-.37-.3-.56L196,68.85V32a20,20,0,0,0-20-20H80A20,20,0,0,0,60,32V68.87L30.38,121.55a5.12,5.12,0,0,0-.3.57,19.89,19.89,0,0,0,1.83,20.71c.09.13.18.25.28.37l86.44,108.29a12,12,0,0,0,18.75,0L223.81,143.2c.1-.12.19-.24.28-.37A19.91,19.91,0,0,0,225.92,122.11ZM172,36V60H84V36ZM128,144a10,10,0,1,1,10-10A10,10,0,0,1,128,144Zm12,65.74V165.81a34,34,0,1,0-24,0v43.92L52.83,130.59,79,84H177l26.19,46.59Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M218.75,125.66a1.14,1.14,0,0,0-.1-.19L188,70.94V32a12,12,0,0,0-12-12H80A12,12,0,0,0,68,32V71L37.34,125.47l-.1.19a12,12,0,0,0,1.15,12.5l86.44,112.28a4,4,0,0,0,6.34,0l86.49-112.35A12,12,0,0,0,218.75,125.66ZM80,28h96a4,4,0,0,1,4,4V68H76V32A4,4,0,0,1,80,28Zm48,120a16,16,0,1,1,16-16A16,16,0,0,1,128,148Zm83.27-14.72L132,236.25V155.66a24,24,0,1,0-8,0v80.58L44.78,133.34a4,4,0,0,1-.4-4.06L74.35,76H181.66l30,53.28A4,4,0,0,1,211.27,133.28Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

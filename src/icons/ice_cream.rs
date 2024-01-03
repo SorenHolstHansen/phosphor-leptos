@@ -11,8 +11,10 @@ pub fn IceCream(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M212,86.7a84,84,0,0,0-168,0A28,28,0,0,0,56,140h1l60.54,106a12,12,0,0,0,20.84,0L199,140h1a28,28,0,0,0,12-53.3ZM128,215.81,84.68,140h26.07L141,193Zm26.86-47L138.39,140h32.93ZM200,116H56a4,4,0,0,1,0-8A12,12,0,0,0,68,96V88a60,60,0,0,1,120,0v8a12,12,0,0,0,12,12,4,4,0,0,1,0,8Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M204,92.4V88A76,76,0,0,0,52,88v4.4A20,20,0,0,0,56,132h5.68l62.85,110a4,4,0,0,0,6.94,0l62.85-110H200a20,20,0,0,0,4-39.6ZM128,231.94,70.89,132h28.5l42.86,75ZM137.11,132l24,42-14.25,24.94L108.61,132Zm28.6,33.94L146.32,132h38.79ZM200,124H56a12,12,0,0,1,0-24,4,4,0,0,0,4-4V88a68,68,0,0,1,136,0v8a4,4,0,0,0,4,4,12,12,0,0,1,0,24Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

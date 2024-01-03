@@ -11,8 +11,10 @@ pub fn AirplaneTilt(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M190,115.31,217.21,89.7l.26-.26a36,36,0,0,0-50.91-50.91c-.09.08-.17.17-.26.26L140.69,66,60.1,36.71A12,12,0,0,0,47.52,39.5l-24,24A12,12,0,0,0,25.34,82l59.83,39.88L75,132H56a12,12,0,0,0-8.48,3.51l-24,24a12,12,0,0,0,4,19.62l35.23,14.1,14.06,35.14.09.22a12,12,0,0,0,19.76,3.7l23.81-23.81A12,12,0,0,0,124,200V181l10.13-10.13L174,230.65a12,12,0,0,0,18.47,1.83l24-24a12,12,0,0,0,2.79-12.59Zm-4.11,89.85L146,145.33a12,12,0,0,0-8.8-5.28A11.66,11.66,0,0,0,136,140a12,12,0,0,0-8.49,3.52l-24,24A12,12,0,0,0,100,176v19l-7.62,7.62-9.24-23.1a12,12,0,0,0-6.69-6.69l-23.1-9.24L61,156H80a12,12,0,0,0,8.48-3.51l24-24A12,12,0,0,0,110.66,110L50.84,70.12l8.24-8.25,80.83,29.39a12,12,0,0,0,12.84-3.05l30.89-32.82a12,12,0,0,1,17,17l-32.82,30.89a12,12,0,0,0-3.06,12.84l29.4,80.82Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M180.67,113.1l31.05-29.23.09-.08a28,28,0,0,0-39.6-39.6l-.08.09L142.9,75.33,57.37,44.23a4,4,0,0,0-4.2.93l-24,24a4,4,0,0,0,.61,6.16l68,45.29L78.35,140H56a4,4,0,0,0-2.83,1.18l-24,24a4,4,0,0,0,1.34,6.54l38.42,15.36,15.34,38.37,0,.09a4,4,0,0,0,6.59,1.23l23.93-23.93A4,4,0,0,0,116,200V177.65l19.38-19.38,45.29,67.95a4,4,0,0,0,6.16.61l24-24a4,4,0,0,0,.93-4.2Zm4,104.62-45.29-67.94A4,4,0,0,0,136.4,148l-.39,0a4,4,0,0,0-2.83,1.18l-24,24A4,4,0,0,0,108,176v22.34L89.47,216.88,75.72,182.51a4,4,0,0,0-2.23-2.23L39.12,166.53,57.66,148H80a4,4,0,0,0,2.83-1.17l24-24a4,4,0,0,0-.61-6.16L38.28,71.37,57,52.62l85.61,31.13a4,4,0,0,0,4.28-1l31-32.93A20,20,0,0,1,206.2,78.09l-32.93,31a4,4,0,0,0-1,4.28L203.38,199Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

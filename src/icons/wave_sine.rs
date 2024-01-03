@@ -11,8 +11,10 @@ pub fn WaveSine(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M242.86,133.1c-23,49-43,70.9-64.82,70.9-27.64,0-43.8-34.44-60.9-70.9C110,117.78,102.53,102,94.92,90.73,88.39,81.09,82.53,76,78,76c-3.82,0-18.24,4.12-43.09,57.1a12,12,0,0,1-21.73-10.2c23-49,43-70.9,64.82-70.9,27.64,0,43.8,34.44,60.9,70.9,7.19,15.32,14.61,31.15,22.22,42.37,6.53,9.64,12.39,14.73,17,14.73,3.82,0,18.24-4.12,43.09-57.1a12,12,0,0,1,21.73,10.2Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M235.62,129.7C214.4,174.93,196.1,196,178,196c-22.56,0-37.67-32.21-53.66-66.3C110.15,99.37,95.44,68,78,68c-14.2,0-31.13,20.76-50.34,61.7a4,4,0,0,1-7.24-3.4C41.6,81.07,59.9,60,78,60c22.56,0,37.67,32.21,53.66,66.3C145.85,156.63,160.56,188,178,188c14.2,0,31.13-20.76,50.34-61.7a4,4,0,0,1,7.24,3.4Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

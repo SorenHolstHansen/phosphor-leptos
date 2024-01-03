@@ -11,8 +11,10 @@ pub fn FramerLogo(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M212,96V32a12,12,0,0,0-12-12H56a12,12,0,0,0-8,21L96.44,84H56A12,12,0,0,0,44,96v64a12,12,0,0,0,3.52,8.49l72,72A12,12,0,0,0,140,232V172h60a12,12,0,0,0,8-21l-48.41-43H200A12,12,0,0,0,212,96Zm-43.56,52H128a12,12,0,0,0-12,12v43L68,155V108h55.44ZM188,84H132.56l-45-40H188Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M204,96V32a4,4,0,0,0-4-4H56a4,4,0,0,0-2.66,7l64.14,57H56a4,4,0,0,0-4,4v64a4,4,0,0,0,1.17,2.83l72,72A4,4,0,0,0,132,232V164h68a4,4,0,0,0,2.66-7l-64.14-57H200A4,4,0,0,0,204,96Zm-14.52,60H128a4,4,0,0,0-4,4v62.34l-64-64V100h66.48ZM196,92H129.52l-63-56H196Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

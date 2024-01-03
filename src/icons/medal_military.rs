@@ -11,8 +11,10 @@ pub fn MedalMilitary(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M207,28H49A21,21,0,0,0,28,49V98.21a21,21,0,0,0,12.31,19.11l56,25.47a52,52,0,1,0,63.32,0l56-25.47A21,21,0,0,0,228,98.21V49A21,21,0,0,0,207,28ZM128,130.82l-28-12.73V52h56v66.09ZM52,52H76v55.18L52,96.27Zm76,160a28,28,0,1,1,28-28A28,28,0,0,1,128,212ZM204,96.27l-24,10.91V52h24Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M207,36H49A13,13,0,0,0,36,49V98.21A13,13,0,0,0,43.62,110l70.72,32.14a44,44,0,1,0,27.32,0L212.38,110A13,13,0,0,0,220,98.21V49A13,13,0,0,0,207,36Zm-43,8v79.24l-36,16.37L92,123.24V44ZM44,98.21V49a5,5,0,0,1,5-5H84v75.61L46.93,102.76A5,5,0,0,1,44,98.21ZM164,184a36,36,0,1,1-36-36A36,36,0,0,1,164,184Zm48-85.79a5,5,0,0,1-2.93,4.55L172,119.61V44h35a5,5,0,0,1,5,5Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

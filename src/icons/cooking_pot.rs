@@ -11,8 +11,10 @@ pub fn CookingPot(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M76,40V16a12,12,0,0,1,24,0V40a12,12,0,0,1-24,0Zm52,12a12,12,0,0,0,12-12V16a12,12,0,0,0-24,0V40A12,12,0,0,0,128,52Zm40,0a12,12,0,0,0,12-12V16a12,12,0,0,0-24,0V40A12,12,0,0,0,168,52Zm83.2,53.6L224,126v58a36,36,0,0,1-36,36H68a36,36,0,0,1-36-36V126L4.8,105.6A12,12,0,0,1,19.2,86.4L32,96V88A20,20,0,0,1,52,68H204a20,20,0,0,1,20,20v8l12.8-9.6a12,12,0,0,1,14.4,19.2ZM200,92H56v92a12,12,0,0,0,12,12H188a12,12,0,0,0,12-12Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M92,48V16a4,4,0,0,1,8,0V48a4,4,0,0,1-8,0Zm36,4a4,4,0,0,0,4-4V16a4,4,0,0,0-8,0V48A4,4,0,0,0,128,52Zm32,0a4,4,0,0,0,4-4V16a4,4,0,0,0-8,0V48A4,4,0,0,0,160,52Zm90.4,47.2L220,122v62a28,28,0,0,1-28,28H64a28,28,0,0,1-28-28V122L5.6,99.2a4,4,0,0,1,4.8-6.4L36,112V88A12,12,0,0,1,48,76H208a12,12,0,0,1,12,12v24l25.6-19.2a4,4,0,1,1,4.8,6.4ZM212,88a4,4,0,0,0-4-4H48a4,4,0,0,0-4,4v96a20,20,0,0,0,20,20H192a20,20,0,0,0,20-20Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

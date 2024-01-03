@@ -11,8 +11,10 @@ pub fn CurrencyBtc(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M177.08,114.46A48,48,0,0,0,152,37.52V24a12,12,0,0,0-24,0V36H112V24a12,12,0,0,0-24,0V36H64a12,12,0,0,0,0,24h4V188H64a12,12,0,0,0,0,24H88v12a12,12,0,0,0,24,0V212h16v12a12,12,0,0,0,24,0V212a52,52,0,0,0,25.08-97.54ZM164,84a24,24,0,0,1-24,24H92V60h48A24,24,0,0,1,164,84ZM152,188H92V132h60a28,28,0,0,1,0,56Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M162.27,117.21A40,40,0,0,0,140,44V24a4,4,0,0,0-8,0V44H108V24a4,4,0,0,0-8,0V44H64a4,4,0,0,0,0,8H76V196H64a4,4,0,0,0,0,8h36v20a4,4,0,0,0,8,0V204h24v20a4,4,0,0,0,8,0V204h12a44,44,0,0,0,10.27-86.79ZM84,52h56a32,32,0,0,1,0,64H84Zm68,144H84V124h68a36,36,0,0,1,0,72Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

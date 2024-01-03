@@ -11,8 +11,10 @@ pub fn CodeBlock(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M51.51,104.49l-32-32a12,12,0,0,1,0-17l32-32a12,12,0,1,1,17,17L45,64,68.49,87.51a12,12,0,0,1-17,17Zm48,0a12,12,0,0,0,17,0l32-32a12,12,0,0,0,0-17l-32-32a12,12,0,1,0-17,17L123,64,99.51,87.51A12,12,0,0,0,99.51,104.49ZM200,36H180a12,12,0,0,0,0,24h16V196H60V140a12,12,0,0,0-24,0v60a20,20,0,0,0,20,20H200a20,20,0,0,0,20-20V56A20,20,0,0,0,200,36Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M61.17,98.83l-32-32a4,4,0,0,1,0-5.66l32-32a4,4,0,0,1,5.66,5.66L37.66,64,66.83,93.17a4,4,0,0,1-5.66,5.66Zm40,0a4,4,0,0,0,5.66,0l32-32a4,4,0,0,0,0-5.66l-32-32a4,4,0,0,0-5.66,5.66L130.34,64,101.17,93.17A4,4,0,0,0,101.17,98.83ZM200,44H176a4,4,0,0,0,0,8h24a4,4,0,0,1,4,4V200a4,4,0,0,1-4,4H56a4,4,0,0,1-4-4V136a4,4,0,0,0-8,0v64a12,12,0,0,0,12,12H200a12,12,0,0,0,12-12V56A12,12,0,0,0,200,44Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

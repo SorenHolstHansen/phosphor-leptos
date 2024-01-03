@@ -11,8 +11,10 @@ pub fn ChatsTeardrop(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M172.29,68.9A84,84,0,0,0,12,104v66a18,18,0,0,0,18,18H84.1A84.18,84.18,0,0,0,160,236h66a18,18,0,0,0,18-18V152A84,84,0,0,0,172.29,68.9ZM36,104a60,60,0,1,1,60,60H36ZM220,212H160a60.14,60.14,0,0,1-49-25.37,83.93,83.93,0,0,0,68.55-91.37A60,60,0,0,1,220,152Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M166.76,76.32A76,76,0,0,0,20,104v66a10,10,0,0,0,10,10H89.33A76.13,76.13,0,0,0,160,228h66a10,10,0,0,0,10-10V152A76,76,0,0,0,166.76,76.32ZM28,170V104a68,68,0,1,1,68,68H30A2,2,0,0,1,28,170Zm200,48a2,2,0,0,1-2,2H160A68.16,68.16,0,0,1,98,180,76,76,0,0,0,169.5,84.67,68,68,0,0,1,228,152Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

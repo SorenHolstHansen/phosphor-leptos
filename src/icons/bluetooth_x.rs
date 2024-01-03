@@ -11,8 +11,10 @@ pub fn BluetoothX(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M191.2,166.4,140,128l11.61-8.71a12,12,0,1,0-14.4-19.2L132,104V56l5.21,3.91a12,12,0,1,0,14.4-19.2L127.2,22.4A12,12,0,0,0,108,32v72L63.2,70.4A12,12,0,0,0,48.8,89.6L100,128,48.8,166.4a12,12,0,1,0,14.4,19.2L108,152v72a12,12,0,0,0,19.2,9.6l64-48a12,12,0,0,0,0-19.2ZM132,200V152l32,24ZM240.49,95.51a12,12,0,0,1-17,17L208,97l-15.51,15.52a12,12,0,1,1-17-17L191,80,175.52,64.49a12,12,0,1,1,17-17L208,63l15.51-15.52a12,12,0,0,1,17,17L225,80Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M186.4,172.8,126.67,128l27.73-20.8a4,4,0,1,0-4.8-6.4L124,120V40l25.6,19.2a4,4,0,0,0,4.8-6.4l-32-24A4,4,0,0,0,116,32v88L58.4,76.8a4,4,0,0,0-4.8,6.4L113.33,128,53.6,172.8a4,4,0,0,0,4.8,6.4L116,136v88a4,4,0,0,0,2.21,3.58A4.05,4.05,0,0,0,120,228a4,4,0,0,0,2.4-.8l64-48a4,4,0,0,0,0-6.4ZM124,216V136l53.33,40ZM234.83,101.17a4,4,0,0,1-5.66,5.66L208,85.66l-21.17,21.17a4,4,0,0,1-5.66-5.66L202.34,80,181.17,58.83a4,4,0,0,1,5.66-5.66L208,74.34l21.17-21.17a4,4,0,1,1,5.66,5.66L213.66,80Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

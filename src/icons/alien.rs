@@ -11,8 +11,10 @@ pub fn Alien(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M128,12A100.11,100.11,0,0,0,28,112c0,24.86,12.86,56.8,34.41,85.44C70.63,208.36,99.64,244,128,244s57.37-35.64,65.59-46.56C215.14,168.8,228,136.86,228,112A100.11,100.11,0,0,0,128,12Zm46.41,171c-13.83,18.38-34.21,37-46.41,37s-32.58-18.61-46.41-37C63.34,158.75,52,131.54,52,112a76,76,0,0,1,152,0C204,131.54,192.66,158.75,174.41,183ZM104,148a36,36,0,0,1-36-36,12,12,0,0,1,12-12,36,36,0,0,1,36,36A12,12,0,0,1,104,148Zm84-36a36,36,0,0,1-36,36,12,12,0,0,1-12-12,36,36,0,0,1,36-36A12,12,0,0,1,188,112Zm-36,72a12,12,0,0,1-12,12H116a12,12,0,0,1,0-24h24A12,12,0,0,1,152,184Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M128,20a92.1,92.1,0,0,0-92,92c0,23.19,12.26,53.33,32.8,80.63C84.58,213.6,108.41,236,128,236s43.42-22.4,59.2-43.37C207.74,165.33,220,135.19,220,112A92.1,92.1,0,0,0,128,20Zm52.8,167.82C162.44,212.23,141.71,228,128,228s-34.44-15.77-52.8-40.18C56,162.24,44,133.19,44,112a84,84,0,0,1,168,0C212,133.19,200.05,162.24,180.8,187.82ZM116,136a36,36,0,0,0-36-36,12,12,0,0,0-12,12,36,36,0,0,0,36,36A12,12,0,0,0,116,136Zm-12,4a28,28,0,0,1-28-28,4,4,0,0,1,4-4,28,28,0,0,1,28,28A4,4,0,0,1,104,140Zm72-40a36,36,0,0,0-36,36,12,12,0,0,0,12,12,36,36,0,0,0,36-36A12,12,0,0,0,176,100Zm-24,40a4,4,0,0,1-4-4,28,28,0,0,1,28-28,4,4,0,0,1,4,4A28,28,0,0,1,152,140Zm-4,44a4,4,0,0,1-4,4H112a4,4,0,0,1,0-8h32A4,4,0,0,1,148,184Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn Scooter(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M212,132l-.68,0L197.94,91.89v0L179.38,36.21A12,12,0,0,0,168,28H136a12,12,0,0,0,0,24h23.35l13.77,41.3-55,70.7H83.2a40,40,0,1,0-2.55,24H124a12,12,0,0,0,9.47-4.63l48.77-62.7,6.32,19A40,40,0,1,0,212,132ZM44,188a16,16,0,1,1,16-16A16,16,0,0,1,44,188Zm168,0a16,16,0,1,1,16-16A16,16,0,0,1,212,188Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M212,140a31.29,31.29,0,0,0-6.24.62l-11.82-35.46h0L171.79,38.74A4,4,0,0,0,168,36H136a4,4,0,0,0,0,8h29.12l20.54,61.63L134,172H76a32,32,0,1,0-1,8h61a4,4,0,0,0,3.16-1.54l49.54-63.7,9.47,28.39A32,32,0,1,0,212,140ZM44,196a24,24,0,1,1,24-24A24,24,0,0,1,44,196Zm168,0a24,24,0,1,1,24-24A24,24,0,0,1,212,196Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

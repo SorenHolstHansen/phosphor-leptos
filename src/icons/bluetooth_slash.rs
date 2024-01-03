@@ -11,8 +11,10 @@ pub fn BluetoothSlash(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M216.88,207.93l-160-176A12,12,0,1,0,39.12,48.07L107,122.75,48.8,166.4a12,12,0,1,0,14.4,19.2L108,152v72a12,12,0,0,0,19.2,9.6l47.91-35.94,24,26.41a12,12,0,0,0,17.76-16.14ZM132,200V152l5,3.77,21.87,24.06ZM108,59.74V32a12,12,0,0,1,19.2-9.6l64,48a12,12,0,0,1,0,19.2l-27.1,20.33a12,12,0,0,1-14.4-19.2L164,80,132,56v3.74a12,12,0,0,1-24,0Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M211,213.31,51,37.31A4,4,0,0,0,45,42.69l74,81.42-.14,0a5.17,5.17,0,0,0-.51.18l-.15.06-.05,0a4,4,0,0,0-.56.35l-.05,0-64,48a4,4,0,0,0,4.8,6.4L116,136v88a4,4,0,0,0,2.21,3.58A4.05,4.05,0,0,0,120,228a4,4,0,0,0,2.4-.8l53.74-40.3L205,218.69a4,4,0,1,0,5.92-5.38ZM124,216V136l18.44,13.83L170.73,181ZM116,71.63V32a4,4,0,0,1,6.4-3.2l64,48a4,4,0,0,1,0,6.4l-33.53,25.15a4,4,0,0,1-2.4.8,4,4,0,0,1-2.4-7.2l29.26-22L124,40V71.63a4,4,0,0,1-8,0Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn PlayPause(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M188,64V192a12,12,0,0,1-24,0V64a12,12,0,0,1,24,0Zm36-12a12,12,0,0,0-12,12V192a12,12,0,0,0,24,0V64A12,12,0,0,0,224,52Zm-76,76a19.71,19.71,0,0,1-9.19,16.71L50.63,200.87A19.91,19.91,0,0,1,20,184.15V71.85A19.91,19.91,0,0,1,50.63,55.13l88.18,56.16A19.71,19.71,0,0,1,148,128Zm-27.62,0L44,79.37v97.26Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M180,64V192a4,4,0,0,1-8,0V64a4,4,0,0,1,8,0Zm44-4a4,4,0,0,0-4,4V192a4,4,0,0,0,8,0V64A4,4,0,0,0,224,60Zm-84,68a11.76,11.76,0,0,1-5.48,10L46.33,194.12a12,12,0,0,1-12.18.39A11.66,11.66,0,0,1,28,184.15V71.85a11.66,11.66,0,0,1,6.15-10.36,12,12,0,0,1,12.18.39L134.52,118A11.76,11.76,0,0,1,140,128Zm-8,0a3.77,3.77,0,0,0-1.78-3.22L42,68.63A3.94,3.94,0,0,0,39.91,68a4,4,0,0,0-1.91.5,3.76,3.76,0,0,0-2,3.35v112.3a3.76,3.76,0,0,0,2,3.35,3.91,3.91,0,0,0,4-.13l88.18-56.15A3.77,3.77,0,0,0,132,128Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

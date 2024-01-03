@@ -11,8 +11,10 @@ pub fn ShieldPlus(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M208,36H48A20,20,0,0,0,28,56V114.8c0,92.36,78.1,123,93.75,128.18a19.63,19.63,0,0,0,12.49,0C149.9,237.78,228,207.16,228,114.8V56A20,20,0,0,0,208,36Zm-4,78.8c0,73.55-60.52,99.52-76,105-15.47-5.42-76-31.39-76-104.95V60H204ZM84,128a12,12,0,0,1,12-12h20V96a12,12,0,0,1,24,0v20h20a12,12,0,0,1,0,24H140v20a12,12,0,0,1-24,0V140H96A12,12,0,0,1,84,128Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M208,44H48A12,12,0,0,0,36,56v58.77c0,86.87,73.54,115.7,88.28,120.59a11.47,11.47,0,0,0,7.44,0C146.46,230.49,220,201.66,220,114.79V56A12,12,0,0,0,208,44Zm4,70.79c0,81.38-69,108.41-82.81,113a3.51,3.51,0,0,1-2.39,0C113,223.2,44,196.17,44,114.79V56a4,4,0,0,1,4-4H208a4,4,0,0,1,4,4ZM164,128a4,4,0,0,1-4,4H132v28a4,4,0,0,1-8,0V132H96a4,4,0,0,1,0-8h28V96a4,4,0,0,1,8,0v28h28A4,4,0,0,1,164,128Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

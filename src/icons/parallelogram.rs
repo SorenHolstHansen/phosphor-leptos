@@ -11,8 +11,10 @@ pub fn Parallelogram(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M248.78,45.14A19.92,19.92,0,0,0,232,36H88.81A20,20,0,0,0,70.57,47.79l-64.8,144A20,20,0,0,0,24,220H167.19a20,20,0,0,0,18.24-11.79l64.8-144A19.9,19.9,0,0,0,248.78,45.14ZM164.6,196H30.2L91.4,60H225.8Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M242.07,49.48A12,12,0,0,0,232,44H88.81a12,12,0,0,0-11,7.08l-64.8,144A12,12,0,0,0,24,212H167.19a12,12,0,0,0,10.95-7.08l64.8-144A12,12,0,0,0,242.07,49.48Zm-6.43,8.16-64.8,144a4,4,0,0,1-3.65,2.36H24a4,4,0,0,1-3.65-5.64l64.8-144A4,4,0,0,1,88.81,52H232a4,4,0,0,1,3.65,5.64Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

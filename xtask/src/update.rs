@@ -1,6 +1,6 @@
 use convert_case::{Case, Casing};
 use regex::Regex;
-use std::fs;
+use std::{fs, process};
 
 fn match_case(weight_name: &str, svg: &str) -> String {
     format!(
@@ -23,24 +23,29 @@ pub fn {component_name}(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
-    #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>
+    #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {{
-    let body = move || {{
+    let body = Signal::derive(move || {{
         match weight.get() {{
             {}
         }}
-    }};
+    }});
 
     let transform = move || if mirrored.get() {{ "scale(-1, 1)" }} else {{ "" }};
+    let height = size.clone();
 
     view! {{
         <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {{body}}
         </svg>
@@ -126,4 +131,13 @@ pub enum IconWeight {{
         ),
     )
     .unwrap();
+
+    process::Command::new("cargo")
+        .arg("fmt")
+        .status()
+        .expect("Error running cargo fmt");
+    process::Command::new("leptosfmt")
+        .arg("src")
+        .status()
+        .expect("Error running leptosfmt");
 }

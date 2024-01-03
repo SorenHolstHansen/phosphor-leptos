@@ -11,8 +11,10 @@ pub fn PersonSimple(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M128,84A36,36,0,1,0,92,48,36,36,0,0,0,128,84Zm0-48a12,12,0,1,1-12,12A12,12,0,0,1,128,36ZM234.29,138.17a12,12,0,0,1-16.47,4.12c-.32-.19-32.37-18.92-77.82-21.88v27L201,216A12,12,0,1,1,183,232l-55-61.91L73,232A12,12,0,1,1,55,216l61-68.59v-27c-45.72,2.95-77.48,21.68-77.82,21.89a12,12,0,1,1-12.35-20.58C27.58,120.66,69.35,96,128,96s100.42,24.66,102.17,25.71A12,12,0,0,1,234.29,138.17Z"></path>
@@ -34,18 +36,21 @@ IconWeight::Thin => view! {
     <path d="M227.43,130.06a4,4,0,0,1-5.49,1.37c-.38-.23-37.87-22.29-89.94-23.38v42.43l63,70.86a4,4,0,0,1-6,5.32L128,158,67,226.66a4,4,0,0,1-6-5.32l63-70.86V108.05c-52.07,1.09-89.56,23.15-89.94,23.38a4,4,0,0,1-4.12-6.86c1.67-1,41.6-24.57,98.06-24.57s96.39,23.57,98.06,24.57A4,4,0,0,1,227.43,130.06ZM100,48a28,28,0,1,1,28,28A28,28,0,0,1,100,48Zm8,0a20,20,0,1,0,20-20A20,20,0,0,0,108,48Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>

@@ -11,8 +11,10 @@ pub fn CloudSnow(
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] id: MaybeProp<TextProp>,
+    #[prop(into, optional)] class: MaybeProp<TextProp>,
 ) -> impl IntoView {
-    let body = move || {
+    let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Bold => view! {
                 <path d="M176,216a16,16,0,1,1-16-16A16,16,0,0,1,176,216Zm-64-16a16,16,0,1,0,16,16A16,16,0,0,0,112,200Zm-48,0a16,16,0,1,0,16,16A16,16,0,0,0,64,200ZM236,92a80.09,80.09,0,0,1-80,80H76A56,56,0,0,1,76,60a56.89,56.89,0,0,1,6.39.36A80.08,80.08,0,0,1,236,92Zm-24,0a56.06,56.06,0,0,0-112-3.31,12,12,0,1,1-24-1.38c.06-1.11.15-2.21.26-3.31H76a32,32,0,0,0,0,64h80A56.06,56.06,0,0,0,212,92Z"></path>
@@ -37,18 +39,21 @@ IconWeight::Thin => view! {
     <path d="M84,196a8,8,0,1,1-8-8A8,8,0,0,1,84,196Zm32,8a8,8,0,1,0,8,8A8,8,0,0,0,116,204Zm48-16a8,8,0,1,0,8,8A8,8,0,0,0,164,188ZM68,228a8,8,0,1,0,8,8A8,8,0,0,0,68,228Zm88,0a8,8,0,1,0,8,8A8,8,0,0,0,156,228ZM228,92a72.08,72.08,0,0,1-72,72H76A48,48,0,1,1,87.51,69.39,72.08,72.08,0,0,1,228,92Zm-8,0A64.06,64.06,0,0,0,92,88.23a4,4,0,0,1-8-.46,71.63,71.63,0,0,1,1.42-10.65A40,40,0,1,0,76,156h80A64.07,64.07,0,0,0,220,92Z"></path>
 }.into_view()
         }
-    };
+    });
 
     let transform = move || if mirrored.get() { "scale(-1, 1)" } else { "" };
+    let height = size.clone();
 
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size.get()
-            height=size.get()
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
+            id=move || id.get().unwrap_or(TextProp::from(""))
+            class=move || class.get().unwrap_or(TextProp::from(""))
         >
             {body}
         </svg>
