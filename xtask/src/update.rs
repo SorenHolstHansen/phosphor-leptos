@@ -23,7 +23,8 @@ pub fn {component_name}(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
-    #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>
+    #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+    #[prop(into, optional)] class: MaybeProp<String>
 ) -> impl IntoView {{
     let body = move || {{
         match weight.get() {{
@@ -39,6 +40,7 @@ pub fn {component_name}(
             width=size.get()
             height=size.get()
             fill=color
+            class=class
             transform=transform
             viewBox="0 0 256 256"
         >
