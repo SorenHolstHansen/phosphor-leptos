@@ -3,6 +3,12 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(
+    feature = "design",
+    feature = "editor",
+    feature = "office",
+    feature = "system"
+))]
 #[component]
 pub fn Scissors(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

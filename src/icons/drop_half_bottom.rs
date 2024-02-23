@@ -3,6 +3,12 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(
+    feature = "design",
+    feature = "editor",
+    feature = "nature",
+    feature = "weather"
+))]
 #[component]
 pub fn DropHalfBottom(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
