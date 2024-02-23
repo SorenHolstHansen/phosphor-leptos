@@ -47,7 +47,7 @@ fn cargo_template(features: &BTreeMap<String, ()>) -> String {
 
 [package]
 name = "phosphor-leptos"
-version = "0.3.0"
+version = "0.3.1"
 description = "phosphor icons for leptos"
 authors = ["Søren H. Hansen"]
 readme = "README.md"

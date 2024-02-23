@@ -7,7 +7,7 @@ Phosphor is a flexible icon family for interfaces, diagrams, presentations — w
 ## Installation
 
 ```bash
-phosphor-leptos = "0.1"
+phosphor-leptos = "0.3.1"
 ```
 
 or
@@ -47,3 +47,10 @@ MIT © [Phosphor Icons](https://github.com/phosphor-icons)
 ## Knowledge
 
 - [Phosphor Svelte](https://github.com/haruaki07/phosphor-svelte)
+
+## Contributing
+
+To generate all the icons, run
+```bash
+cargo xtask update
+```
