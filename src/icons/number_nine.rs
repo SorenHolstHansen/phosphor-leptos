@@ -3,6 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(feature = "finance"))]
 #[component]
 pub fn NumberNine(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

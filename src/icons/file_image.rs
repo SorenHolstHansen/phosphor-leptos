@@ -3,6 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(feature = "office", feature = "editor", feature = "media"))]
 #[component]
 pub fn FileImage(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

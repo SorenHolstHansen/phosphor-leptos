@@ -3,6 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(feature = "brand", feature = "office"))]
 #[component]
 pub fn MicrosoftPowerpointLogo(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

@@ -3,6 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(feature = "development", feature = "editor"))]
 #[component]
 pub fn Code(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

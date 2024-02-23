@@ -3,6 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(feature = "media", feature = "objects"))]
 #[component]
 pub fn Guitar(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

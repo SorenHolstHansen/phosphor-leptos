@@ -3,6 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(feature = "brand", feature = "communication", feature = "office"))]
 #[component]
 pub fn MicrosoftOutlookLogo(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

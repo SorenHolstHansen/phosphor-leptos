@@ -3,6 +3,12 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(
+    feature = "health",
+    feature = "objects",
+    feature = "nature",
+    feature = "map"
+))]
 #[component]
 pub fn Tent(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

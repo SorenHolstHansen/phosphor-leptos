@@ -1,3 +1,6 @@
+# GENERATED FILE!
+# Edit xtask/src/update.rs to maintain this file
+
 [package]
 name = "phosphor-leptos"
 version = "0.3.0"
@@ -17,3 +20,46 @@ leptos = "0.6"
 
 [workspace]
 members = ["xtask"]
+
+[features]
+default = ["all"]
+all = [
+	"arrows",
+	"brand",
+	"commerce",
+	"communication",
+	"design",
+	"development",
+	"editor",
+	"finance",
+	"games",
+	"health",
+	"map",
+	"media",
+	"nature",
+	"objects",
+	"office",
+	"people",
+	"system",
+	"uncategorized",
+	"weather"
+]
+arrows = []
+brand = []
+commerce = []
+communication = []
+design = []
+development = []
+editor = []
+finance = []
+games = []
+health = []
+map = []
+media = []
+nature = []
+objects = []
+office = []
+people = []
+system = []
+uncategorized = []
+weather = []

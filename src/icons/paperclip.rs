@@ -3,6 +3,12 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(
+    feature = "communication",
+    feature = "editor",
+    feature = "office",
+    feature = "objects"
+))]
 #[component]
 pub fn Paperclip(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

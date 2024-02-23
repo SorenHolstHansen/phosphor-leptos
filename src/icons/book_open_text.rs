@@ -3,6 +3,12 @@
 use crate::IconWeight;
 use leptos::*;
 
+#[cfg(any(
+    feature = "office",
+    feature = "media",
+    feature = "objects",
+    feature = "map"
+))]
 #[component]
 pub fn BookOpenText(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
