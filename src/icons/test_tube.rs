@@ -3,7 +3,12 @@
 use crate::IconWeight;
 use leptos::*;
 
-#[cfg(any(feature = "development", feature = "nature", feature = "health"))]
+#[cfg(any(
+    feature = "development",
+    feature = "nature",
+    feature = "health",
+    feature = "objects"
+))]
 #[component]
 pub fn TestTube(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

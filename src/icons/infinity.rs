@@ -3,7 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
-#[cfg(any(feature = "development", feature = "finance"))]
+#[cfg(any(feature = "uncategorized"))]
 #[component]
 pub fn Infinity(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

@@ -3,7 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
+#[cfg(any(feature = "uncategorized"))]
 #[component]
 pub fn Folder(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

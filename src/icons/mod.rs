@@ -6,6 +6,10 @@ pub use columns::*;
 mod t_shirt;
 #[cfg(any(feature = "objects", feature = "commerce"))]
 pub use t_shirt::*;
+#[cfg(any(feature = "development", feature = "brand"))]
+mod open_ai_logo;
+#[cfg(any(feature = "development", feature = "brand"))]
+pub use open_ai_logo::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_elbow_left_down;
 #[cfg(any(feature = "arrows"))]
@@ -62,6 +66,10 @@ pub use cardholder::*;
 mod hand;
 #[cfg(any(feature = "system", feature = "people"))]
 pub use hand::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod not_equals;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use not_equals::*;
 #[cfg(any(feature = "finance", feature = "office"))]
 mod chart_scatter;
 #[cfg(any(feature = "finance", feature = "office"))]
@@ -82,6 +90,10 @@ pub use camera_plus::*;
 mod warning_diamond;
 #[cfg(any(feature = "system"))]
 pub use warning_diamond::*;
+#[cfg(any(feature = "commerce", feature = "health"))]
+mod cigarette_slash;
+#[cfg(any(feature = "commerce", feature = "health"))]
+pub use cigarette_slash::*;
 #[cfg(any(feature = "development", feature = "editor"))]
 mod brackets_angle;
 #[cfg(any(feature = "development", feature = "editor"))]
@@ -94,6 +106,14 @@ pub use microsoft_excel_logo::*;
 mod rewind_circle;
 #[cfg(any(feature = "media", feature = "system"))]
 pub use rewind_circle::*;
+#[cfg(any(feature = "objects", feature = "finance", feature = "office"))]
+mod lectern;
+#[cfg(any(feature = "objects", feature = "finance", feature = "office"))]
+pub use lectern::*;
+#[cfg(any(feature = "design", feature = "objects"))]
+mod lasso;
+#[cfg(any(feature = "design", feature = "objects"))]
+pub use lasso::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod eraser;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -134,6 +154,10 @@ pub use gender_transgender::*;
 mod text_h_two;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use text_h_two::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod cash_register;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use cash_register::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_down;
 #[cfg(any(feature = "arrows"))]
@@ -162,6 +186,10 @@ pub use warning_octagon::*;
 mod queue;
 #[cfg(any(feature = "media", feature = "system"))]
 pub use queue::*;
+#[cfg(any(feature = "map", feature = "objects", feature = "commerce"))]
+mod shipping_container;
+#[cfg(any(feature = "map", feature = "objects", feature = "commerce"))]
+pub use shipping_container::*;
 #[cfg(any(feature = "people"))]
 mod user_circle_gear;
 #[cfg(any(feature = "people"))]
@@ -230,14 +258,18 @@ pub use chat_teardrop_text::*;
 mod lock_key;
 #[cfg(any(feature = "objects", feature = "system"))]
 pub use lock_key::*;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 mod tennis_ball;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 pub use tennis_ball::*;
 #[cfg(any(feature = "people"))]
 mod identification_badge;
 #[cfg(any(feature = "people"))]
 pub use identification_badge::*;
+#[cfg(any(feature = "brand", feature = "communication"))]
+mod fediverse_logo;
+#[cfg(any(feature = "brand", feature = "communication"))]
+pub use fediverse_logo::*;
 #[cfg(any(feature = "office", feature = "media", feature = "objects"))]
 mod book_bookmark;
 #[cfg(any(feature = "office", feature = "media", feature = "objects"))]
@@ -250,6 +282,10 @@ pub use circle_half::*;
 mod chat_centered;
 #[cfg(any(feature = "communication"))]
 pub use chat_centered::*;
+#[cfg(any(feature = "commerce", feature = "health", feature = "objects"))]
+mod pint_glass;
+#[cfg(any(feature = "commerce", feature = "health", feature = "objects"))]
+pub use pint_glass::*;
 #[cfg(any(feature = "health"))]
 mod virus;
 #[cfg(any(feature = "health"))]
@@ -274,6 +310,24 @@ pub use prescription::*;
 mod bed;
 #[cfg(any(feature = "health", feature = "map", feature = "objects"))]
 pub use bed::*;
+#[cfg(any(
+    feature = "design",
+    feature = "editor",
+    feature = "nature",
+    feature = "weather"
+))]
+mod drop_slash;
+#[cfg(any(
+    feature = "design",
+    feature = "editor",
+    feature = "nature",
+    feature = "weather"
+))]
+pub use drop_slash::*;
+#[cfg(any(feature = "commerce", feature = "development"))]
+mod crane_tower;
+#[cfg(any(feature = "commerce", feature = "development"))]
+pub use crane_tower::*;
 #[cfg(any(feature = "system", feature = "objects"))]
 mod hourglass_low;
 #[cfg(any(feature = "system", feature = "objects"))]
@@ -298,6 +352,10 @@ pub use user_circle_minus::*;
 mod file_doc;
 #[cfg(any(feature = "office", feature = "editor"))]
 pub use file_doc::*;
+#[cfg(any(feature = "design", feature = "editor"))]
+mod flip_vertical;
+#[cfg(any(feature = "design", feature = "editor"))]
+pub use flip_vertical::*;
 #[cfg(any(feature = "map", feature = "objects"))]
 mod steering_wheel;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -332,6 +390,10 @@ pub use scissors::*;
 mod play_circle;
 #[cfg(any(feature = "media", feature = "system"))]
 pub use play_circle::*;
+#[cfg(any(feature = "people"))]
+mod user_circle_dashed;
+#[cfg(any(feature = "people"))]
+pub use user_circle_dashed::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_square_left;
 #[cfg(any(feature = "arrows"))]
@@ -340,6 +402,10 @@ pub use arrow_square_left::*;
 mod crosshair;
 #[cfg(any(feature = "map", feature = "system"))]
 pub use crosshair::*;
+#[cfg(any(feature = "games", feature = "objects"))]
+mod treasure_chest;
+#[cfg(any(feature = "games", feature = "objects"))]
+pub use treasure_chest::*;
 #[cfg(any(feature = "office", feature = "editor", feature = "system"))]
 mod file_zip;
 #[cfg(any(feature = "office", feature = "editor", feature = "system"))]
@@ -360,6 +426,10 @@ pub use cell_signal_x::*;
 mod lockers;
 #[cfg(any(feature = "map"))]
 pub use lockers::*;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+mod file_cpp;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+pub use file_cpp::*;
 #[cfg(any(feature = "media", feature = "system"))]
 mod airplay;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -432,6 +502,10 @@ pub use copy_simple::*;
 mod air_traffic_control;
 #[cfg(any(feature = "map"))]
 pub use air_traffic_control::*;
+#[cfg(any(feature = "map", feature = "system"))]
+mod gps_slash;
+#[cfg(any(feature = "map", feature = "system"))]
+pub use gps_slash::*;
 #[cfg(any(feature = "system", feature = "objects"))]
 mod hourglass;
 #[cfg(any(feature = "system", feature = "objects"))]
@@ -456,10 +530,18 @@ pub use sort_descending::*;
 mod dice_one;
 #[cfg(any(feature = "games", feature = "objects"))]
 pub use dice_one::*;
+#[cfg(any(feature = "office", feature = "system"))]
+mod calendar_dot;
+#[cfg(any(feature = "office", feature = "system"))]
+pub use calendar_dot::*;
 #[cfg(any(feature = "design"))]
 mod polygon;
 #[cfg(any(feature = "design"))]
 pub use polygon::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod tire;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use tire::*;
 #[cfg(any(feature = "system", feature = "objects"))]
 mod hourglass_simple;
 #[cfg(any(feature = "system", feature = "objects"))]
@@ -492,6 +574,10 @@ pub use battery_vertical_high::*;
 mod number_circle_eight;
 #[cfg(any(feature = "finance"))]
 pub use number_circle_eight::*;
+#[cfg(any(feature = "objects", feature = "system"))]
+mod security_camera;
+#[cfg(any(feature = "objects", feature = "system"))]
+pub use security_camera::*;
 #[cfg(any(feature = "map"))]
 mod globe_simple;
 #[cfg(any(feature = "map"))]
@@ -516,14 +602,30 @@ pub use arrow_fat_line_up::*;
 mod translate;
 #[cfg(any(feature = "communication", feature = "system"))]
 pub use translate::*;
+#[cfg(any(feature = "brand", feature = "communication"))]
+mod tumblr_logo;
+#[cfg(any(feature = "brand", feature = "communication"))]
+pub use tumblr_logo::*;
+#[cfg(any(feature = "media", feature = "development"))]
+mod three_d;
+#[cfg(any(feature = "media", feature = "development"))]
+pub use three_d::*;
 #[cfg(any(feature = "brand", feature = "media"))]
 mod google_podcasts_logo;
 #[cfg(any(feature = "brand", feature = "media"))]
 pub use google_podcasts_logo::*;
+#[cfg(any(feature = "brand", feature = "communication"))]
+mod skype_logo;
+#[cfg(any(feature = "brand", feature = "communication"))]
+pub use skype_logo::*;
 #[cfg(any(feature = "system"))]
 mod bell_ringing;
 #[cfg(any(feature = "system"))]
 pub use bell_ringing::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod superset_of;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use superset_of::*;
 #[cfg(any(feature = "system"))]
 mod cell_signal_slash;
 #[cfg(any(feature = "system"))]
@@ -556,6 +658,10 @@ pub use chat_circle::*;
 mod number_five;
 #[cfg(any(feature = "finance"))]
 pub use number_five::*;
+#[cfg(any(feature = "design", feature = "office", feature = "editor"))]
+mod stack_minus;
+#[cfg(any(feature = "design", feature = "office", feature = "editor"))]
+pub use stack_minus::*;
 #[cfg(any(feature = "communication", feature = "games"))]
 mod mask_happy;
 #[cfg(any(feature = "communication", feature = "games"))]
@@ -588,6 +694,10 @@ pub use lock_simple::*;
 mod headlights;
 #[cfg(any(feature = "map", feature = "objects"))]
 pub use headlights::*;
+#[cfg(any(feature = "media"))]
+mod panorama;
+#[cfg(any(feature = "media"))]
+pub use panorama::*;
 #[cfg(any(feature = "communication", feature = "media", feature = "system"))]
 mod microphone_stage;
 #[cfg(any(feature = "communication", feature = "media", feature = "system"))]
@@ -640,6 +750,10 @@ pub use dropbox_logo::*;
 mod speaker_simple_x;
 #[cfg(any(feature = "media", feature = "system"))]
 pub use speaker_simple_x::*;
+#[cfg(any(feature = "communication", feature = "objects", feature = "map"))]
+mod mailbox;
+#[cfg(any(feature = "communication", feature = "objects", feature = "map"))]
+pub use mailbox::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod text_h_four;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -698,6 +812,10 @@ pub use paperclip_horizontal::*;
 mod lock_laminated_open;
 #[cfg(any(feature = "objects", feature = "system"))]
 pub use lock_laminated_open::*;
+#[cfg(any(feature = "commerce", feature = "nature"))]
+mod cow;
+#[cfg(any(feature = "commerce", feature = "nature"))]
+pub use cow::*;
 #[cfg(any(feature = "people"))]
 mod identification_card;
 #[cfg(any(feature = "people"))]
@@ -790,10 +908,22 @@ pub use bird::*;
 mod arrow_u_right_down;
 #[cfg(any(feature = "arrows"))]
 pub use arrow_u_right_down::*;
+#[cfg(any(feature = "design"))]
+mod columns_plus_right;
+#[cfg(any(feature = "design"))]
+pub use columns_plus_right::*;
 #[cfg(any(feature = "system", feature = "objects"))]
 mod shield_plus;
 #[cfg(any(feature = "system", feature = "objects"))]
 pub use shield_plus::*;
+#[cfg(any(feature = "system", feature = "media"))]
+mod monitor_arrow_up;
+#[cfg(any(feature = "system", feature = "media"))]
+pub use monitor_arrow_up::*;
+#[cfg(any(feature = "design"))]
+mod rows_plus_top;
+#[cfg(any(feature = "design"))]
+pub use rows_plus_top::*;
 #[cfg(any(feature = "finance"))]
 mod number_square_nine;
 #[cfg(any(feature = "finance"))]
@@ -818,6 +948,10 @@ pub use signpost::*;
 mod battery_vertical_empty;
 #[cfg(any(feature = "system"))]
 pub use battery_vertical_empty::*;
+#[cfg(any(feature = "commerce", feature = "finance", feature = "objects"))]
+mod tip_jar;
+#[cfg(any(feature = "commerce", feature = "finance", feature = "objects"))]
+pub use tip_jar::*;
 #[cfg(any(feature = "nature"))]
 mod cactus;
 #[cfg(any(feature = "nature"))]
@@ -826,14 +960,22 @@ pub use cactus::*;
 mod hourglass_high;
 #[cfg(any(feature = "system", feature = "objects"))]
 pub use hourglass_high::*;
-#[cfg(any(feature = "map", feature = "objects"))]
+#[cfg(any(feature = "objects", feature = "commerce"))]
 mod cooking_pot;
-#[cfg(any(feature = "map", feature = "objects"))]
+#[cfg(any(feature = "objects", feature = "commerce"))]
 pub use cooking_pot::*;
 #[cfg(any(feature = "objects", feature = "system"))]
 mod usb;
 #[cfg(any(feature = "objects", feature = "system"))]
 pub use usb::*;
+#[cfg(any(feature = "uncategorized"))]
+mod asclepius;
+#[cfg(any(feature = "uncategorized"))]
+pub use asclepius::*;
+#[cfg(any(feature = "commerce", feature = "objects", feature = "development"))]
+mod hard_hat;
+#[cfg(any(feature = "commerce", feature = "objects", feature = "development"))]
+pub use hard_hat::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
 mod ticket;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
@@ -850,6 +992,10 @@ pub use arrow_square_down_right::*;
 mod gas_pump;
 #[cfg(any(feature = "map", feature = "objects"))]
 pub use gas_pump::*;
+#[cfg(any(feature = "people", feature = "commerce", feature = "finance"))]
+mod hand_arrow_down;
+#[cfg(any(feature = "people", feature = "commerce", feature = "finance"))]
+pub use hand_arrow_down::*;
 #[cfg(any(feature = "communication", feature = "system"))]
 mod export;
 #[cfg(any(feature = "communication", feature = "system"))]
@@ -862,9 +1008,9 @@ pub use intersect_three::*;
 mod tipi;
 #[cfg(any(feature = "nature", feature = "objects", feature = "map"))]
 pub use tipi::*;
-#[cfg(any(feature = "commerce"))]
+#[cfg(any(feature = "commerce", feature = "nature"))]
 mod shrimp;
-#[cfg(any(feature = "commerce"))]
+#[cfg(any(feature = "commerce", feature = "nature"))]
 pub use shrimp::*;
 #[cfg(any(feature = "objects", feature = "commerce"))]
 mod couch;
@@ -902,6 +1048,10 @@ pub use tag::*;
 mod storefront;
 #[cfg(any(feature = "commerce", feature = "map"))]
 pub use storefront::*;
+#[cfg(any(feature = "commerce"))]
+mod windmill;
+#[cfg(any(feature = "commerce"))]
+pub use windmill::*;
 #[cfg(any(feature = "people"))]
 mod gender_neuter;
 #[cfg(any(feature = "people"))]
@@ -930,6 +1080,10 @@ pub use option::*;
 mod sparkle;
 #[cfg(any(feature = "communication", feature = "nature"))]
 pub use sparkle::*;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+mod file_md;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+pub use file_md::*;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 mod currency_krw;
 #[cfg(any(feature = "commerce", feature = "finance"))]
@@ -1006,10 +1160,18 @@ pub use number_seven::*;
 mod car_profile;
 #[cfg(any(feature = "map", feature = "objects"))]
 pub use car_profile::*;
+#[cfg(any(feature = "office", feature = "system"))]
+mod calendar_dots;
+#[cfg(any(feature = "office", feature = "system"))]
+pub use calendar_dots::*;
 #[cfg(any(feature = "system"))]
 mod bell_z;
 #[cfg(any(feature = "system"))]
 pub use bell_z::*;
+#[cfg(any(feature = "commerce", feature = "map"))]
+mod barn;
+#[cfg(any(feature = "commerce", feature = "map"))]
+pub use barn::*;
 #[cfg(any(feature = "media", feature = "games", feature = "objects"))]
 mod headset;
 #[cfg(any(feature = "media", feature = "games", feature = "objects"))]
@@ -1034,6 +1196,10 @@ pub use smiley_sticker::*;
 mod power;
 #[cfg(any(feature = "system"))]
 pub use power::*;
+#[cfg(any(feature = "office", feature = "objects"))]
+mod trolley;
+#[cfg(any(feature = "office", feature = "objects"))]
+pub use trolley::*;
 #[cfg(any(feature = "communication", feature = "media", feature = "system"))]
 mod microphone;
 #[cfg(any(feature = "communication", feature = "media", feature = "system"))]
@@ -1042,6 +1208,10 @@ pub use microphone::*;
 mod arrow_fat_down;
 #[cfg(any(feature = "arrows"))]
 pub use arrow_fat_down::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod beanie;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use beanie::*;
 #[cfg(any(
     feature = "office",
     feature = "map",
@@ -1060,6 +1230,10 @@ pub use books::*;
 mod database;
 #[cfg(any(feature = "development", feature = "system"))]
 pub use database::*;
+#[cfg(any(feature = "system"))]
+mod mouse_scroll;
+#[cfg(any(feature = "system"))]
+pub use mouse_scroll::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
 mod martini;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
@@ -1080,14 +1254,18 @@ pub use bell_simple::*;
 mod cloud_slash;
 #[cfg(any(feature = "system"))]
 pub use cloud_slash::*;
-#[cfg(any(feature = "office", feature = "editor"))]
+#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
 mod file_cloud;
-#[cfg(any(feature = "office", feature = "editor"))]
+#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
 pub use file_cloud::*;
 #[cfg(any(feature = "media", feature = "system"))]
 mod images_square;
 #[cfg(any(feature = "media", feature = "system"))]
 pub use images_square::*;
+#[cfg(any(feature = "weather"))]
+mod tornado;
+#[cfg(any(feature = "weather"))]
+pub use tornado::*;
 #[cfg(any(feature = "people"))]
 mod user_square;
 #[cfg(any(feature = "people"))]
@@ -1188,6 +1366,18 @@ pub use voicemail::*;
 mod seal_question;
 #[cfg(any(feature = "uncategorized"))]
 pub use seal_question::*;
+#[cfg(any(feature = "games"))]
+mod lego;
+#[cfg(any(feature = "games"))]
+pub use lego::*;
+#[cfg(any(feature = "design"))]
+mod rows_plus_bottom;
+#[cfg(any(feature = "design"))]
+pub use rows_plus_bottom::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod towel;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use towel::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_fat_line_down;
 #[cfg(any(feature = "arrows"))]
@@ -1208,6 +1398,10 @@ pub use pentagram::*;
 mod terminal;
 #[cfg(any(feature = "development", feature = "system"))]
 pub use terminal::*;
+#[cfg(any(feature = "games", feature = "health"))]
+mod cricket;
+#[cfg(any(feature = "games", feature = "health"))]
+pub use cricket::*;
 #[cfg(any(feature = "games", feature = "finance"))]
 mod strategy;
 #[cfg(any(feature = "games", feature = "finance"))]
@@ -1236,14 +1430,30 @@ pub use tidal_logo::*;
 mod repeat_once;
 #[cfg(any(feature = "media", feature = "system"))]
 pub use repeat_once::*;
+#[cfg(any(feature = "arrows"))]
+mod caret_line_down;
+#[cfg(any(feature = "arrows"))]
+pub use caret_line_down::*;
 #[cfg(any(feature = "brand", feature = "office"))]
 mod microsoft_powerpoint_logo;
 #[cfg(any(feature = "brand", feature = "office"))]
 pub use microsoft_powerpoint_logo::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod empty;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use empty::*;
+#[cfg(any(feature = "map", feature = "nature"))]
+mod island;
+#[cfg(any(feature = "map", feature = "nature"))]
+pub use island::*;
 #[cfg(any(feature = "map"))]
 mod lighthouse;
 #[cfg(any(feature = "map"))]
 pub use lighthouse::*;
+#[cfg(any(feature = "map", feature = "commerce"))]
+mod city;
+#[cfg(any(feature = "map", feature = "commerce"))]
+pub use city::*;
 #[cfg(any(feature = "map", feature = "objects"))]
 mod bridge;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -1280,6 +1490,10 @@ pub use file_video::*;
 mod arrow_down_left;
 #[cfg(any(feature = "arrows"))]
 pub use arrow_down_left::*;
+#[cfg(any(feature = "commerce", feature = "map"))]
+mod building_apartment;
+#[cfg(any(feature = "commerce", feature = "map"))]
+pub use building_apartment::*;
 #[cfg(any(feature = "office", feature = "editor"))]
 mod file_text;
 #[cfg(any(feature = "office", feature = "editor"))]
@@ -1288,10 +1502,14 @@ pub use file_text::*;
 mod chat_text;
 #[cfg(any(feature = "communication"))]
 pub use chat_text::*;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
+#[cfg(any(feature = "uncategorized"))]
 mod folder_open;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
+#[cfg(any(feature = "uncategorized"))]
 pub use folder_open::*;
+#[cfg(any(feature = "health"))]
+mod fire_truck;
+#[cfg(any(feature = "health"))]
+pub use fire_truck::*;
 #[cfg(any(feature = "finance", feature = "media", feature = "office"))]
 mod projector_screen;
 #[cfg(any(feature = "finance", feature = "media", feature = "office"))]
@@ -1312,6 +1530,10 @@ pub use parachute::*;
 mod keyboard;
 #[cfg(any(feature = "system"))]
 pub use keyboard::*;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+mod file_txt;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+pub use file_txt::*;
 #[cfg(any(feature = "design", feature = "system"))]
 mod grid_nine;
 #[cfg(any(feature = "design", feature = "system"))]
@@ -1324,6 +1546,22 @@ pub use x::*;
 mod pinwheel;
 #[cfg(any(feature = "games", feature = "objects"))]
 pub use pinwheel::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod less_than;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use less_than::*;
+#[cfg(any(feature = "games", feature = "media", feature = "objects"))]
+mod joystick;
+#[cfg(any(feature = "games", feature = "media", feature = "objects"))]
+pub use joystick::*;
+#[cfg(any(feature = "commerce", feature = "health"))]
+mod cigarette;
+#[cfg(any(feature = "commerce", feature = "health"))]
+pub use cigarette::*;
+#[cfg(any(feature = "design"))]
+mod columns_plus_left;
+#[cfg(any(feature = "design"))]
+pub use columns_plus_left::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_u_left_up;
 #[cfg(any(feature = "arrows"))]
@@ -1344,6 +1582,10 @@ pub use qr_code::*;
 mod dot;
 #[cfg(any(feature = "system"))]
 pub use dot::*;
+#[cfg(any(feature = "objects", feature = "system"))]
+mod device_rotate;
+#[cfg(any(feature = "objects", feature = "system"))]
+pub use device_rotate::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_fat_lines_up;
 #[cfg(any(feature = "arrows"))]
@@ -1376,6 +1618,10 @@ pub use question::*;
 mod eye_closed;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use eye_closed::*;
+#[cfg(any(feature = "map", feature = "objects"))]
+mod cable_car;
+#[cfg(any(feature = "map", feature = "objects"))]
+pub use cable_car::*;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 mod currency_rub;
 #[cfg(any(feature = "commerce", feature = "finance"))]
@@ -1404,6 +1650,10 @@ pub use mouse_simple::*;
 mod google_cardboard_logo;
 #[cfg(any(feature = "brand"))]
 pub use google_cardboard_logo::*;
+#[cfg(any(feature = "office", feature = "system"))]
+mod tray_arrow_up;
+#[cfg(any(feature = "office", feature = "system"))]
+pub use tray_arrow_up::*;
 #[cfg(any(feature = "arrows"))]
 mod arrows_clockwise;
 #[cfg(any(feature = "arrows"))]
@@ -1448,10 +1698,18 @@ pub use arrow_elbow_left::*;
 mod arrow_line_right;
 #[cfg(any(feature = "arrows"))]
 pub use arrow_line_right::*;
+#[cfg(any(feature = "development"))]
+mod head_circuit;
+#[cfg(any(feature = "development"))]
+pub use head_circuit::*;
 #[cfg(any(feature = "design", feature = "editor", feature = "office"))]
 mod marker_circle;
 #[cfg(any(feature = "design", feature = "editor", feature = "office"))]
 pub use marker_circle::*;
+#[cfg(any(feature = "office", feature = "system"))]
+mod calendar_slash;
+#[cfg(any(feature = "office", feature = "system"))]
+pub use calendar_slash::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_square_right;
 #[cfg(any(feature = "arrows"))]
@@ -1476,6 +1734,10 @@ pub use pen::*;
 mod flow_arrow;
 #[cfg(any(feature = "arrows", feature = "design", feature = "office"))]
 pub use flow_arrow::*;
+#[cfg(any(feature = "map", feature = "nature"))]
+mod picnic_table;
+#[cfg(any(feature = "map", feature = "nature"))]
+pub use picnic_table::*;
 #[cfg(any(feature = "office", feature = "map", feature = "objects"))]
 mod push_pin_slash;
 #[cfg(any(feature = "office", feature = "map", feature = "objects"))]
@@ -1488,6 +1750,10 @@ pub use stack_simple::*;
 mod clipboard;
 #[cfg(any(feature = "office", feature = "editor", feature = "system"))]
 pub use clipboard::*;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+mod file_ini;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+pub use file_ini::*;
 #[cfg(any(feature = "communication", feature = "system"))]
 mod phone_disconnect;
 #[cfg(any(feature = "communication", feature = "system"))]
@@ -1520,6 +1786,10 @@ pub use link::*;
 mod certificate;
 #[cfg(any(feature = "objects"))]
 pub use certificate::*;
+#[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
+mod tea_bag;
+#[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
+pub use tea_bag::*;
 #[cfg(any(feature = "objects", feature = "commerce"))]
 mod office_chair;
 #[cfg(any(feature = "objects", feature = "commerce"))]
@@ -1532,6 +1802,10 @@ pub use key::*;
 mod arrows_split;
 #[cfg(any(feature = "arrows"))]
 pub use arrows_split::*;
+#[cfg(any(feature = "games", feature = "health"))]
+mod person_simple_snowboard;
+#[cfg(any(feature = "games", feature = "health"))]
+pub use person_simple_snowboard::*;
 #[cfg(any(
     feature = "design",
     feature = "editor",
@@ -1546,10 +1820,18 @@ mod drop_half_bottom;
     feature = "weather"
 ))]
 pub use drop_half_bottom::*;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
-mod folder_notch_plus;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
-pub use folder_notch_plus::*;
+#[cfg(any(feature = "map", feature = "objects"))]
+mod sailboat;
+#[cfg(any(feature = "map", feature = "objects"))]
+pub use sailboat::*;
+#[cfg(any(feature = "commerce", feature = "nature", feature = "map"))]
+mod farm;
+#[cfg(any(feature = "commerce", feature = "nature", feature = "map"))]
+pub use farm::*;
+#[cfg(any(feature = "arrows", feature = "development", feature = "design"))]
+mod vector_three;
+#[cfg(any(feature = "arrows", feature = "development", feature = "design"))]
+pub use vector_three::*;
 #[cfg(any(feature = "design"))]
 mod line_segments;
 #[cfg(any(feature = "design"))]
@@ -1598,6 +1880,10 @@ pub use calendar_plus::*;
 mod at;
 #[cfg(any(feature = "communication"))]
 pub use at::*;
+#[cfg(any(feature = "nature"))]
+mod clover;
+#[cfg(any(feature = "nature"))]
+pub use clover::*;
 #[cfg(any(feature = "communication"))]
 mod rss_simple;
 #[cfg(any(feature = "communication"))]
@@ -1606,6 +1892,10 @@ pub use rss_simple::*;
 mod campfire;
 #[cfg(any(feature = "nature"))]
 pub use campfire::*;
+#[cfg(any(feature = "weather"))]
+mod hurricane;
+#[cfg(any(feature = "weather"))]
+pub use hurricane::*;
 #[cfg(any(feature = "media", feature = "system"))]
 mod stop_circle;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -1614,14 +1904,22 @@ pub use stop_circle::*;
 mod phone_slash;
 #[cfg(any(feature = "communication", feature = "system"))]
 pub use phone_slash::*;
-#[cfg(any(feature = "health"))]
+#[cfg(any(feature = "health", feature = "objects"))]
 mod hand_soap;
-#[cfg(any(feature = "health"))]
+#[cfg(any(feature = "health", feature = "objects"))]
 pub use hand_soap::*;
+#[cfg(any(feature = "objects", feature = "system"))]
+mod device_mobile_slash;
+#[cfg(any(feature = "objects", feature = "system"))]
+pub use device_mobile_slash::*;
 #[cfg(any(feature = "objects", feature = "commerce"))]
 mod needle;
 #[cfg(any(feature = "objects", feature = "commerce"))]
 pub use needle::*;
+#[cfg(any(feature = "people", feature = "commerce", feature = "finance"))]
+mod hand_withdraw;
+#[cfg(any(feature = "people", feature = "commerce", feature = "finance"))]
+pub use hand_withdraw::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod selection;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -1630,6 +1928,10 @@ pub use selection::*;
 mod tag_chevron;
 #[cfg(any(feature = "commerce", feature = "development", feature = "objects"))]
 pub use tag_chevron::*;
+#[cfg(any(feature = "health", feature = "map", feature = "objects"))]
+mod ambulance;
+#[cfg(any(feature = "health", feature = "map", feature = "objects"))]
+pub use ambulance::*;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
 mod arrows_out_line_horizontal;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
@@ -1650,10 +1952,18 @@ pub use stack_overflow_logo::*;
 mod calendar_check;
 #[cfg(any(feature = "office", feature = "system"))]
 pub use calendar_check::*;
+#[cfg(any(feature = "map"))]
+mod map_pin_simple;
+#[cfg(any(feature = "map"))]
+pub use map_pin_simple::*;
 #[cfg(any(feature = "communication", feature = "people"))]
 mod smiley;
 #[cfg(any(feature = "communication", feature = "people"))]
 pub use smiley::*;
+#[cfg(any(feature = "communication", feature = "system"))]
+mod numpad;
+#[cfg(any(feature = "communication", feature = "system"))]
+pub use numpad::*;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 mod currency_gbp;
 #[cfg(any(feature = "commerce", feature = "finance"))]
@@ -1674,6 +1984,10 @@ pub use number_one::*;
 mod minus_square;
 #[cfg(any(feature = "finance", feature = "system"))]
 pub use minus_square::*;
+#[cfg(any(feature = "commerce", feature = "map"))]
+mod bread;
+#[cfg(any(feature = "commerce", feature = "map"))]
+pub use bread::*;
 #[cfg(any(feature = "weather"))]
 mod cloud_snow;
 #[cfg(any(feature = "weather"))]
@@ -1686,6 +2000,10 @@ pub use file_vue::*;
 mod arrow_bend_left_down;
 #[cfg(any(feature = "arrows"))]
 pub use arrow_bend_left_down::*;
+#[cfg(any(feature = "commerce", feature = "design"))]
+mod blueprint;
+#[cfg(any(feature = "commerce", feature = "design"))]
+pub use blueprint::*;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 mod currency_eth;
 #[cfg(any(feature = "commerce", feature = "finance"))]
@@ -1710,6 +2028,10 @@ pub use user_gear::*;
 mod subtract_square;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use subtract_square::*;
+#[cfg(any(feature = "map", feature = "objects"))]
+mod seat;
+#[cfg(any(feature = "map", feature = "objects"))]
+pub use seat::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod selection_foreground;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -1726,14 +2048,40 @@ pub use steps::*;
 mod clock_clockwise;
 #[cfg(any(feature = "system"))]
 pub use clock_clockwise::*;
+#[cfg(any(feature = "brand", feature = "games"))]
+mod steam_logo;
+#[cfg(any(feature = "brand", feature = "games"))]
+pub use steam_logo::*;
 #[cfg(any(feature = "communication"))]
 mod envelope;
 #[cfg(any(feature = "communication"))]
 pub use envelope::*;
+#[cfg(any(feature = "uncategorized"))]
+mod tray_arrow_down;
+#[cfg(any(feature = "uncategorized"))]
+pub use tray_arrow_down::*;
+#[cfg(any(feature = "commerce", feature = "map"))]
+mod popsicle;
+#[cfg(any(feature = "commerce", feature = "map"))]
+pub use popsicle::*;
 #[cfg(any(feature = "development", feature = "office"))]
 mod tree_structure;
 #[cfg(any(feature = "development", feature = "office"))]
 pub use tree_structure::*;
+#[cfg(any(
+    feature = "design",
+    feature = "editor",
+    feature = "nature",
+    feature = "weather"
+))]
+mod drop_simple;
+#[cfg(any(
+    feature = "design",
+    feature = "editor",
+    feature = "nature",
+    feature = "weather"
+))]
+pub use drop_simple::*;
 #[cfg(any(feature = "media", feature = "system"))]
 mod screencast;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -1754,6 +2102,10 @@ pub use wechat_logo::*;
 mod phone_outgoing;
 #[cfg(any(feature = "communication", feature = "system"))]
 pub use phone_outgoing::*;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+mod file_c_sharp;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+pub use file_c_sharp::*;
 #[cfg(any(feature = "people"))]
 mod gender_nonbinary;
 #[cfg(any(feature = "people"))]
@@ -1808,10 +2160,18 @@ pub use game_controller::*;
 mod arrows_in_cardinal;
 #[cfg(any(feature = "arrows"))]
 pub use arrows_in_cardinal::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod hair_dryer;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use hair_dryer::*;
 #[cfg(any(feature = "office"))]
 mod kanban;
 #[cfg(any(feature = "office"))]
 pub use kanban::*;
+#[cfg(any(feature = "design", feature = "objects"))]
+mod angle;
+#[cfg(any(feature = "design", feature = "objects"))]
+pub use angle::*;
 #[cfg(any(feature = "media", feature = "objects"))]
 mod piano_keys;
 #[cfg(any(feature = "media", feature = "objects"))]
@@ -1864,10 +2224,18 @@ pub use planet::*;
 mod book_open;
 #[cfg(any(feature = "office", feature = "media", feature = "objects"))]
 pub use book_open::*;
+#[cfg(any(feature = "editor", feature = "map", feature = "design"))]
+mod letter_circle_p;
+#[cfg(any(feature = "editor", feature = "map", feature = "design"))]
+pub use letter_circle_p::*;
 #[cfg(any(feature = "brand", feature = "communication"))]
 mod snapchat_logo;
 #[cfg(any(feature = "brand", feature = "communication"))]
 pub use snapchat_logo::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod jar;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use jar::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_elbow_down_left;
 #[cfg(any(feature = "arrows"))]
@@ -1876,6 +2244,10 @@ pub use arrow_elbow_down_left::*;
 mod chart_line_down;
 #[cfg(any(feature = "finance", feature = "office"))]
 pub use chart_line_down::*;
+#[cfg(any(feature = "communication", feature = "system"))]
+mod phone_list;
+#[cfg(any(feature = "communication", feature = "system"))]
+pub use phone_list::*;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
 mod split_horizontal;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
@@ -1888,6 +2260,10 @@ pub use unite_square::*;
 mod skip_forward;
 #[cfg(any(feature = "media", feature = "system"))]
 pub use skip_forward::*;
+#[cfg(any(feature = "commerce", feature = "objects", feature = "office"))]
+mod desk;
+#[cfg(any(feature = "commerce", feature = "objects", feature = "office"))]
+pub use desk::*;
 #[cfg(any(feature = "health"))]
 mod bandaids;
 #[cfg(any(feature = "health"))]
@@ -1896,6 +2272,18 @@ pub use bandaids::*;
 mod user_plus;
 #[cfg(any(feature = "people"))]
 pub use user_plus::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod cowboy_hat;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use cowboy_hat::*;
+#[cfg(any(feature = "brand", feature = "communication"))]
+mod threads_logo;
+#[cfg(any(feature = "brand", feature = "communication"))]
+pub use threads_logo::*;
+#[cfg(any(feature = "system"))]
+mod clock_user;
+#[cfg(any(feature = "system"))]
+pub use clock_user::*;
 #[cfg(any(feature = "system"))]
 mod battery_medium;
 #[cfg(any(feature = "system"))]
@@ -1936,6 +2324,10 @@ pub use battery_charging::*;
 mod shapes;
 #[cfg(any(feature = "design"))]
 pub use shapes::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod solar_panel;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use solar_panel::*;
 #[cfg(any(feature = "map"))]
 mod mosque;
 #[cfg(any(feature = "map"))]
@@ -1964,6 +2356,10 @@ pub use brackets_round::*;
 mod cloud_arrow_up;
 #[cfg(any(feature = "system"))]
 pub use cloud_arrow_up::*;
+#[cfg(any(feature = "map"))]
+mod map_pin_area;
+#[cfg(any(feature = "map"))]
+pub use map_pin_area::*;
 #[cfg(any(feature = "media", feature = "system"))]
 mod speaker_simple_low;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -1980,6 +2376,10 @@ pub use radio::*;
 mod align_center_vertical;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use align_center_vertical::*;
+#[cfg(any(feature = "design", feature = "system"))]
+mod cards_three;
+#[cfg(any(feature = "design", feature = "system"))]
+pub use cards_three::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
 mod scales;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
@@ -2032,6 +2432,10 @@ pub use goodreads_logo::*;
 mod ladder_simple;
 #[cfg(any(feature = "objects"))]
 pub use ladder_simple::*;
+#[cfg(any(feature = "system", feature = "people"))]
+mod scan_smiley;
+#[cfg(any(feature = "system", feature = "people"))]
+pub use scan_smiley::*;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
 mod split_vertical;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
@@ -2040,6 +2444,10 @@ pub use split_vertical::*;
 mod skull;
 #[cfg(any(feature = "games"))]
 pub use skull::*;
+#[cfg(any(feature = "design"))]
+mod sphere;
+#[cfg(any(feature = "design"))]
+pub use sphere::*;
 #[cfg(any(feature = "editor"))]
 mod paragraph;
 #[cfg(any(feature = "editor"))]
@@ -2056,6 +2464,10 @@ pub use download_simple::*;
 mod eyedropper;
 #[cfg(any(feature = "design", feature = "editor", feature = "objects"))]
 pub use eyedropper::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod approximate_equals;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use approximate_equals::*;
 #[cfg(any(feature = "map", feature = "objects"))]
 mod engine;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -2092,6 +2504,10 @@ pub use corners_in::*;
 mod file_image;
 #[cfg(any(feature = "office", feature = "editor", feature = "media"))]
 pub use file_image::*;
+#[cfg(any(feature = "system"))]
+mod cell_tower;
+#[cfg(any(feature = "system"))]
+pub use cell_tower::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod selection_plus;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -2108,6 +2524,14 @@ pub use git_branch::*;
 mod coffee;
 #[cfg(any(feature = "commerce", feature = "objects", feature = "map"))]
 pub use coffee::*;
+#[cfg(any(feature = "office", feature = "media", feature = "objects"))]
+mod book_open_user;
+#[cfg(any(feature = "office", feature = "media", feature = "objects"))]
+pub use book_open_user::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod seatbelt;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use seatbelt::*;
 #[cfg(any(feature = "editor", feature = "objects"))]
 mod funnel;
 #[cfg(any(feature = "editor", feature = "objects"))]
@@ -2140,10 +2564,22 @@ pub use cell_signal_medium::*;
 mod caret_double_left;
 #[cfg(any(feature = "arrows"))]
 pub use caret_double_left::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+mod beach_ball;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+pub use beach_ball::*;
 #[cfg(any(feature = "media", feature = "system"))]
 mod speaker_simple_slash;
 #[cfg(any(feature = "media", feature = "system"))]
 pub use speaker_simple_slash::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+mod ping_pong;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+pub use ping_pong::*;
+#[cfg(any(feature = "editor", feature = "system"))]
+mod list_heart;
+#[cfg(any(feature = "editor", feature = "system"))]
+pub use list_heart::*;
 #[cfg(any(feature = "design"))]
 mod square_half;
 #[cfg(any(feature = "design"))]
@@ -2180,6 +2616,10 @@ pub use speaker_hifi::*;
 mod git_fork;
 #[cfg(any(feature = "development"))]
 pub use git_fork::*;
+#[cfg(any(feature = "map", feature = "system"))]
+mod gps;
+#[cfg(any(feature = "map", feature = "system"))]
+pub use gps::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_elbow_right_down;
 #[cfg(any(feature = "arrows"))]
@@ -2204,6 +2644,10 @@ pub use square_half_bottom::*;
 mod sneaker_move;
 #[cfg(any(feature = "commerce", feature = "objects", feature = "health"))]
 pub use sneaker_move::*;
+#[cfg(any(feature = "people", feature = "communication"))]
+mod hand_peace;
+#[cfg(any(feature = "people", feature = "communication"))]
+pub use hand_peace::*;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 mod receipt_x;
 #[cfg(any(feature = "commerce", feature = "finance"))]
@@ -2256,6 +2700,14 @@ pub use disc::*;
 mod cube;
 #[cfg(any(feature = "design", feature = "games", feature = "objects"))]
 pub use cube::*;
+#[cfg(any(feature = "games", feature = "objects"))]
+mod bomb;
+#[cfg(any(feature = "games", feature = "objects"))]
+pub use bomb::*;
+#[cfg(any(feature = "map"))]
+mod map_pin_plus;
+#[cfg(any(feature = "map"))]
+pub use map_pin_plus::*;
 #[cfg(any(feature = "map", feature = "objects"))]
 mod moped;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -2268,14 +2720,26 @@ pub use number_square_five::*;
 mod star_half;
 #[cfg(any(feature = "communication"))]
 pub use star_half::*;
+#[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
+mod truck_trailer;
+#[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
+pub use truck_trailer::*;
 #[cfg(any(feature = "map", feature = "system"))]
 mod crosshair_simple;
 #[cfg(any(feature = "map", feature = "system"))]
 pub use crosshair_simple::*;
+#[cfg(any(feature = "design", feature = "editor", feature = "office"))]
+mod pencil_ruler;
+#[cfg(any(feature = "design", feature = "editor", feature = "office"))]
+pub use pencil_ruler::*;
 #[cfg(any(feature = "editor", feature = "system"))]
 mod textbox;
 #[cfg(any(feature = "editor", feature = "system"))]
 pub use textbox::*;
+#[cfg(any(feature = "communication"))]
+mod chat_slash;
+#[cfg(any(feature = "communication"))]
+pub use chat_slash::*;
 #[cfg(any(feature = "design", feature = "editor", feature = "objects"))]
 mod ruler;
 #[cfg(any(feature = "design", feature = "editor", feature = "objects"))]
@@ -2288,6 +2752,10 @@ pub use cursor::*;
 mod tabs;
 #[cfg(any(feature = "system"))]
 pub use tabs::*;
+#[cfg(any(feature = "system"))]
+mod network_x;
+#[cfg(any(feature = "system"))]
+pub use network_x::*;
 #[cfg(any(feature = "development"))]
 mod cpu;
 #[cfg(any(feature = "development"))]
@@ -2296,6 +2764,28 @@ pub use cpu::*;
 mod flower_lotus;
 #[cfg(any(feature = "nature"))]
 pub use flower_lotus::*;
+#[cfg(any(feature = "health"))]
+mod biohazard;
+#[cfg(any(feature = "health"))]
+pub use biohazard::*;
+#[cfg(any(
+    feature = "development",
+    feature = "office",
+    feature = "media",
+    feature = "brand"
+))]
+mod markdown_logo;
+#[cfg(any(
+    feature = "development",
+    feature = "office",
+    feature = "media",
+    feature = "brand"
+))]
+pub use markdown_logo::*;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+mod file_c;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+pub use file_c::*;
 #[cfg(any(feature = "arrows"))]
 mod caret_right;
 #[cfg(any(feature = "arrows"))]
@@ -2316,6 +2806,14 @@ pub use record::*;
 mod pinterest_logo;
 #[cfg(any(feature = "brand", feature = "communication"))]
 pub use pinterest_logo::*;
+#[cfg(any(feature = "design"))]
+mod scribble;
+#[cfg(any(feature = "design"))]
+pub use scribble::*;
+#[cfg(any(feature = "finance", feature = "commerce"))]
+mod money_wavy;
+#[cfg(any(feature = "finance", feature = "commerce"))]
+pub use money_wavy::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod align_top_simple;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -2368,10 +2866,18 @@ pub use music_note::*;
 mod check;
 #[cfg(any(feature = "system"))]
 pub use check::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod subset_proper_of;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use subset_proper_of::*;
 #[cfg(any(feature = "uncategorized"))]
 mod seal_check;
 #[cfg(any(feature = "uncategorized"))]
 pub use seal_check::*;
+#[cfg(any(feature = "nature"))]
+mod rabbit;
+#[cfg(any(feature = "nature"))]
+pub use rabbit::*;
 #[cfg(any(feature = "nature"))]
 mod flower_tulip;
 #[cfg(any(feature = "nature"))]
@@ -2392,6 +2898,10 @@ pub use star_of_david::*;
 mod nut;
 #[cfg(any(feature = "objects", feature = "system"))]
 pub use nut::*;
+#[cfg(any(feature = "games", feature = "objects"))]
+mod ranking;
+#[cfg(any(feature = "games", feature = "objects"))]
+pub use ranking::*;
 #[cfg(any(feature = "system"))]
 mod warning;
 #[cfg(any(feature = "system"))]
@@ -2422,6 +2932,10 @@ pub use tent::*;
 mod trademark;
 #[cfg(any(feature = "commerce"))]
 pub use trademark::*;
+#[cfg(any(feature = "media", feature = "system"))]
+mod image_broken;
+#[cfg(any(feature = "media", feature = "system"))]
+pub use image_broken::*;
 #[cfg(any(feature = "design"))]
 mod gradient;
 #[cfg(any(feature = "design"))]
@@ -2438,10 +2952,18 @@ pub use clock_afternoon::*;
 mod battery_high;
 #[cfg(any(feature = "system"))]
 pub use battery_high::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod solar_roof;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use solar_roof::*;
 #[cfg(any(feature = "finance"))]
 mod number_square_seven;
 #[cfg(any(feature = "finance"))]
 pub use number_square_seven::*;
+#[cfg(any(feature = "map", feature = "health"))]
+mod hospital;
+#[cfg(any(feature = "map", feature = "health"))]
+pub use hospital::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_fat_lines_left;
 #[cfg(any(feature = "arrows"))]
@@ -2454,26 +2976,50 @@ pub use bluetooth::*;
 mod text_strikethrough;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use text_strikethrough::*;
-#[cfg(any(feature = "development", feature = "nature"))]
+#[cfg(any(feature = "development", feature = "nature", feature = "objects"))]
 mod flask;
-#[cfg(any(feature = "development", feature = "nature"))]
+#[cfg(any(feature = "development", feature = "nature", feature = "objects"))]
 pub use flask::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod square_split_vertical;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use square_split_vertical::*;
+#[cfg(any(feature = "map", feature = "people", feature = "health"))]
+mod person_simple_swim;
+#[cfg(any(feature = "map", feature = "people", feature = "health"))]
+pub use person_simple_swim::*;
+#[cfg(any(feature = "office", feature = "objects"))]
+mod trolley_suitcase;
+#[cfg(any(feature = "office", feature = "objects"))]
+pub use trolley_suitcase::*;
 #[cfg(any(feature = "media", feature = "objects"))]
 mod headphones;
 #[cfg(any(feature = "media", feature = "objects"))]
 pub use headphones::*;
+#[cfg(any(feature = "map"))]
+mod map_pin_simple_line;
+#[cfg(any(feature = "map"))]
+pub use map_pin_simple_line::*;
 #[cfg(any(feature = "communication"))]
 mod hash_straight;
 #[cfg(any(feature = "communication"))]
 pub use hash_straight::*;
+#[cfg(any(feature = "system"))]
+mod mouse_left_click;
+#[cfg(any(feature = "system"))]
+pub use mouse_left_click::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod align_left_simple;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use align_left_simple::*;
+#[cfg(any(feature = "media"))]
+mod four_k;
+#[cfg(any(feature = "media"))]
+pub use four_k::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+mod boules;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+pub use boules::*;
 #[cfg(any(feature = "communication"))]
 mod rss;
 #[cfg(any(feature = "communication"))]
@@ -2486,6 +3032,10 @@ pub use horse::*;
 mod file_archive;
 #[cfg(any(feature = "system", feature = "office", feature = "editor"))]
 pub use file_archive::*;
+#[cfg(any(feature = "system"))]
+mod tree_view;
+#[cfg(any(feature = "system"))]
+pub use tree_view::*;
 #[cfg(any(feature = "system", feature = "objects"))]
 mod watch;
 #[cfg(any(feature = "system", feature = "objects"))]
@@ -2540,6 +3090,10 @@ pub use caret_circle_double_left::*;
 mod info;
 #[cfg(any(feature = "system"))]
 pub use info::*;
+#[cfg(any(feature = "editor", feature = "design", feature = "commerce"))]
+mod letter_circle_v;
+#[cfg(any(feature = "editor", feature = "design", feature = "commerce"))]
+pub use letter_circle_v::*;
 #[cfg(any(feature = "map", feature = "commerce"))]
 mod popcorn;
 #[cfg(any(feature = "map", feature = "commerce"))]
@@ -2552,10 +3106,18 @@ pub use bowl_food::*;
 mod arrow_elbow_down_right;
 #[cfg(any(feature = "arrows"))]
 pub use arrow_elbow_down_right::*;
+#[cfg(any(feature = "uncategorized"))]
+mod box_arrow_down;
+#[cfg(any(feature = "uncategorized"))]
+pub use box_arrow_down::*;
 #[cfg(any(feature = "nature"))]
 mod dog;
 #[cfg(any(feature = "nature"))]
 pub use dog::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod nuclear_plant;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use nuclear_plant::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 mod fan;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -2580,26 +3142,42 @@ pub use bell_simple_slash::*;
 mod gear;
 #[cfg(any(feature = "system"))]
 pub use gear::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+mod football_helmet;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+pub use football_helmet::*;
+#[cfg(any(feature = "development", feature = "objects", feature = "system"))]
+mod speedometer;
+#[cfg(any(feature = "development", feature = "objects", feature = "system"))]
+pub use speedometer::*;
+#[cfg(any(feature = "editor", feature = "objects"))]
+mod funnel_x;
+#[cfg(any(feature = "editor", feature = "objects"))]
+pub use funnel_x::*;
 #[cfg(any(feature = "map", feature = "objects"))]
 mod airplane_landing;
 #[cfg(any(feature = "map", feature = "objects"))]
 pub use airplane_landing::*;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+mod file_py;
+#[cfg(any(feature = "office", feature = "editor", feature = "development"))]
+pub use file_py::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 mod volleyball;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 pub use volleyball::*;
-#[cfg(any(feature = "commerce"))]
+#[cfg(any(feature = "commerce", feature = "objects"))]
 mod pants;
-#[cfg(any(feature = "commerce"))]
+#[cfg(any(feature = "commerce", feature = "objects"))]
 pub use pants::*;
 #[cfg(any(feature = "finance", feature = "office"))]
 mod chart_bar_horizontal;
 #[cfg(any(feature = "finance", feature = "office"))]
 pub use chart_bar_horizontal::*;
-#[cfg(any(feature = "office", feature = "system"))]
-mod archive_tray;
-#[cfg(any(feature = "office", feature = "system"))]
-pub use archive_tray::*;
+#[cfg(any(feature = "objects", feature = "health"))]
+mod spray_bottle;
+#[cfg(any(feature = "objects", feature = "health"))]
+pub use spray_bottle::*;
 #[cfg(any(feature = "development", feature = "editor"))]
 mod brackets_square;
 #[cfg(any(feature = "development", feature = "editor"))]
@@ -2616,9 +3194,13 @@ pub use file_x::*;
 mod moon_stars;
 #[cfg(any(feature = "nature", feature = "weather"))]
 pub use moon_stars::*;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
+#[cfg(any(feature = "finance", feature = "development"))]
+mod subset_of;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use subset_of::*;
+#[cfg(any(feature = "uncategorized"))]
 mod folder_plus;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
+#[cfg(any(feature = "uncategorized"))]
 pub use folder_plus::*;
 #[cfg(any(feature = "development"))]
 mod git_merge;
@@ -2628,6 +3210,10 @@ pub use git_merge::*;
 mod person_simple_throw;
 #[cfg(any(feature = "map", feature = "people", feature = "health"))]
 pub use person_simple_throw::*;
+#[cfg(any(feature = "games", feature = "objects"))]
+mod crown_cross;
+#[cfg(any(feature = "games", feature = "objects"))]
+pub use crown_cross::*;
 #[cfg(any(feature = "weather"))]
 mod rainbow;
 #[cfg(any(feature = "weather"))]
@@ -2660,6 +3246,10 @@ pub use browsers::*;
 mod signature;
 #[cfg(any(feature = "communication", feature = "office"))]
 pub use signature::*;
+#[cfg(any(feature = "commerce", feature = "map"))]
+mod onigiri;
+#[cfg(any(feature = "commerce", feature = "map"))]
+pub use onigiri::*;
 #[cfg(any(feature = "system"))]
 mod battery_plus;
 #[cfg(any(feature = "system"))]
@@ -2700,10 +3290,30 @@ pub use cube_transparent::*;
 mod arrows_down_up;
 #[cfg(any(feature = "arrows"))]
 pub use arrows_down_up::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod not_superset_of;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use not_superset_of::*;
+#[cfg(any(feature = "people", feature = "commerce", feature = "finance"))]
+mod hand_arrow_up;
+#[cfg(any(feature = "people", feature = "commerce", feature = "finance"))]
+pub use hand_arrow_up::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod subtract;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use subtract::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod not_member_of;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use not_member_of::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod belt;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use belt::*;
+#[cfg(any(feature = "brand", feature = "communication"))]
+mod mastodon_logo;
+#[cfg(any(feature = "brand", feature = "communication"))]
+pub use mastodon_logo::*;
 #[cfg(any(feature = "development", feature = "brand"))]
 mod github_logo;
 #[cfg(any(feature = "development", feature = "brand"))]
@@ -2716,10 +3326,18 @@ pub use garage::*;
 mod caret_circle_right;
 #[cfg(any(feature = "arrows"))]
 pub use caret_circle_right::*;
+#[cfg(any(feature = "brand", feature = "communication"))]
+mod linktree_logo;
+#[cfg(any(feature = "brand", feature = "communication"))]
+pub use linktree_logo::*;
 #[cfg(any(feature = "map"))]
 mod globe_stand;
 #[cfg(any(feature = "map"))]
 pub use globe_stand::*;
+#[cfg(any(feature = "system"))]
+mod mouse_middle_click;
+#[cfg(any(feature = "system"))]
+pub use mouse_middle_click::*;
 #[cfg(any(feature = "brand", feature = "communication"))]
 mod twitter_logo;
 #[cfg(any(feature = "brand", feature = "communication"))]
@@ -2796,6 +3414,10 @@ pub use device_tablet::*;
 mod hoodie;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 pub use hoodie::*;
+#[cfg(any(feature = "people", feature = "commerce", feature = "finance"))]
+mod hand_deposit;
+#[cfg(any(feature = "people", feature = "commerce", feature = "finance"))]
+pub use hand_deposit::*;
 #[cfg(any(feature = "objects", feature = "commerce"))]
 mod lamp;
 #[cfg(any(feature = "objects", feature = "commerce"))]
@@ -2832,18 +3454,26 @@ pub use link_simple_break::*;
 mod warning_circle;
 #[cfg(any(feature = "system"))]
 pub use warning_circle::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod bulldozer;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use bulldozer::*;
 #[cfg(any(feature = "weather"))]
 mod cloud_lightning;
 #[cfg(any(feature = "weather"))]
 pub use cloud_lightning::*;
+#[cfg(any(feature = "communication", feature = "system"))]
+mod phone_transfer;
+#[cfg(any(feature = "communication", feature = "system"))]
+pub use phone_transfer::*;
 #[cfg(any(feature = "arrows"))]
 mod caret_double_up;
 #[cfg(any(feature = "arrows"))]
 pub use caret_double_up::*;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
-mod folder_notch_open;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
-pub use folder_notch_open::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod sock;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use sock::*;
 #[cfg(any(feature = "communication", feature = "system"))]
 mod phone_x;
 #[cfg(any(feature = "communication", feature = "system"))]
@@ -2852,6 +3482,10 @@ pub use phone_x::*;
 mod paper_plane_right;
 #[cfg(any(feature = "communication", feature = "map", feature = "objects"))]
 pub use paper_plane_right::*;
+#[cfg(any(feature = "people"))]
+mod user_circle_check;
+#[cfg(any(feature = "people"))]
+pub use user_circle_check::*;
 #[cfg(any(feature = "system", feature = "media"))]
 mod monitor_play;
 #[cfg(any(feature = "system", feature = "media"))]
@@ -2868,6 +3502,14 @@ pub use dribbble_logo::*;
 mod plug_charging;
 #[cfg(any(feature = "system", feature = "objects"))]
 pub use plug_charging::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod oven;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use oven::*;
+#[cfg(any(feature = "system"))]
+mod exclamation_mark;
+#[cfg(any(feature = "system"))]
+pub use exclamation_mark::*;
 #[cfg(any(feature = "communication", feature = "system"))]
 mod app_window;
 #[cfg(any(feature = "communication", feature = "system"))]
@@ -2876,6 +3518,10 @@ pub use app_window::*;
 mod medium_logo;
 #[cfg(any(feature = "brand"))]
 pub use medium_logo::*;
+#[cfg(any(feature = "games", feature = "commerce"))]
+mod yarn;
+#[cfg(any(feature = "games", feature = "commerce"))]
+pub use yarn::*;
 #[cfg(any(feature = "finance"))]
 mod number_circle_two;
 #[cfg(any(feature = "finance"))]
@@ -2892,10 +3538,6 @@ pub use code_block::*;
 mod high_heel;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 pub use high_heel::*;
-#[cfg(any(feature = "office", feature = "system"))]
-mod archive_box;
-#[cfg(any(feature = "office", feature = "system"))]
-pub use archive_box::*;
 #[cfg(any(
     feature = "communication",
     feature = "editor",
@@ -2974,6 +3616,10 @@ pub use sticker::*;
 mod arrows_in_line_vertical;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
 pub use arrows_in_line_vertical::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod car_battery;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use car_battery::*;
 #[cfg(any(feature = "map"))]
 mod traffic_sign;
 #[cfg(any(feature = "map"))]
@@ -2982,6 +3628,10 @@ pub use traffic_sign::*;
 mod tray;
 #[cfg(any(feature = "office", feature = "communication", feature = "system"))]
 pub use tray::*;
+#[cfg(any(feature = "commerce", feature = "people"))]
+mod baby_carriage;
+#[cfg(any(feature = "commerce", feature = "people"))]
+pub use baby_carriage::*;
 #[cfg(any(feature = "communication", feature = "people"))]
 mod thumbs_up;
 #[cfg(any(feature = "communication", feature = "people"))]
@@ -3030,6 +3680,10 @@ pub use broom::*;
 mod stethoscope;
 #[cfg(any(feature = "health", feature = "objects"))]
 pub use stethoscope::*;
+#[cfg(any(feature = "office", feature = "system"))]
+mod calendar_star;
+#[cfg(any(feature = "office", feature = "system"))]
+pub use calendar_star::*;
 #[cfg(any(feature = "development", feature = "nature"))]
 mod bug_droid;
 #[cfg(any(feature = "development", feature = "nature"))]
@@ -3046,9 +3700,9 @@ pub use eye_slash::*;
 mod play;
 #[cfg(any(feature = "media", feature = "system"))]
 pub use play::*;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 mod soccer_ball;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 pub use soccer_ball::*;
 #[cfg(any(feature = "objects"))]
 mod device_tablet_camera;
@@ -3094,6 +3748,10 @@ pub use face_mask::*;
 mod device_mobile_speaker;
 #[cfg(any(feature = "objects"))]
 pub use device_mobile_speaker::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod greater_than;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use greater_than::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_line_up_left;
 #[cfg(any(feature = "arrows"))]
@@ -3122,10 +3780,18 @@ pub use barcode::*;
 mod scooter;
 #[cfg(any(feature = "map", feature = "health"))]
 pub use scooter::*;
+#[cfg(any(feature = "people"))]
+mod user_sound;
+#[cfg(any(feature = "people"))]
+pub use user_sound::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod text_indent;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use text_indent::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+mod golf;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+pub use golf::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
 mod beer_stein;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
@@ -3150,6 +3816,10 @@ pub use number_two::*;
 mod phone_call;
 #[cfg(any(feature = "communication", feature = "system"))]
 pub use phone_call::*;
+#[cfg(any(feature = "media"))]
+mod music_notes_minus;
+#[cfg(any(feature = "media"))]
+pub use music_notes_minus::*;
 #[cfg(any(feature = "map", feature = "objects"))]
 mod chalkboard;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -3166,6 +3836,10 @@ pub use lightbulb_filament::*;
 mod arrow_elbow_left_up;
 #[cfg(any(feature = "arrows"))]
 pub use arrow_elbow_left_up::*;
+#[cfg(any(feature = "map", feature = "objects"))]
+mod compass_rose;
+#[cfg(any(feature = "map", feature = "objects"))]
+pub use compass_rose::*;
 #[cfg(any(feature = "people", feature = "health"))]
 mod baby;
 #[cfg(any(feature = "people", feature = "health"))]
@@ -3190,6 +3864,10 @@ pub use battery_empty::*;
 mod coda_logo;
 #[cfg(any(feature = "brand"))]
 pub use coda_logo::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod tilde;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use tilde::*;
 #[cfg(any(feature = "media", feature = "system", feature = "objects"))]
 mod camera;
 #[cfg(any(feature = "media", feature = "system", feature = "objects"))]
@@ -3222,9 +3900,9 @@ pub use figma_logo::*;
 mod club;
 #[cfg(any(feature = "games"))]
 pub use club::*;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
+#[cfg(any(feature = "uncategorized"))]
 mod folder_minus;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
+#[cfg(any(feature = "uncategorized"))]
 pub use folder_minus::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 mod dress;
@@ -3238,6 +3916,10 @@ pub use arrow_up_right::*;
 mod sim_card;
 #[cfg(any(feature = "communication", feature = "system"))]
 pub use sim_card::*;
+#[cfg(any(feature = "brand", feature = "communication"))]
+mod matrix_logo;
+#[cfg(any(feature = "brand", feature = "communication"))]
+pub use matrix_logo::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
 mod truck;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
@@ -3246,6 +3928,10 @@ pub use truck::*;
 mod file_jsx;
 #[cfg(any(feature = "office", feature = "editor", feature = "development"))]
 pub use file_jsx::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod union;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use union::*;
 #[cfg(any(feature = "office", feature = "editor"))]
 mod file_xls;
 #[cfg(any(feature = "office", feature = "editor"))]
@@ -3270,10 +3956,18 @@ pub use caret_circle_double_down::*;
 mod map_trifold;
 #[cfg(any(feature = "map"))]
 pub use map_trifold::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+mod racquet;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+pub use racquet::*;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 mod currency_ngn;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 pub use currency_ngn::*;
+#[cfg(any(feature = "editor", feature = "objects"))]
+mod funnel_simple_x;
+#[cfg(any(feature = "editor", feature = "objects"))]
+pub use funnel_simple_x::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
 mod brandy;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
@@ -3310,6 +4004,10 @@ pub use egg::*;
 mod text_underline;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use text_underline::*;
+#[cfg(any(feature = "design"))]
+mod rectangle_dashed;
+#[cfg(any(feature = "design"))]
+pub use rectangle_dashed::*;
 #[cfg(any(feature = "media", feature = "system"))]
 mod faders_horizontal;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -3334,6 +4032,10 @@ pub use hand_swipe_right::*;
 mod list_magnifying_glass;
 #[cfg(any(feature = "editor", feature = "system"))]
 pub use list_magnifying_glass::*;
+#[cfg(any(feature = "map", feature = "system"))]
+mod gps_fix;
+#[cfg(any(feature = "map", feature = "system"))]
+pub use gps_fix::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod intersect;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -3346,10 +4048,14 @@ pub use bus::*;
 mod shuffle_simple;
 #[cfg(any(feature = "media", feature = "arrows", feature = "system"))]
 pub use shuffle_simple::*;
-#[cfg(any(feature = "development", feature = "finance"))]
+#[cfg(any(feature = "uncategorized"))]
 mod infinity;
-#[cfg(any(feature = "development", feature = "finance"))]
+#[cfg(any(feature = "uncategorized"))]
 pub use infinity::*;
+#[cfg(any(feature = "map"))]
+mod map_pin_simple_area;
+#[cfg(any(feature = "map"))]
+pub use map_pin_simple_area::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_bend_up_left;
 #[cfg(any(feature = "arrows"))]
@@ -3382,6 +4088,14 @@ pub use armchair::*;
 mod anchor_simple;
 #[cfg(any(feature = "communication", feature = "map", feature = "objects"))]
 pub use anchor_simple::*;
+#[cfg(any(feature = "design", feature = "editor", feature = "finance"))]
+mod text_subscript;
+#[cfg(any(feature = "design", feature = "editor", feature = "finance"))]
+pub use text_subscript::*;
+#[cfg(any(feature = "communication"))]
+mod chat_centered_slash;
+#[cfg(any(feature = "communication"))]
+pub use chat_centered_slash::*;
 #[cfg(any(feature = "people"))]
 mod users_three;
 #[cfg(any(feature = "people"))]
@@ -3394,6 +4108,10 @@ pub use toilet::*;
 mod leaf;
 #[cfg(any(feature = "nature"))]
 pub use leaf::*;
+#[cfg(any(feature = "system"))]
+mod network;
+#[cfg(any(feature = "system"))]
+pub use network::*;
 #[cfg(any(feature = "development", feature = "nature"))]
 mod bug_beetle;
 #[cfg(any(feature = "development", feature = "nature"))]
@@ -3418,6 +4136,10 @@ pub use link_simple::*;
 mod smiley_x_eyes;
 #[cfg(any(feature = "communication", feature = "people"))]
 pub use smiley_x_eyes::*;
+#[cfg(any(feature = "people"))]
+mod eyes;
+#[cfg(any(feature = "people"))]
+pub use eyes::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_fat_lines_down;
 #[cfg(any(feature = "arrows"))]
@@ -3446,6 +4168,14 @@ pub use check_fat::*;
 mod address_book;
 #[cfg(any(feature = "communication"))]
 pub use address_book::*;
+#[cfg(any(feature = "development"))]
+mod memory;
+#[cfg(any(feature = "development"))]
+pub use memory::*;
+#[cfg(any(feature = "map", feature = "objects"))]
+mod airplane_taxiing;
+#[cfg(any(feature = "map", feature = "objects"))]
+pub use airplane_taxiing::*;
 #[cfg(any(feature = "communication"))]
 mod heart_straight_break;
 #[cfg(any(feature = "communication"))]
@@ -3494,6 +4224,10 @@ pub use boot::*;
 mod star;
 #[cfg(any(feature = "communication", feature = "map", feature = "nature"))]
 pub use star::*;
+#[cfg(any(feature = "health", feature = "map", feature = "people"))]
+mod person_simple_tai_chi;
+#[cfg(any(feature = "health", feature = "map", feature = "people"))]
+pub use person_simple_tai_chi::*;
 #[cfg(any(feature = "objects", feature = "weather"))]
 mod umbrella_simple;
 #[cfg(any(feature = "objects", feature = "weather"))]
@@ -3506,10 +4240,18 @@ pub use unite::*;
 mod selection_inverse;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use selection_inverse::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod chef_hat;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use chef_hat::*;
 #[cfg(any(feature = "brand"))]
 mod amazon_logo;
 #[cfg(any(feature = "brand"))]
 pub use amazon_logo::*;
+#[cfg(any(feature = "finance", feature = "nature"))]
+mod acorn;
+#[cfg(any(feature = "finance", feature = "nature"))]
+pub use acorn::*;
 #[cfg(any(feature = "weather", feature = "health", feature = "objects"))]
 mod thermometer_hot;
 #[cfg(any(feature = "weather", feature = "health", feature = "objects"))]
@@ -3586,14 +4328,14 @@ pub use browser::*;
 mod bone;
 #[cfg(any(feature = "nature", feature = "health"))]
 pub use bone::*;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
-mod folder_notch_minus;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
-pub use folder_notch_minus::*;
 #[cfg(any(feature = "communication", feature = "map", feature = "objects"))]
 mod anchor;
 #[cfg(any(feature = "communication", feature = "map", feature = "objects"))]
 pub use anchor::*;
+#[cfg(any(feature = "media"))]
+mod waveform_slash;
+#[cfg(any(feature = "media"))]
+pub use waveform_slash::*;
 #[cfg(any(feature = "communication", feature = "nature"))]
 mod star_four;
 #[cfg(any(feature = "communication", feature = "nature"))]
@@ -3618,10 +4360,26 @@ pub use arrow_circle_down_right::*;
 mod hammer;
 #[cfg(any(feature = "objects", feature = "system", feature = "commerce"))]
 pub use hammer::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod intersection;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use intersection::*;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 mod currency_kzt;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 pub use currency_kzt::*;
+#[cfg(any(feature = "design", feature = "editor"))]
+mod resize;
+#[cfg(any(feature = "design", feature = "editor"))]
+pub use resize::*;
+#[cfg(any(feature = "design", feature = "editor", feature = "office"))]
+mod highlighter;
+#[cfg(any(feature = "design", feature = "editor", feature = "office"))]
+pub use highlighter::*;
+#[cfg(any(feature = "commerce", feature = "map"))]
+mod building_office;
+#[cfg(any(feature = "commerce", feature = "map"))]
+pub use building_office::*;
 #[cfg(any(feature = "communication"))]
 mod heart_break;
 #[cfg(any(feature = "communication"))]
@@ -3670,6 +4428,10 @@ pub use caret_double_down::*;
 mod chart_pie_slice;
 #[cfg(any(feature = "finance", feature = "office"))]
 pub use chart_pie_slice::*;
+#[cfg(any(feature = "commerce", feature = "development"))]
+mod crane;
+#[cfg(any(feature = "commerce", feature = "development"))]
+pub use crane::*;
 #[cfg(any(feature = "media", feature = "arrows", feature = "system"))]
 mod shuffle_angular;
 #[cfg(any(feature = "media", feature = "arrows", feature = "system"))]
@@ -3698,6 +4460,14 @@ pub use lifebuoy::*;
 mod bug;
 #[cfg(any(feature = "development", feature = "nature"))]
 pub use bug::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod dresser;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use dresser::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod pipe;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use pipe::*;
 #[cfg(any(feature = "system"))]
 mod gear_six;
 #[cfg(any(feature = "system"))]
@@ -3706,6 +4476,10 @@ pub use gear_six::*;
 mod git_diff;
 #[cfg(any(feature = "development"))]
 pub use git_diff::*;
+#[cfg(any(feature = "design"))]
+mod seal_percent;
+#[cfg(any(feature = "design"))]
+pub use seal_percent::*;
 #[cfg(any(feature = "map", feature = "objects"))]
 mod gas_can;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -3722,10 +4496,18 @@ pub use file_png::*;
 mod number_square_four;
 #[cfg(any(feature = "finance"))]
 pub use number_square_four::*;
+#[cfg(any(feature = "games", feature = "map", feature = "objects"))]
+mod disco_ball;
+#[cfg(any(feature = "games", feature = "map", feature = "objects"))]
+pub use disco_ball::*;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 mod currency_cny;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 pub use currency_cny::*;
+#[cfg(any(feature = "design", feature = "office", feature = "editor"))]
+mod stack_plus;
+#[cfg(any(feature = "design", feature = "office", feature = "editor"))]
+pub use stack_plus::*;
 #[cfg(any(feature = "media", feature = "objects"))]
 mod article_medium;
 #[cfg(any(feature = "media", feature = "objects"))]
@@ -3734,6 +4516,20 @@ pub use article_medium::*;
 mod cloud_warning;
 #[cfg(any(feature = "system"))]
 pub use cloud_warning::*;
+#[cfg(any(
+    feature = "nature",
+    feature = "health",
+    feature = "map",
+    feature = "people"
+))]
+mod person_simple_hike;
+#[cfg(any(
+    feature = "nature",
+    feature = "health",
+    feature = "map",
+    feature = "people"
+))]
+pub use person_simple_hike::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_bend_down_right;
 #[cfg(any(feature = "arrows"))]
@@ -3746,6 +4542,10 @@ pub use music_notes_simple::*;
 mod file_arrow_down;
 #[cfg(any(feature = "office", feature = "editor"))]
 pub use file_arrow_down::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod shovel;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use shovel::*;
 #[cfg(any(feature = "design", feature = "editor"))]
 mod circle_half_tilt;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -3758,6 +4558,14 @@ pub use compass::*;
 mod key_return;
 #[cfg(any(feature = "system"))]
 pub use key_return::*;
+#[cfg(any(feature = "weather", feature = "nature"))]
+mod meteor;
+#[cfg(any(feature = "weather", feature = "nature"))]
+pub use meteor::*;
+#[cfg(any(feature = "nature"))]
+mod log;
+#[cfg(any(feature = "nature"))]
+pub use log::*;
 #[cfg(any(feature = "health", feature = "objects"))]
 mod sunglasses;
 #[cfg(any(feature = "health", feature = "objects"))]
@@ -3779,9 +4587,17 @@ mod traffic_cone;
 #[cfg(any(feature = "map"))]
 pub use traffic_cone::*;
 #[cfg(any(feature = "design"))]
+mod triangle_dashed;
+#[cfg(any(feature = "design"))]
+pub use triangle_dashed::*;
+#[cfg(any(feature = "design"))]
 mod scribble_loop;
 #[cfg(any(feature = "design"))]
 pub use scribble_loop::*;
+#[cfg(any(feature = "communication"))]
+mod chat_teardrop_slash;
+#[cfg(any(feature = "communication"))]
+pub use chat_teardrop_slash::*;
 #[cfg(any(feature = "editor"))]
 mod list_bullets;
 #[cfg(any(feature = "editor"))]
@@ -3818,6 +4634,10 @@ pub use film_strip::*;
 mod credit_card;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 pub use credit_card::*;
+#[cfg(any(feature = "editor", feature = "map", feature = "design"))]
+mod letter_circle_h;
+#[cfg(any(feature = "editor", feature = "map", feature = "design"))]
+pub use letter_circle_h::*;
 #[cfg(any(feature = "editor"))]
 mod list_numbers;
 #[cfg(any(feature = "editor"))]
@@ -3826,6 +4646,10 @@ pub use list_numbers::*;
 mod number_square_zero;
 #[cfg(any(feature = "finance"))]
 pub use number_square_zero::*;
+#[cfg(any(feature = "office", feature = "system"))]
+mod box_arrow_up;
+#[cfg(any(feature = "office", feature = "system"))]
+pub use box_arrow_up::*;
 #[cfg(any(feature = "people"))]
 mod user_circle;
 #[cfg(any(feature = "people"))]
@@ -3834,6 +4658,10 @@ pub use user_circle::*;
 mod copyleft;
 #[cfg(any(feature = "commerce", feature = "media"))]
 pub use copyleft::*;
+#[cfg(any(feature = "development", feature = "media", feature = "objects"))]
+mod visor;
+#[cfg(any(feature = "development", feature = "media", feature = "objects"))]
+pub use visor::*;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 mod currency_inr;
 #[cfg(any(feature = "commerce", feature = "finance"))]
@@ -3846,6 +4674,10 @@ pub use cylinder::*;
 mod heart_half;
 #[cfg(any(feature = "communication", feature = "games", feature = "health"))]
 pub use heart_half::*;
+#[cfg(any(feature = "system"))]
+mod spinner_ball;
+#[cfg(any(feature = "system"))]
+pub use spinner_ball::*;
 #[cfg(any(feature = "map"))]
 mod map_pin_line;
 #[cfg(any(feature = "map"))]
@@ -3854,6 +4686,10 @@ pub use map_pin_line::*;
 mod dots_nine;
 #[cfg(any(feature = "design"))]
 pub use dots_nine::*;
+#[cfg(any(feature = "design", feature = "editor"))]
+mod text_t_slash;
+#[cfg(any(feature = "design", feature = "editor"))]
+pub use text_t_slash::*;
 #[cfg(any(feature = "design", feature = "editor", feature = "office"))]
 mod pencil;
 #[cfg(any(feature = "design", feature = "editor", feature = "office"))]
@@ -3874,10 +4710,18 @@ pub use cloud_rain::*;
 mod pencil_simple_line;
 #[cfg(any(feature = "design", feature = "editor", feature = "office"))]
 pub use pencil_simple_line::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+mod boxing_glove;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+pub use boxing_glove::*;
 #[cfg(any(feature = "brand"))]
 mod google_chrome_logo;
 #[cfg(any(feature = "brand"))]
 pub use google_chrome_logo::*;
+#[cfg(any(feature = "games", feature = "communication", feature = "people"))]
+mod lego_smiley;
+#[cfg(any(feature = "games", feature = "communication", feature = "people"))]
+pub use lego_smiley::*;
 #[cfg(any(feature = "design"))]
 mod vignette;
 #[cfg(any(feature = "design"))]
@@ -3914,10 +4758,18 @@ pub use file_plus::*;
 mod chat_dots;
 #[cfg(any(feature = "communication"))]
 pub use chat_dots::*;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod lamp_pendant;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use lamp_pendant::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 mod basketball;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 pub use basketball::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod less_than_or_equal;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use less_than_or_equal::*;
 #[cfg(any(feature = "objects", feature = "system"))]
 mod keyhole;
 #[cfg(any(feature = "objects", feature = "system"))]
@@ -3938,9 +4790,9 @@ pub use align_center_horizontal::*;
 mod clock;
 #[cfg(any(feature = "system", feature = "objects"))]
 pub use clock::*;
-#[cfg(any(feature = "commerce"))]
+#[cfg(any(feature = "commerce", feature = "objects"))]
 mod coat_hanger;
-#[cfg(any(feature = "commerce"))]
+#[cfg(any(feature = "commerce", feature = "objects"))]
 pub use coat_hanger::*;
 #[cfg(any(feature = "office", feature = "media"))]
 mod film_script;
@@ -3962,14 +4814,26 @@ pub use align_center_horizontal_simple::*;
 mod phone;
 #[cfg(any(feature = "communication", feature = "system"))]
 pub use phone::*;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 mod football;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 pub use football::*;
+#[cfg(any(feature = "arrows"))]
+mod caret_line_up;
+#[cfg(any(feature = "arrows"))]
+pub use caret_line_up::*;
 #[cfg(any(feature = "map", feature = "people", feature = "health"))]
 mod person_simple_run;
 #[cfg(any(feature = "map", feature = "people", feature = "health"))]
 pub use person_simple_run::*;
+#[cfg(any(feature = "system"))]
+mod question_mark;
+#[cfg(any(feature = "system"))]
+pub use question_mark::*;
+#[cfg(any(feature = "map"))]
+mod globe_simple_x;
+#[cfg(any(feature = "map"))]
+pub use globe_simple_x::*;
 #[cfg(any(feature = "media"))]
 mod wave_triangle;
 #[cfg(any(feature = "media"))]
@@ -3982,6 +4846,10 @@ pub use squares_four::*;
 mod rows;
 #[cfg(any(feature = "design"))]
 pub use rows::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod tractor;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use tractor::*;
 #[cfg(any(feature = "nature", feature = "weather"))]
 mod waves;
 #[cfg(any(feature = "nature", feature = "weather"))]
@@ -3994,6 +4862,10 @@ pub use eye::*;
 mod caret_circle_up;
 #[cfg(any(feature = "arrows"))]
 pub use caret_circle_up::*;
+#[cfg(any(feature = "games", feature = "objects", feature = "development"))]
+mod drone;
+#[cfg(any(feature = "games", feature = "objects", feature = "development"))]
+pub use drone::*;
 #[cfg(any(feature = "system"))]
 mod gear_fine;
 #[cfg(any(feature = "system"))]
@@ -4022,6 +4894,10 @@ pub use terminal_window::*;
 mod gitlab_logo_simple;
 #[cfg(any(feature = "brand", feature = "development"))]
 pub use gitlab_logo_simple::*;
+#[cfg(any(feature = "communication"))]
+mod address_book_tabs;
+#[cfg(any(feature = "communication"))]
+pub use address_book_tabs::*;
 #[cfg(any(feature = "finance"))]
 mod number_zero;
 #[cfg(any(feature = "finance"))]
@@ -4030,10 +4906,10 @@ pub use number_zero::*;
 mod arrows_in;
 #[cfg(any(feature = "arrows"))]
 pub use arrows_in::*;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
-mod folder_notch;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
-pub use folder_notch::*;
+#[cfg(any(feature = "brand", feature = "communication"))]
+mod x_logo;
+#[cfg(any(feature = "brand", feature = "communication"))]
+pub use x_logo::*;
 #[cfg(any(feature = "nature"))]
 mod flower;
 #[cfg(any(feature = "nature"))]
@@ -4054,10 +4930,18 @@ pub use prohibit::*;
 mod currency_dollar_simple;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 pub use currency_dollar_simple::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod jar_label;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use jar_label::*;
 #[cfg(any(feature = "health"))]
 mod pill;
 #[cfg(any(feature = "health"))]
 pub use pill::*;
+#[cfg(any(feature = "development"))]
+mod graphics_card;
+#[cfg(any(feature = "development"))]
+pub use graphics_card::*;
 #[cfg(any(feature = "system"))]
 mod dots_three_outline;
 #[cfg(any(feature = "system"))]
@@ -4070,6 +4954,10 @@ pub use battery_warning_vertical::*;
 mod wifi_medium;
 #[cfg(any(feature = "system"))]
 pub use wifi_medium::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod axe;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use axe::*;
 #[cfg(any(feature = "finance"))]
 mod number_four;
 #[cfg(any(feature = "finance"))]
@@ -4106,17 +4994,29 @@ pub use arrow_bend_left_up::*;
 mod list_checks;
 #[cfg(any(feature = "office", feature = "editor"))]
 pub use list_checks::*;
+#[cfg(any(feature = "development", feature = "system"))]
+mod binary;
+#[cfg(any(feature = "development", feature = "system"))]
+pub use binary::*;
 #[cfg(any(feature = "office", feature = "editor", feature = "development"))]
 mod file_tsx;
 #[cfg(any(feature = "office", feature = "editor", feature = "development"))]
 pub use file_tsx::*;
+#[cfg(any(feature = "games", feature = "health"))]
+mod person_simple_ski;
+#[cfg(any(feature = "games", feature = "health"))]
+pub use person_simple_ski::*;
+#[cfg(any(feature = "communication", feature = "system"))]
+mod phone_pause;
+#[cfg(any(feature = "communication", feature = "system"))]
+pub use phone_pause::*;
 #[cfg(any(feature = "office", feature = "editor"))]
 mod note_pencil;
 #[cfg(any(feature = "office", feature = "editor"))]
 pub use note_pencil::*;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 mod baseball;
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 pub use baseball::*;
 #[cfg(any(feature = "communication", feature = "system"))]
 mod share;
@@ -4130,6 +5030,10 @@ pub use cell_signal_none::*;
 mod arrow_square_down;
 #[cfg(any(feature = "arrows"))]
 pub use arrow_square_down::*;
+#[cfg(any(feature = "brand", feature = "media"))]
+mod lastfm_logo;
+#[cfg(any(feature = "brand", feature = "media"))]
+pub use lastfm_logo::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_up;
 #[cfg(any(feature = "arrows"))]
@@ -4142,6 +5046,10 @@ pub use money::*;
 mod wifi_high;
 #[cfg(any(feature = "system"))]
 pub use wifi_high::*;
+#[cfg(any(feature = "design", feature = "development"))]
+mod line_vertical;
+#[cfg(any(feature = "design", feature = "development"))]
+pub use line_vertical::*;
 #[cfg(any(feature = "system", feature = "media"))]
 mod file_svg;
 #[cfg(any(feature = "system", feature = "media"))]
@@ -4150,10 +5058,42 @@ pub use file_svg::*;
 mod note_blank;
 #[cfg(any(feature = "office", feature = "editor"))]
 pub use note_blank::*;
-#[cfg(any(feature = "development", feature = "nature", feature = "health"))]
+#[cfg(any(
+    feature = "nature",
+    feature = "development",
+    feature = "objects",
+    feature = "health"
+))]
+mod microscope;
+#[cfg(any(
+    feature = "nature",
+    feature = "development",
+    feature = "objects",
+    feature = "health"
+))]
+pub use microscope::*;
+#[cfg(any(
+    feature = "development",
+    feature = "nature",
+    feature = "health",
+    feature = "objects"
+))]
 mod test_tube;
-#[cfg(any(feature = "development", feature = "nature", feature = "health"))]
+#[cfg(any(
+    feature = "development",
+    feature = "nature",
+    feature = "health",
+    feature = "objects"
+))]
 pub use test_tube::*;
+#[cfg(any(feature = "commerce", feature = "map"))]
+mod cheers;
+#[cfg(any(feature = "commerce", feature = "map"))]
+pub use cheers::*;
+#[cfg(any(feature = "map", feature = "objects"))]
+mod subway;
+#[cfg(any(feature = "map", feature = "objects"))]
+pub use subway::*;
 #[cfg(any(feature = "health"))]
 mod first_aid;
 #[cfg(any(feature = "health"))]
@@ -4170,10 +5110,18 @@ pub use arrow_line_up_right::*;
 mod police_car;
 #[cfg(any(feature = "map", feature = "objects"))]
 pub use police_car::*;
+#[cfg(any(feature = "design", feature = "editor", feature = "finance"))]
+mod text_superscript;
+#[cfg(any(feature = "design", feature = "editor", feature = "finance"))]
+pub use text_superscript::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
 mod beer_bottle;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
 pub use beer_bottle::*;
+#[cfg(any(feature = "office", feature = "system"))]
+mod calendar_minus;
+#[cfg(any(feature = "office", feature = "system"))]
+pub use calendar_minus::*;
 #[cfg(any(feature = "people"))]
 mod video;
 #[cfg(any(feature = "people"))]
@@ -4266,6 +5214,10 @@ pub use briefcase_metal::*;
 mod train_simple;
 #[cfg(any(feature = "map", feature = "objects"))]
 pub use train_simple::*;
+#[cfg(any(feature = "people"))]
+mod person_simple_circle;
+#[cfg(any(feature = "people"))]
+pub use person_simple_circle::*;
 #[cfg(any(feature = "objects", feature = "games"))]
 mod medal;
 #[cfg(any(feature = "objects", feature = "games"))]
@@ -4302,6 +5254,10 @@ pub use video_camera::*;
 mod arrow_square_down_left;
 #[cfg(any(feature = "arrows"))]
 pub use arrow_square_down_left::*;
+#[cfg(any(feature = "map"))]
+mod globe_x;
+#[cfg(any(feature = "map"))]
+pub use globe_x::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_line_down_right;
 #[cfg(any(feature = "arrows"))]
@@ -4326,10 +5282,26 @@ pub use cross::*;
 mod magnifying_glass;
 #[cfg(any(feature = "editor", feature = "system"))]
 pub use magnifying_glass::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+mod bowling_ball;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+pub use bowling_ball::*;
+#[cfg(any(feature = "media", feature = "system", feature = "communication"))]
+mod video_conference;
+#[cfg(any(feature = "media", feature = "system", feature = "communication"))]
+pub use video_conference::*;
+#[cfg(any(feature = "office", feature = "system"))]
+mod calendar_heart;
+#[cfg(any(feature = "office", feature = "system"))]
+pub use calendar_heart::*;
 #[cfg(any(feature = "development", feature = "finance", feature = "system"))]
 mod minus_circle;
 #[cfg(any(feature = "development", feature = "finance", feature = "system"))]
 pub use minus_circle::*;
+#[cfg(any(feature = "games"))]
+mod checkerboard;
+#[cfg(any(feature = "games"))]
+pub use checkerboard::*;
 #[cfg(any(feature = "arrows"))]
 mod arrow_down_right;
 #[cfg(any(feature = "arrows"))]
@@ -4346,6 +5318,10 @@ pub use paw_print::*;
 mod laptop;
 #[cfg(any(feature = "development", feature = "objects"))]
 pub use laptop::*;
+#[cfg(any(feature = "commerce", feature = "nature"))]
+mod avocado;
+#[cfg(any(feature = "commerce", feature = "nature"))]
+pub use avocado::*;
 #[cfg(any(feature = "health", feature = "system"))]
 mod heartbeat;
 #[cfg(any(feature = "health", feature = "system"))]
@@ -4378,6 +5354,10 @@ pub use caret_left::*;
 mod dice_two;
 #[cfg(any(feature = "games", feature = "objects"))]
 pub use dice_two::*;
+#[cfg(any(feature = "communication", feature = "people"))]
+mod smiley_melting;
+#[cfg(any(feature = "communication", feature = "people"))]
+pub use smiley_melting::*;
 #[cfg(any(feature = "health"))]
 mod tooth;
 #[cfg(any(feature = "health"))]
@@ -4386,6 +5366,10 @@ pub use tooth::*;
 mod text_h;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use text_h::*;
+#[cfg(any(feature = "communication"))]
+mod chat_circle_slash;
+#[cfg(any(feature = "communication"))]
+pub use chat_circle_slash::*;
 #[cfg(any(feature = "brand", feature = "communication"))]
 mod facebook_logo;
 #[cfg(any(feature = "brand", feature = "communication"))]
@@ -4426,9 +5410,9 @@ pub use circle_dashed::*;
 mod file_csv;
 #[cfg(any(feature = "office", feature = "editor"))]
 pub use file_csv::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(any(feature = "nature", feature = "map"))]
 mod mountains;
-#[cfg(any(feature = "nature"))]
+#[cfg(any(feature = "nature", feature = "map"))]
 pub use mountains::*;
 #[cfg(any(feature = "design", feature = "system"))]
 mod grid_four;
@@ -4478,6 +5462,22 @@ pub use shuffle::*;
 mod smiley_wink;
 #[cfg(any(feature = "communication", feature = "people"))]
 pub use smiley_wink::*;
+#[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
+mod washing_machine;
+#[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
+pub use washing_machine::*;
+#[cfg(any(feature = "commerce"))]
+mod cheese;
+#[cfg(any(feature = "commerce"))]
+pub use cheese::*;
+#[cfg(any(feature = "arrows"))]
+mod caret_line_left;
+#[cfg(any(feature = "arrows"))]
+pub use caret_line_left::*;
+#[cfg(any(feature = "commerce", feature = "finance", feature = "office"))]
+mod invoice;
+#[cfg(any(feature = "commerce", feature = "finance", feature = "office"))]
+pub use invoice::*;
 #[cfg(any(feature = "design"))]
 mod bezier_curve;
 #[cfg(any(feature = "design"))]
@@ -4498,6 +5498,10 @@ pub use globe_hemisphere_east::*;
 mod rewind;
 #[cfg(any(feature = "media", feature = "system"))]
 pub use rewind::*;
+#[cfg(any(feature = "objects", feature = "map", feature = "system"))]
+mod flag_banner_fold;
+#[cfg(any(feature = "objects", feature = "map", feature = "system"))]
+pub use flag_banner_fold::*;
 #[cfg(any(feature = "map", feature = "objects"))]
 mod motorcycle;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -4562,6 +5566,10 @@ pub use balloon::*;
 mod person_simple_bike;
 #[cfg(any(feature = "map", feature = "people", feature = "health"))]
 pub use person_simple_bike::*;
+#[cfg(any(feature = "commerce", feature = "objects", feature = "map"))]
+mod bowl_steam;
+#[cfg(any(feature = "commerce", feature = "objects", feature = "map"))]
+pub use bowl_steam::*;
 #[cfg(any(feature = "system", feature = "editor"))]
 mod notches;
 #[cfg(any(feature = "system", feature = "editor"))]
@@ -4610,10 +5618,18 @@ pub use rocket::*;
 mod asterisk;
 #[cfg(any(feature = "communication"))]
 pub use asterisk::*;
+#[cfg(any(feature = "people"))]
+mod user_check;
+#[cfg(any(feature = "people"))]
+pub use user_check::*;
 #[cfg(any(feature = "design"))]
 mod sketch_logo;
 #[cfg(any(feature = "design"))]
 pub use sketch_logo::*;
+#[cfg(any(feature = "games", feature = "health", feature = "map"))]
+mod court_basketball;
+#[cfg(any(feature = "games", feature = "health", feature = "map"))]
+pub use court_basketball::*;
 #[cfg(any(feature = "media", feature = "system"))]
 mod speaker_simple_high;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -4658,6 +5674,10 @@ pub use arrows_counter_clockwise::*;
 mod checks;
 #[cfg(any(feature = "system"))]
 pub use checks::*;
+#[cfg(any(feature = "system"))]
+mod mouse_right_click;
+#[cfg(any(feature = "system"))]
+pub use mouse_right_click::*;
 #[cfg(any(feature = "media", feature = "system"))]
 mod ear;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -4666,10 +5686,18 @@ pub use ear::*;
 mod flame;
 #[cfg(any(feature = "nature", feature = "weather"))]
 pub use flame::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod greater_than_or_equal;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use greater_than_or_equal::*;
 #[cfg(any(feature = "finance", feature = "office"))]
 mod trend_down;
 #[cfg(any(feature = "finance", feature = "office"))]
 pub use trend_down::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod superset_proper_of;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use superset_proper_of::*;
 #[cfg(any(feature = "objects", feature = "system"))]
 mod lock_open;
 #[cfg(any(feature = "objects", feature = "system"))]
@@ -4718,6 +5746,10 @@ pub use backspace::*;
 mod webhooks_logo;
 #[cfg(any(feature = "development", feature = "brand"))]
 pub use webhooks_logo::*;
+#[cfg(any(feature = "system"))]
+mod network_slash;
+#[cfg(any(feature = "system"))]
+pub use network_slash::*;
 #[cfg(any(feature = "office", feature = "editor", feature = "development"))]
 mod file_css;
 #[cfg(any(feature = "office", feature = "editor", feature = "development"))]
@@ -4792,18 +5824,38 @@ pub use caret_circle_down::*;
 mod mouse;
 #[cfg(any(feature = "system"))]
 pub use mouse::*;
+#[cfg(any(feature = "design"))]
+mod pentagon;
+#[cfg(any(feature = "design"))]
+pub use pentagon::*;
 #[cfg(any(feature = "health", feature = "objects"))]
 mod eyeglasses;
 #[cfg(any(feature = "health", feature = "objects"))]
 pub use eyeglasses::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod screwdriver;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use screwdriver::*;
+#[cfg(any(feature = "media"))]
+mod standard_definition;
+#[cfg(any(feature = "media"))]
+pub use standard_definition::*;
 #[cfg(any(feature = "system", feature = "objects"))]
 mod shield_check;
 #[cfg(any(feature = "system", feature = "objects"))]
 pub use shield_check::*;
+#[cfg(any(feature = "media"))]
+mod subtitles_slash;
+#[cfg(any(feature = "media"))]
+pub use subtitles_slash::*;
 #[cfg(any(feature = "map", feature = "objects"))]
 mod van;
 #[cfg(any(feature = "map", feature = "objects"))]
 pub use van::*;
+#[cfg(any(feature = "arrows", feature = "development", feature = "design"))]
+mod vector_two;
+#[cfg(any(feature = "arrows", feature = "development", feature = "design"))]
+pub use vector_two::*;
 #[cfg(any(feature = "nature", feature = "commerce"))]
 mod fish_simple;
 #[cfg(any(feature = "nature", feature = "commerce"))]
@@ -4816,10 +5868,18 @@ pub use charging_station::*;
 mod arrow_circle_up_right;
 #[cfg(any(feature = "arrows"))]
 pub use arrow_circle_up_right::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+mod hockey;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+pub use hockey::*;
 #[cfg(any(feature = "office", feature = "development"))]
 mod graph;
 #[cfg(any(feature = "office", feature = "development"))]
 pub use graph::*;
+#[cfg(any(feature = "commerce", feature = "map"))]
+mod building;
+#[cfg(any(feature = "commerce", feature = "map"))]
+pub use building::*;
 #[cfg(any(feature = "nature", feature = "objects", feature = "map"))]
 mod binoculars;
 #[cfg(any(feature = "nature", feature = "objects", feature = "map"))]
@@ -4836,10 +5896,14 @@ pub use cards::*;
 mod gavel;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 pub use gavel::*;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
+#[cfg(any(feature = "uncategorized"))]
 mod folder;
-#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
+#[cfg(any(feature = "uncategorized"))]
 pub use folder::*;
+#[cfg(any(feature = "media"))]
+mod high_definition;
+#[cfg(any(feature = "media"))]
+pub use high_definition::*;
 #[cfg(any(feature = "arrows"))]
 mod caret_double_right;
 #[cfg(any(feature = "arrows"))]
@@ -4876,6 +5940,10 @@ pub use clock_counter_clockwise::*;
 mod text_h_five;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use text_h_five::*;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+mod pipe_wrench;
+#[cfg(any(feature = "commerce", feature = "objects"))]
+pub use pipe_wrench::*;
 #[cfg(any(feature = "system"))]
 mod fingerprint;
 #[cfg(any(feature = "system"))]
@@ -4908,6 +5976,10 @@ pub use selection_background::*;
 mod gender_intersex;
 #[cfg(any(feature = "people"))]
 pub use gender_intersex::*;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+mod baseball_helmet;
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
+pub use baseball_helmet::*;
 #[cfg(any(
     feature = "office",
     feature = "media",
@@ -4954,10 +6026,22 @@ pub use person_simple::*;
 mod paint_bucket;
 #[cfg(any(feature = "design", feature = "editor", feature = "objects"))]
 pub use paint_bucket::*;
+#[cfg(any(feature = "commerce", feature = "nature"))]
+mod orange;
+#[cfg(any(feature = "commerce", feature = "nature"))]
+pub use orange::*;
+#[cfg(any(feature = "brand", feature = "development"))]
+mod replit_logo;
+#[cfg(any(feature = "brand", feature = "development"))]
+pub use replit_logo::*;
 #[cfg(any(feature = "nature", feature = "system", feature = "weather"))]
 mod moon;
 #[cfg(any(feature = "nature", feature = "system", feature = "weather"))]
 pub use moon::*;
+#[cfg(any(feature = "nature", feature = "commerce"))]
+mod cherries;
+#[cfg(any(feature = "nature", feature = "commerce"))]
+pub use cherries::*;
 #[cfg(any(feature = "communication", feature = "editor", feature = "media"))]
 mod quotes;
 #[cfg(any(feature = "communication", feature = "editor", feature = "media"))]
@@ -4986,14 +6070,26 @@ pub use student::*;
 mod perspective;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use perspective::*;
+#[cfg(any(feature = "commerce", feature = "finance"))]
+mod pix_logo;
+#[cfg(any(feature = "commerce", feature = "finance"))]
+pub use pix_logo::*;
 #[cfg(any(feature = "communication", feature = "people"))]
 mod smiley_meh;
 #[cfg(any(feature = "communication", feature = "people"))]
 pub use smiley_meh::*;
+#[cfg(any(feature = "health"))]
+mod fallout_shelter;
+#[cfg(any(feature = "health"))]
+pub use fallout_shelter::*;
 #[cfg(any(feature = "development", feature = "editor"))]
 mod brackets_curly;
 #[cfg(any(feature = "development", feature = "editor"))]
 pub use brackets_curly::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod member_of;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use member_of::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 mod baseball_cap;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -5002,6 +6098,10 @@ pub use baseball_cap::*;
 mod layout;
 #[cfg(any(feature = "design", feature = "editor"))]
 pub use layout::*;
+#[cfg(any(feature = "commerce", feature = "map", feature = "nature"))]
+mod coffee_bean;
+#[cfg(any(feature = "commerce", feature = "map", feature = "nature"))]
+pub use coffee_bean::*;
 #[cfg(any(feature = "system", feature = "objects"))]
 mod hourglass_medium;
 #[cfg(any(feature = "system", feature = "objects"))]
@@ -5034,14 +6134,26 @@ pub use smiley_angry::*;
 mod hand_palm;
 #[cfg(any(feature = "system", feature = "people"))]
 pub use hand_palm::*;
-#[cfg(any(feature = "health", feature = "map"))]
+#[cfg(any(feature = "design", feature = "editor"))]
+mod flip_horizontal;
+#[cfg(any(feature = "design", feature = "editor"))]
+pub use flip_horizontal::*;
+#[cfg(any(feature = "health", feature = "map", feature = "games"))]
 mod swimming_pool;
-#[cfg(any(feature = "health", feature = "map"))]
+#[cfg(any(feature = "health", feature = "map", feature = "games"))]
 pub use swimming_pool::*;
 #[cfg(any(feature = "office", feature = "editor"))]
 mod notebook;
 #[cfg(any(feature = "office", feature = "editor"))]
 pub use notebook::*;
+#[cfg(any(feature = "editor", feature = "system"))]
+mod list_star;
+#[cfg(any(feature = "editor", feature = "system"))]
+pub use list_star::*;
+#[cfg(any(feature = "finance", feature = "development"))]
+mod not_subset_of;
+#[cfg(any(feature = "finance", feature = "development"))]
+pub use not_subset_of::*;
 #[cfg(any(feature = "design", feature = "objects"))]
 mod stamp;
 #[cfg(any(feature = "design", feature = "objects"))]
@@ -5066,6 +6178,10 @@ pub use align_left::*;
 mod shield_star;
 #[cfg(any(feature = "objects", feature = "system"))]
 pub use shield_star::*;
+#[cfg(any(feature = "arrows"))]
+mod caret_line_right;
+#[cfg(any(feature = "arrows"))]
+pub use caret_line_right::*;
 #[cfg(any(feature = "system"))]
 mod cell_signal_full;
 #[cfg(any(feature = "system"))]
