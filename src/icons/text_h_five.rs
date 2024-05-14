@@ -1,14 +1,12 @@
 //! GENERATED FILE
 
-use crate::IconWeight;
 use leptos::*;
+use crate::IconWeight;
 
-#[cfg(any(feature = "design", feature = "editor"))]
+#[cfg(any(feature ="design", feature ="editor"))]
 #[component]
 pub fn TextHFive(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
-        IconWeight,
-    >,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -22,7 +20,7 @@ pub fn TextHFive(
             }.into_view(),
 IconWeight::Duotone => view! {
     <path
-        d="M240,64V200a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V56H232A8,8,0,0,1,240,64Z"
+        d="M240,72V192a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V56H224A16,16,0,0,1,240,72Z"
         opacity="0.2"
     ></path>
     <path d="M152,56V176a8,8,0,0,1-16,0V124H48v52a8,8,0,0,1-16,0V56a8,8,0,0,1,16,0v52h88V56a8,8,0,0,1,16,0Zm60,88a38.8,38.8,0,0,0-9.41,1.14L206.78,120H240a8,8,0,0,0,0-16H200a8,8,0,0,0-7.89,6.68l-8,48a8,8,0,0,0,13.6,6.92A19.73,19.73,0,0,1,212,160a20,20,0,0,1,0,40,19.73,19.73,0,0,1-14.29-5.6,8,8,0,1,0-11.42,11.2A35.54,35.54,0,0,0,212,216a36,36,0,0,0,0-72Z"></path>

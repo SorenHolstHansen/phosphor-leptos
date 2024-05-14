@@ -1,14 +1,12 @@
 //! GENERATED FILE
 
-use crate::IconWeight;
 use leptos::*;
+use crate::IconWeight;
 
-#[cfg(any(feature = "media", feature = "system"))]
+#[cfg(any(feature ="media", feature ="system"))]
 #[component]
 pub fn Image(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
-        IconWeight,
-    >,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -18,7 +16,7 @@ pub fn Image(
     let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Fill => view! {
-                <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM156,88a12,12,0,1,1-12,12A12,12,0,0,1,156,88ZM40,200V172l52-52,80,80Zm176,0H194.63l-36-36,20-20L216,181.38V200Z"></path>
+                <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM156,88a12,12,0,1,1-12,12A12,12,0,0,1,156,88Zm60,112H40V160.69l46.34-46.35a8,8,0,0,1,11.32,0h0L165,181.66a8,8,0,0,0,11.32-11.32l-17.66-17.65L173,138.34a8,8,0,0,1,11.31,0L216,170.07V200Z"></path>
             }.into_view(),
 IconWeight::Duotone => view! {
     <path

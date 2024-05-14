@@ -1,14 +1,12 @@
 //! GENERATED FILE
 
-use crate::IconWeight;
 use leptos::*;
+use crate::IconWeight;
 
-#[cfg(any(feature = "games"))]
+#[cfg(any(feature ="games"))]
 #[component]
 pub fn Spade(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
-        IconWeight,
-    >,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,

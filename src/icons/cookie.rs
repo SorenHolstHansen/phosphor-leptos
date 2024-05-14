@@ -1,14 +1,12 @@
 //! GENERATED FILE
 
-use crate::IconWeight;
 use leptos::*;
+use crate::IconWeight;
 
-#[cfg(any(feature = "map", feature = "objects", feature = "development"))]
+#[cfg(any(feature ="map", feature ="objects", feature ="development"))]
 #[component]
 pub fn Cookie(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
-        IconWeight,
-    >,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,

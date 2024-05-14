@@ -1,14 +1,12 @@
 //! GENERATED FILE
 
-use crate::IconWeight;
 use leptos::*;
+use crate::IconWeight;
 
-#[cfg(any(feature = "brand"))]
+#[cfg(any(feature ="brand"))]
 #[component]
 pub fn GoodreadsLogo(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
-        IconWeight,
-    >,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -18,7 +16,7 @@ pub fn GoodreadsLogo(
     let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Fill => view! {
-                <path d="M160,104v8a32,32,0,0,1-64,0v-8a32,32,0,0,1,64,0Zm72,24A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128ZM176,64a8,8,0,0,0-16,0v4.26A48,48,0,0,0,80,104v8a48,48,0,0,0,80,35.74V160a32,32,0,0,1-57.6,19.2,8,8,0,1,0-12.8,9.6A48,48,0,0,0,176,160Z"></path>
+                <path d="M200,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V40A16,16,0,0,0,200,24ZM176,160a48,48,0,0,1-86.4,28.8,8,8,0,1,1,12.8-9.6A32,32,0,0,0,160,160V147.74A48,48,0,0,1,80,112v-8a48,48,0,0,1,80-35.74V64a8,8,0,0,1,16,0Zm-16-56v8a32,32,0,0,1-64,0v-8a32,32,0,0,1,64,0Z"></path>
             }.into_view(),
 IconWeight::Duotone => view! {
     <path d="M184,88v24a56,56,0,0,1-112,0V88a56,56,0,0,1,112,0Z" opacity="0.2"></path>

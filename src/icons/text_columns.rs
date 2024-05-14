@@ -1,14 +1,12 @@
 //! GENERATED FILE
 
-use crate::IconWeight;
 use leptos::*;
+use crate::IconWeight;
 
-#[cfg(any(feature = "design", feature = "editor"))]
+#[cfg(any(feature ="design", feature ="editor"))]
 #[component]
 pub fn TextColumns(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
-        IconWeight,
-    >,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -18,7 +16,7 @@ pub fn TextColumns(
     let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Fill => view! {
-                <path d="M120,184v8a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8v-8a8,8,0,0,1,8-8h72A8,8,0,0,1,120,184Zm-8-88H40a8,8,0,0,0-8,8v8a8,8,0,0,0,8,8h72a8,8,0,0,0,8-8v-8A8,8,0,0,0,112,96Zm0,40H40a8,8,0,0,0-8,8v8a8,8,0,0,0,8,8h72a8,8,0,0,0,8-8v-8A8,8,0,0,0,112,136Zm0-80H40a8,8,0,0,0-8,8v8a8,8,0,0,0,8,8h72a8,8,0,0,0,8-8V64A8,8,0,0,0,112,56ZM216,96H144a8,8,0,0,0-8,8v8a8,8,0,0,0,8,8h72a8,8,0,0,0,8-8v-8A8,8,0,0,0,216,96Zm0,80H144a8,8,0,0,0-8,8v8a8,8,0,0,0,8,8h72a8,8,0,0,0,8-8v-8A8,8,0,0,0,216,176Zm0-120H144a8,8,0,0,0-8,8v8a8,8,0,0,0,8,8h72a8,8,0,0,0,8-8V64A8,8,0,0,0,216,56Zm0,80H144a8,8,0,0,0-8,8v8a8,8,0,0,0,8,8h72a8,8,0,0,0,8-8v-8A8,8,0,0,0,216,136Z"></path>
+                <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM112,184H56a8,8,0,0,1,0-16h56a8,8,0,0,1,0,16Zm0-32H56a8,8,0,0,1,0-16h56a8,8,0,0,1,0,16Zm0-32H56a8,8,0,0,1,0-16h56a8,8,0,0,1,0,16Zm0-32H56a8,8,0,0,1,0-16h56a8,8,0,0,1,0,16Zm88,96H144a8,8,0,0,1,0-16h56a8,8,0,0,1,0,16Zm0-32H144a8,8,0,0,1,0-16h56a8,8,0,0,1,0,16Zm0-32H144a8,8,0,0,1,0-16h56a8,8,0,0,1,0,16Zm0-32H144a8,8,0,0,1,0-16h56a8,8,0,0,1,0,16Z"></path>
             }.into_view(),
 IconWeight::Duotone => view! {
     <path d="M216,64V184H40V64Z" opacity="0.2"></path>

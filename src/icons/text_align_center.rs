@@ -1,14 +1,12 @@
 //! GENERATED FILE
 
-use crate::IconWeight;
 use leptos::*;
+use crate::IconWeight;
 
-#[cfg(any(feature = "design", feature = "editor"))]
+#[cfg(any(feature ="design", feature ="editor"))]
 #[component]
 pub fn TextAlignCenter(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
-        IconWeight,
-    >,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -18,10 +16,10 @@ pub fn TextAlignCenter(
     let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Fill => view! {
-                <path d="M224,64v8a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H216A8,8,0,0,1,224,64Zm-32,56a8,8,0,0,0,8-8v-8a8,8,0,0,0-8-8H64a8,8,0,0,0-8,8v8a8,8,0,0,0,8,8Zm24,16H40a8,8,0,0,0-8,8v8a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8v-8A8,8,0,0,0,216,136Zm-24,40H64a8,8,0,0,0-8,8v8a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8v-8A8,8,0,0,0,192,176Z"></path>
+                <path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM176,184H80a8,8,0,0,1,0-16h96a8,8,0,0,1,0,16Zm16-32H64a8,8,0,0,1,0-16H192a8,8,0,0,1,0,16ZM72,112a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,112ZM192,88H64a8,8,0,0,1,0-16H192a8,8,0,0,1,0,16Z"></path>
             }.into_view(),
 IconWeight::Duotone => view! {
-    <path d="M216,64V176a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V64Z" opacity="0.2"></path>
+    <path d="M216,64V168a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V64Z" opacity="0.2"></path>
     <path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64ZM64,96a8,8,0,0,0,0,16H192a8,8,0,0,0,0-16Zm152,40H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm-24,40H64a8,8,0,0,0,0,16H192a8,8,0,0,0,0-16Z"></path>
 }.into_view(),
 IconWeight::Thin => view! {

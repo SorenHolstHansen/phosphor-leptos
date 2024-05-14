@@ -1,14 +1,12 @@
 //! GENERATED FILE
 
-use crate::IconWeight;
 use leptos::*;
+use crate::IconWeight;
 
-#[cfg(any(feature = "system"))]
+#[cfg(any(feature ="system"))]
 #[component]
 pub fn Monitor(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
-        IconWeight,
-    >,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -18,8 +16,7 @@ pub fn Monitor(
     let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Fill => view! {
-                <rect x="24" y="40" width="208" height="160" rx="24"></rect>
-                <path d="M160,216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Z"></path>
+                <path d="M232,64V176a24,24,0,0,1-24,24H48a24,24,0,0,1-24-24V64A24,24,0,0,1,48,40H208A24,24,0,0,1,232,64ZM160,216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Z"></path>
             }.into_view(),
 IconWeight::Duotone => view! {
     <path

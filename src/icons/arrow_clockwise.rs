@@ -1,14 +1,12 @@
 //! GENERATED FILE
 
-use crate::IconWeight;
 use leptos::*;
+use crate::IconWeight;
 
-#[cfg(any(feature = "arrows"))]
+#[cfg(any(feature ="arrows"))]
 #[component]
 pub fn ArrowClockwise(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
-        IconWeight,
-    >,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -21,8 +19,8 @@ pub fn ArrowClockwise(
                 <path d="M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1-5.66-13.66l17-17-10.55-9.65-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,1,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60l10.93,10L226.34,50.3A8,8,0,0,1,240,56Z"></path>
             }.into_view(),
 IconWeight::Duotone => view! {
-    <path d="M232,56v48H184Z" opacity="0.2"></path>
-    <path d="M235.06,48.57a8,8,0,0,0-8.72,1.73L206.68,70,195.75,60a96,96,0,1,0-69.07,164H128a95.44,95.44,0,0,0,65.88-26.19,8,8,0,0,0-11-11.63A80,80,0,1,1,184.56,71.4l.25.24,10.55,9.65-17,17A8,8,0,0,0,184,112h48a8,8,0,0,0,8-8V56A8,8,0,0,0,235.06,48.57ZM224,96H203.31L224,75.28Z"></path>
+    <path d="M216,128a88,88,0,1,1-88-88A88,88,0,0,1,216,128Z" opacity="0.2"></path>
+    <path d="M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z"></path>
 }.into_view(),
 IconWeight::Thin => view! {
     <path d="M236,56v48a4,4,0,0,1-4,4H184a4,4,0,0,1,0-8h37.7L187.53,68.69l-.13-.12a84,84,0,1,0-1.75,120.51,4,4,0,0,1,5.5,5.82A91.43,91.43,0,0,1,128,220h-1.26A92,92,0,1,1,193,62.84l35,32.05V56a4,4,0,1,1,8,0Z"></path>

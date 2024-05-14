@@ -1,14 +1,12 @@
 //! GENERATED FILE
 
-use crate::IconWeight;
 use leptos::*;
+use crate::IconWeight;
 
-#[cfg(any(feature = "commerce", feature = "finance"))]
+#[cfg(any(feature ="commerce", feature ="finance"))]
 #[component]
 pub fn CurrencyRub(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
-        IconWeight,
-    >,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -18,7 +16,7 @@ pub fn CurrencyRub(
     let body = Signal::derive(move || {
         match weight.get() {
             IconWeight::Fill => view! {
-                <path d="M176,108a28,28,0,0,1-28,28H112V80h36A28,28,0,0,1,176,108Zm56,20A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-40-20a44.05,44.05,0,0,0-44-44H104a8,8,0,0,0-8,8v64H80a8,8,0,0,0,0,16H96v16H80a8,8,0,0,0,0,16H96v16a8,8,0,0,0,16,0V184h40a8,8,0,0,0,0-16H112V152h36A44.05,44.05,0,0,0,192,108Z"></path>
+                <path d="M168,104a24,24,0,0,1-24,24H112V80h32A24,24,0,0,1,168,104Zm64,24A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-48-24a40,40,0,0,0-40-40H104a8,8,0,0,0-8,8v56H88a8,8,0,0,0,0,16h8v16H88a8,8,0,0,0,0,16h8v16a8,8,0,0,0,16,0V176h40a8,8,0,0,0,0-16H112V144h32A40,40,0,0,0,184,104Z"></path>
             }.into_view(),
 IconWeight::Duotone => view! {
     <path d="M200,92a52,52,0,0,1-52,52H88V40h60A52,52,0,0,1,200,92Z" opacity="0.2"></path>
