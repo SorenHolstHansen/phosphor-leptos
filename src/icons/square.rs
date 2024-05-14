@@ -17,9 +17,7 @@ pub fn Square(
 ) -> impl IntoView {
     let body = Signal::derive(move || {
         match weight.get() {
-            IconWeight::Fill => view! {
-                <path d="M224,48V208a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48Z"></path>
-            }.into_view(),
+            IconWeight::Fill => view! { <rect x="32" y="32" width="192" height="192" rx="16"></rect> }.into_view(),
 IconWeight::Duotone => view! {
     <path
         d="M216,48V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H208A8,8,0,0,1,216,48Z"

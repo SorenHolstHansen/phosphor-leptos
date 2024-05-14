@@ -3,7 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
-#[cfg(any(feature = "development", feature = "nature", feature = "objects"))]
+#[cfg(any(feature = "development", feature = "nature"))]
 #[component]
 pub fn Flask(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

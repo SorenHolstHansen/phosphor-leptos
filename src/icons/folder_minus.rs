@@ -3,7 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
 #[component]
 pub fn FolderMinus(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

@@ -3,7 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
-#[cfg(any(feature = "health", feature = "objects"))]
+#[cfg(any(feature = "health"))]
 #[component]
 pub fn HandSoap(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
