@@ -3,7 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
-#[cfg(any(feature = "games", feature = "health"))]
+#[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 #[component]
 pub fn Volleyball(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<

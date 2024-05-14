@@ -3,7 +3,7 @@
 use crate::IconWeight;
 use leptos::*;
 
-#[cfg(any(feature = "office", feature = "editor"))]
+#[cfg(any(feature = "office", feature = "editor", feature = "system"))]
 #[component]
 pub fn FileCloud(
     #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
