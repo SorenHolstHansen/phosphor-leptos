@@ -7,7 +7,7 @@ Phosphor is a flexible icon family for interfaces, diagrams, presentations — w
 ## Installation
 
 ```bash
-phosphor-leptos = "0.3.1"
+phosphor-leptos = "0.4.0"
 ```
 
 or
