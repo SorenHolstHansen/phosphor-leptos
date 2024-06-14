@@ -1,12 +1,14 @@
 //! GENERATED FILE
 
-use leptos::*;
 use crate::IconWeight;
+use leptos::*;
 
-#[cfg(any(feature ="commerce", feature ="objects"))]
+#[cfg(any(feature = "commerce", feature = "objects"))]
 #[component]
 pub fn CowboyHat(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
+        IconWeight,
+    >,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -46,13 +48,13 @@ IconWeight::Regular => view! {
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=move || size.get()
-            height=move || height.get()
+            width=size
+            height=height
             fill=color
             transform=transform
             viewBox="0 0 256 256"
-            id=move || id.get().unwrap_or(TextProp::from(""))
-            class=move || class.get().unwrap_or(TextProp::from(""))
+            id=id
+            class=class
         >
             {body}
         </svg>

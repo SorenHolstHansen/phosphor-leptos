@@ -122,13 +122,13 @@ pub fn {component_name}(
     view! {{
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=move || size.get()
-            height=move || height.get()
+            width=size
+            height=height
             fill=color
             transform=transform
             viewBox="0 0 256 256"
-            id=move || id.get().unwrap_or(TextProp::from(""))
-            class=move || class.get().unwrap_or(TextProp::from(""))
+            id=id
+            class=class
         >
             {{body}}
         </svg>
