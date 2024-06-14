@@ -36,13 +36,13 @@ IconWeight::Regular => view! { <path d="M140,204a12,12,0,1,1-12-12A12,12,0,0,1,1
     view! {
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=size
-            height=height
+            width=move || size.get()
+            height=move || height.get()
             fill=color
             transform=transform
             viewBox="0 0 256 256"
-            id=id
-            class=class
+            id=move || id.get().map(|id| id.get())
+            class=move || class.get().map(|cls| cls.get())
         >
             {body}
         </svg>
