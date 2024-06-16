@@ -1,12 +1,14 @@
 //! GENERATED FILE
 
-use leptos::*;
 use crate::IconWeight;
+use leptos::*;
 
-#[cfg(any(feature ="design", feature ="development"))]
+#[cfg(any(feature = "design", feature = "development"))]
 #[component]
 pub fn LineVertical(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
+        IconWeight,
+    >,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -43,8 +45,8 @@ IconWeight::Regular => view! { <path d="M136,24V232a8,8,0,0,1-16,0V24a8,8,0,0,1,
             fill=color
             transform=transform
             viewBox="0 0 256 256"
-            id=move || id.get().unwrap_or(TextProp::from(""))
-            class=move || class.get().unwrap_or(TextProp::from(""))
+            id=move || id.get().map(|id| id.get())
+            class=move || class.get().map(|cls| cls.get())
         >
             {body}
         </svg>

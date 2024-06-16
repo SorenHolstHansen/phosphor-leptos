@@ -127,8 +127,8 @@ pub fn {component_name}(
             fill=color
             transform=transform
             viewBox="0 0 256 256"
-            id=move || id.get().unwrap_or(TextProp::from(""))
-            class=move || class.get().unwrap_or(TextProp::from(""))
+            id=move || id.get().map(|id| id.get())
+            class=move || class.get().map(|cls| cls.get())
         >
             {{body}}
         </svg>

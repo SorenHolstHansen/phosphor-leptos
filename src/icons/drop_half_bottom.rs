@@ -1,12 +1,19 @@
 //! GENERATED FILE
 
-use leptos::*;
 use crate::IconWeight;
+use leptos::*;
 
-#[cfg(any(feature ="design", feature ="editor", feature ="nature", feature ="weather"))]
+#[cfg(any(
+    feature = "design",
+    feature = "editor",
+    feature = "nature",
+    feature = "weather"
+))]
 #[component]
 pub fn DropHalfBottom(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
+    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
+        IconWeight,
+    >,
     #[prop(into, default = TextProp::from("1em"))] size: TextProp,
     #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
     #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
@@ -51,8 +58,8 @@ IconWeight::Regular => view! {
             fill=color
             transform=transform
             viewBox="0 0 256 256"
-            id=move || id.get().unwrap_or(TextProp::from(""))
-            class=move || class.get().unwrap_or(TextProp::from(""))
+            id=move || id.get().map(|id| id.get())
+            class=move || class.get().map(|cls| cls.get())
         >
             {body}
         </svg>
