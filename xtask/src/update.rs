@@ -87,13 +87,13 @@ fn icon_template(
     icon_name: &str,
     icon_weights: impl Iterator<Item = (String, String)>,
 ) -> TokenStream {
-    let component_ident = format_ident!("{}", icon_name.to_case(Case::UpperCamel));
+    let component_ident = format_ident!("{}", icon_name.to_case(Case::UpperSnake));
     let weights = icon_weights.map(|w| w.1);
 
     quote! {
         //! GENERATED FILE
         #[allow(non_upper_case_globals)]
-        pub const #component_ident: &crate::IconData = &crate::IconData([#(#weights),*]);
+        pub const #component_ident: &crate::IconWeightData = &crate::IconWeightData([#(#weights),*]);
     }
 }
 
@@ -160,9 +160,11 @@ pub fn run() {
             let mod_name = format_ident!("{}", icon_name.to_case(Case::Snake));
             mod_content.push(quote! {
                 #[cfg(any(#(feature = #features),*))]
+                #[doc(hidden)]
                 mod #mod_name;
 
                 #[cfg(any(#(feature = #features),*))]
+                #[doc(hidden)]
                 pub use #mod_name::*;
             });
         };
@@ -182,11 +184,29 @@ pub fn run() {
     });
 
     let lib = quote! {
+        //! Phosphor is a flexible icon family for interfaces, diagrams,
+        //! presentations — whatever, really.
+        //! You can explore the available icons at [phosphoricons.com](phosphoricons.com).
+        //!
+        //! ```
+        //! use leptos::*;
+        //! use phosphor_leptos::{Icon, IconWeight, HORSE, HEART, CUBE};
+        //!
+        //! #[component]
+        //! fn MyComponent() -> impl IntoView {
+        //!     view! {
+        //!         <Icon icon=HORSE />
+        //!         <Icon icon=HEART color="#AE2983" weight=IconWeight::Fill size="32px" />
+        //!         <Icon icon=CUBE color="teal" weight=IconWeight::Duotone />
+        //!     }
+        //! }
+        //! ```
         use leptos::*;
 
         mod icons;
         pub use icons::*;
 
+        /// An icon's weight or style.
         #[derive(Debug, Clone, Copy, PartialEq, Eq)]
         pub enum IconWeight {
             #(#weight_variants),*
@@ -194,10 +214,27 @@ pub fn run() {
 
         /// The SVG path data for all weights of a particular icon.
         #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-        pub struct IconData([&'static str; #weight_len]);
+        pub struct IconWeightData([&'static str; #weight_len]);
 
-        impl IconData {
+        impl IconWeightData {
             /// Retrieve the SVG paths for the given weight.
+            ///
+            /// The returned string slice contains raw path elements.
+            /// To render them manually, you'll need to provide them to
+            /// an SVG component's `inner_html` property.
+            ///
+            /// ```
+            /// # use leptos::*;
+            /// # #[component]
+            /// # fn MyComponent() -> impl IntoView {
+            /// use phosphor_leptos::{ACORN, IconWeight};
+            ///
+            /// let raw_html = ACORN.get(IconWeight::Regular);
+            /// view! {
+            ///     <svg inner_html=raw_html />
+            /// }
+            /// # }
+            /// ```
             pub fn get(&self, weight: IconWeight) -> &'static str {
                 match weight {
                     #(#weight_indeces),*
@@ -205,17 +242,62 @@ pub fn run() {
             }
         }
 
-        /// A container component for [IconData].
+        /// A convenient alias for passing around references to [IconWeightData].
+        ///
+        /// While [IconWeightData] is `Copy`, it's not particularly beneficial to pass
+        /// all those bytes around (48 bytes on WASM, 96 bytes on 64 bit systems).
+        pub type IconData = &'static IconWeightData;
+
+        /// A thin wrapper around `<svg />` for displaying Phosphor icons.
+        ///
+        /// ```
+        /// use leptos::*;
+        /// use phosphor_leptos::{Icon, IconWeight, HORSE, HEART, CUBE};
+        ///
+        /// #[component]
+        /// fn MyComponent() -> impl IntoView {
+        ///     view! {
+        ///         <Icon icon=HORSE />
+        ///         <Icon icon=HEART color="#AE2983" weight=IconWeight::Fill size="32px" />
+        ///         <Icon icon=CUBE color="teal" weight=IconWeight::Duotone />
+        ///     }
+        /// }
+        /// ```
         #[component]
         pub fn Icon(
-            icon: &'static IconData,
+            /// The icon data to display.
+            icon: IconData,
+
+            /// Icon weight/style. This can also be used, for example, to "toggle" an icon's state:
+            /// a rating component could use Stars with [IconWeight::Regular] to denote an empty star,
+            /// and [IconWeight::Fill] to denote a filled star.
             #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
                 IconWeight,
             >,
+
+            /// Icon height & width. As with standard React elements,
+            /// this can be a number, or a string with units in
+            /// `px`, `%`, `em`, `rem`, `pt`, `cm`, `mm`, `in`.
             #[prop(into, default = TextProp::from("1em"))] size: TextProp,
+
+            /// Icon stroke/fill color.
+            ///
+            /// This can be any CSS color string, including
+            /// `hex`, `rgb`, `rgba`, `hsl`, `hsla`, named colors,
+            /// or the special `currentColor` variable.
+            ///
             #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
+
+            /// Flip the icon horizontally.
+            ///
+            /// This can be useful in RTL languages where normal
+            /// icon orientation is not appropriate.
             #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+
+            /// The HTML ID of the underlying SVG element.
             #[prop(into, optional)] id: MaybeProp<TextProp>,
+
+            /// The CSS class property of the underlying SVG element.
             #[prop(into, optional)] class: MaybeProp<TextProp>,
         ) -> impl IntoView {
             let html = move || icon.get(weight.get());
