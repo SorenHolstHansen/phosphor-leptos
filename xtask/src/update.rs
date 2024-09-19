@@ -5,14 +5,6 @@ use regex::Regex;
 use std::collections::{BTreeMap, HashMap};
 use std::{fs, process};
 
-fn match_case(weight_name: &str, svg: &str) -> TokenStream {
-    let weight_ident = format_ident!("{}", weight_name.to_case(Case::UpperCamel));
-
-    quote! {
-        IconWeight::#weight_ident => view! { #svg }.into_view()
-    }
-}
-
 fn extract_categories(input: &str) -> (HashMap<String, Vec<String>>, BTreeMap<String, ()>) {
     let mut icon_categories: HashMap<String, Vec<String>> = HashMap::new();
     let mut categories_set: BTreeMap<String, ()> = BTreeMap::new();
@@ -50,7 +42,7 @@ fn cargo_template(features: &BTreeMap<String, ()>) -> String {
 
 [package]
 name = "phosphor-leptos"
-version = "0.5.0"
+version = "0.6.0"
 description = "phosphor icons for leptos"
 authors = ["Søren H. Hansen"]
 readme = "README.md"
@@ -91,57 +83,18 @@ default = ["all"]
     template
 }
 
-fn icon_template<'a>(
+fn icon_template(
     icon_name: &str,
     icon_weights: impl Iterator<Item = (String, String)>,
-    features: impl Iterator<Item = &'a String>,
 ) -> TokenStream {
     let component_ident = format_ident!("{}", icon_name.to_case(Case::UpperCamel));
-
-    let weights = icon_weights.map(|w| match_case(&w.0, &w.1));
+    let weights = icon_weights.map(|w| w.1);
 
     quote! {
         //! GENERATED FILE
-
-        use leptos::prelude::*;
-        use crate::IconWeight;
-
-        #[cfg(any(#(feature = #features),*))]
-        #[component]
-        pub fn #component_ident(
-            #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
-            #[prop(into, default = TextProp::from("1em"))] size: TextProp,
-            #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
-            #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
-            #[prop(into, optional)] id: MaybeProp<TextProp>,
-            #[prop(into, optional)] class: MaybeProp<TextProp>,
-        ) -> impl IntoView {
-            let body = Signal::derive(move || {
-                match weight.get() {
-                    #(#weights),*
-                }
-            });
-
-            let transform = move || mirrored.get().then_some("scale(-1, 1)");
-            let height = size.clone();
-
-            leptos::tachys::svg::svg()
-                .child(body)
-                .attr("xmlns", "http://www.w3.org/2000/svg")
-                .attr("width", move || size.get())
-                .attr("height", move || height.get())
-                .attr("fill", color)
-                .attr("transform", transform)
-                .attr("viewBox", "0 0 256 256")
-                .attr("id", move || id.get().map(|id| id.get()))
-                .class(move || class.get().map(|cls| cls.get()))
-        }
+        #[allow(non_upper_case_globals)]
+        pub const #component_ident: &crate::IconData = &crate::IconData([#(#weights),*]);
     }
-}
-
-fn format_file(file: TokenStream) -> String {
-    let parsed: syn::File = syn::parse2(file).expect("Error parsing generated token stream");
-    prettyplease::unparse(&parsed)
 }
 
 const OUTPUT_DIR: &str = "src/icons";
@@ -164,10 +117,13 @@ pub fn run() {
     fs::create_dir(OUTPUT_DIR).unwrap();
 
     // Get a list of all the icon weights
-    let weights: Vec<_> = fs::read_dir(ASSETS_DIR)
+    let mut weights: Vec<_> = fs::read_dir(ASSETS_DIR)
         .unwrap()
         .map(|entry| entry.unwrap().file_name().into_string().unwrap())
         .collect();
+
+    // Sort the weights so their ordering is stable.
+    weights.sort();
 
     let regular_icons = fs::read_dir(format!("{ASSETS_DIR}/regular")).unwrap();
     let mut mod_content = Vec::new();
@@ -193,11 +149,11 @@ pub fn run() {
                 (weight.to_string(), svg.to_string())
             });
 
-            let file = icon_template(&icon_name, icon_weights, features.iter());
+            let file = icon_template(&icon_name, icon_weights);
 
             fs::write(
                 format!("{OUTPUT_DIR}/{}.rs", icon_name.to_case(Case::Snake)),
-                format_file(file),
+                file.to_string(),
             )
             .unwrap();
 
@@ -212,13 +168,22 @@ pub fn run() {
         };
     }
 
-    let module = format_file(quote! { #(#mod_content)* });
+    let module = quote! { #(#mod_content)* }.to_string();
     fs::write(format!("{OUTPUT_DIR}/mod.rs"), module).unwrap();
 
-    let weight_variants = weights
+    let weight_variants: Vec<_> = weights
         .iter()
-        .map(|w| format_ident!("{}", w.to_case(Case::UpperCamel)));
+        .map(|w| format_ident!("{}", w.to_case(Case::UpperCamel)))
+        .collect();
+
+    let weight_len = weight_variants.len();
+    let weight_indeces = weight_variants.iter().enumerate().map(|(i, v)| {
+        quote! { IconWeight::#v => self.0[#i] }
+    });
+
     let lib = quote! {
+        use leptos::*;
+
         mod icons;
         pub use icons::*;
 
@@ -226,17 +191,62 @@ pub fn run() {
         pub enum IconWeight {
             #(#weight_variants),*
         }
+
+        /// The SVG path data for all weights of a particular icon.
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub struct IconData([&'static str; #weight_len]);
+
+        impl IconData {
+            /// Retrieve the SVG paths for the given weight.
+            pub fn get(&self, weight: IconWeight) -> &'static str {
+                match weight {
+                    #(#weight_indeces),*
+                }
+            }
+        }
+
+        /// A container component for [IconData].
+        #[component]
+        pub fn Icon(
+            icon: &'static IconData,
+            #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
+                IconWeight,
+            >,
+            #[prop(into, default = TextProp::from("1em"))] size: TextProp,
+            #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
+            #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+            #[prop(into, optional)] id: MaybeProp<TextProp>,
+            #[prop(into, optional)] class: MaybeProp<TextProp>,
+        ) -> impl IntoView {
+            let html = move || icon.get(weight.get());
+            let transform = move || mirrored.get().then_some("scale(-1, 1)");
+            let height = size.clone();
+
+            view! {
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width=move || size.get()
+                    height=move || height.get()
+                    fill=color
+                    transform=transform
+                    viewBox="0 0 256 256"
+                    id=move || id.get().map(|id| id.get())
+                    class=move || class.get().map(|cls| cls.get())
+                    inner_html=html
+                />
+            }
+        }
     };
 
-    fs::write("src/lib.rs", format_file(lib)).expect("Error writing lib file");
+    fs::write("src/lib.rs", lib.to_string()).expect("Error writing lib file");
 
     // Write out the newly generated cargo file
     fs::write("Cargo.toml", cargo_template(&categories_set)).unwrap();
 
-    // process::Command::new("cargo")
-    //     .arg("fmt")
-    //     .status()
-    //     .expect("Error running cargo fmt");
+    process::Command::new("cargo")
+        .arg("fmt")
+        .status()
+        .expect("Error running cargo fmt");
     process::Command::new("leptosfmt")
         .arg("src")
         .status()
