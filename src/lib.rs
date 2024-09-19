@@ -1,6 +1,6 @@
 #![doc = r" Phosphor is a flexible icon family for interfaces, diagrams,"]
 #![doc = r" presentations — whatever, really."]
-#![doc = r" You can explore the available icons at [phosphoricons.com](phosphoricons.com)."]
+#![doc = r" You can explore the available icons at [phosphoricons.com](https://phosphoricons.com)."]
 #![doc = r""]
 #![doc = r" ```"]
 #![doc = r" use leptos::*;"]

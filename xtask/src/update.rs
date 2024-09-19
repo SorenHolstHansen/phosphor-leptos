@@ -198,7 +198,7 @@ pub fn run() {
     let lib = quote! {
         //! Phosphor is a flexible icon family for interfaces, diagrams,
         //! presentations — whatever, really.
-        //! You can explore the available icons at [phosphoricons.com](phosphoricons.com).
+        //! You can explore the available icons at [phosphoricons.com](https://phosphoricons.com).
         //!
         //! ```
         //! use leptos::*;
