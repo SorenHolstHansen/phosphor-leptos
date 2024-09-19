@@ -92,7 +92,6 @@ fn icon_template(
 
     quote! {
         //! GENERATED FILE
-        #[allow(non_upper_case_globals)]
         pub const #component_ident: &crate::IconWeightData = &crate::IconWeightData([#(#weights),*]);
     }
 }
@@ -123,51 +122,64 @@ pub fn run() {
         .collect();
 
     // Sort the weights so their ordering is stable.
-    weights.sort();
+    weights.sort_unstable();
 
     let regular_icons = fs::read_dir(format!("{ASSETS_DIR}/regular")).unwrap();
+
+    let mut file_names: Vec<_> = regular_icons
+        .into_iter()
+        .filter_map(|e| {
+            let entry = e.unwrap();
+            if entry.path().is_file() {
+                Some(entry.file_name().into_string().unwrap())
+            } else {
+                None
+            }
+        })
+        .collect();
+
+    // We'll also sort the file names so each generation run has a
+    // stable order. This should improve `src/mod.rs` diffs.
+    file_names.sort_unstable();
+
     let mut mod_content = Vec::new();
-    for entry in regular_icons {
-        let entry = entry.unwrap();
-        if entry.path().is_file() {
-            let file_name = entry.file_name().into_string().unwrap();
-            let icon_name = file_name.strip_suffix(".svg").unwrap().to_string();
+    for file_name in file_names {
+        let icon_name = file_name.strip_suffix(".svg").unwrap().to_string();
 
-            //derive the feature set string for this icon from its mappings.
-            //If we haven't been able to match the icon's category, assign in to 'Uncategorized'
-            let features = icon_categories.get(&icon_name).unwrap_or(&uncategorized);
+        //derive the feature set string for this icon from its mappings.
+        //If we haven't been able to match the icon's category, assign in to 'Uncategorized'
+        let features = icon_categories.get(&icon_name).unwrap_or(&uncategorized);
 
-            let icon_weights = weights.iter().map(|weight| {
-                let file_name = if weight == "regular" {
-                    format!("{icon_name}.svg")
-                } else {
-                    format!("{icon_name}-{weight}.svg")
-                };
-                let svg = fs::read_to_string(format!("{ASSETS_DIR}/{weight}/{file_name}")).unwrap();
-                let svg = svg_tag_regex.replace(&svg, "");
-                let svg = svg_closing_tag_regex.replace(&svg, "");
-                (weight.to_string(), svg.to_string())
-            });
+        let icon_weights = weights.iter().map(|weight| {
+            let file_name = if weight == "regular" {
+                format!("{icon_name}.svg")
+            } else {
+                format!("{icon_name}-{weight}.svg")
+            };
+            let svg = fs::read_to_string(format!("{ASSETS_DIR}/{weight}/{file_name}")).unwrap();
+            let svg = svg_tag_regex.replace(&svg, "");
+            let svg = svg_closing_tag_regex.replace(&svg, "");
+            (weight.to_string(), svg.to_string())
+        });
 
-            let file = icon_template(&icon_name, icon_weights);
+        let file = icon_template(&icon_name, icon_weights);
 
-            fs::write(
-                format!("{OUTPUT_DIR}/{}.rs", icon_name.to_case(Case::Snake)),
-                file.to_string(),
-            )
-            .unwrap();
+        fs::write(
+            format!("{OUTPUT_DIR}/{}.rs", icon_name.to_case(Case::Snake)),
+            file.to_string(),
+        )
+        .unwrap();
 
-            let mod_name = format_ident!("{}", icon_name.to_case(Case::Snake));
-            mod_content.push(quote! {
-                #[cfg(any(#(feature = #features),*))]
-                #[doc(hidden)]
-                mod #mod_name;
+        let mod_name = format_ident!("{}", icon_name.to_case(Case::Snake));
+        mod_content.push(quote! {
+            #[cfg(any(#(feature = #features),*))]
+            #[doc(hidden)]
+            mod #mod_name;
 
-                #[cfg(any(#(feature = #features),*))]
-                #[doc(hidden)]
-                pub use #mod_name::*;
-            });
-        };
+            #[cfg(any(#(feature = #features),*))]
+            #[doc(hidden)]
+            pub use #mod_name::*;
+        });
     }
 
     let module = quote! { #(#mod_content)* }.to_string();
