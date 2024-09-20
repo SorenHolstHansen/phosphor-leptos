@@ -2,12 +2,15 @@
 
 # phosphor-leptos
 
-Phosphor is a flexible icon family for interfaces, diagrams, presentations — whatever, really. More icons at [phosphoricons.com](https://phosphoricons.com).
+[![crates.io](https://img.shields.io/crates/v/phosphor-leptos)](https://crates.io/crates/phosphor-leptos)
+[![docs.rs](https://docs.rs/phosphor-leptos/badge.svg)](https://docs.rs/phosphor-leptos)
+
+Phosphor is a flexible icon family for interfaces, diagrams, presentations — whatever, really. You can explore the available icons at [phosphoricons.com](https://phosphoricons.com).
 
 ## Installation
 
 ```bash
-phosphor-leptos = "0.5.0"
+phosphor-leptos = "0.6.0"
 ```
 
 or
@@ -20,20 +23,21 @@ cargo add phosphor-leptos
 
 ```rs
 use leptos::*;
-use phosphor_leptos::{IconWeight, Horse, Heart, Cube};
+use phosphor_leptos::{Icon, IconWeight, HORSE, HEART, CUBE};
+
 #[component]
 fn MyComponent() -> impl IntoView {
     view! {
-        <Horse />
-        <Heart color="#AE2983" weight=IconWeight::Fill size="32px" />
-        <Cube color="teal" weight=IconWeight::Duotone />
+        <Icon icon=HORSE />
+        <Icon icon=HEART color="#AE2983" weight=IconWeight::Fill size="32px" />
+        <Icon icon=CUBE color="teal" weight=IconWeight::Duotone />
     }
 }
 ```
 
 ### Props
 
-All of the props are `MaybeSignal`'s so they can be static or reactive.
+All of the props are `MaybeSignal`s so they can be static or reactive.
 
 - **color?**: `string` – Icon stroke/fill color. Can be any CSS color string, including `hex`, `rgb`, `rgba`, `hsl`, `hsla`, named colors, or the special `currentColor` variable.
 - **size?**: `number | string` – Icon height & width. As with standard React elements, this can be a number, or a string with units in `px`, `%`, `em`, `rem`, `pt`, `cm`, `mm`, `in`.
@@ -51,6 +55,7 @@ MIT © [Phosphor Icons](https://github.com/phosphor-icons)
 ## Contributing
 
 To generate all the icons, run
+
 ```bash
 cargo xtask update
 ```

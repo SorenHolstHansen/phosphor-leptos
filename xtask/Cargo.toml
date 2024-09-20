@@ -7,3 +7,5 @@ edition = "2021"
 regex = "1.10.2"
 convert_case = "0.6.0"
 clap = { version = "4.4.10", features = ["derive"] }
+quote = "1.0.36"
+proc-macro2 = { version = "1.0.84", default-features = false }

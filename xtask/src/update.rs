@@ -1,15 +1,9 @@
 use convert_case::{Case, Casing};
+use proc_macro2::TokenStream;
+use quote::{format_ident, quote};
 use regex::Regex;
 use std::collections::{BTreeMap, HashMap};
 use std::{fs, process};
-
-fn match_case(weight_name: &str, svg: &str) -> String {
-    format!(
-        "IconWeight::{} => view!{{ {} }}.into_view()",
-        weight_name.to_case(Case::UpperCamel),
-        svg
-    )
-}
 
 fn extract_categories(input: &str) -> (HashMap<String, Vec<String>>, BTreeMap<String, ()>) {
     let mut icon_categories: HashMap<String, Vec<String>> = HashMap::new();
@@ -41,13 +35,14 @@ fn extract_categories(input: &str) -> (HashMap<String, Vec<String>>, BTreeMap<St
     categories_set.insert("uncategorized".to_string(), ());
     (icon_categories, categories_set)
 }
+
 fn cargo_template(features: &BTreeMap<String, ()>) -> String {
     let mut template = r#"# GENERATED FILE!
 # Edit xtask/src/update.rs to maintain this file
 
 [package]
 name = "phosphor-leptos"
-version = "0.5.0"
+version = "0.6.0"
 description = "phosphor icons for leptos"
 authors = ["Søren H. Hansen"]
 readme = "README.md"
@@ -81,7 +76,7 @@ default = ["all"]
     ));
 
     // now add the rest, read from the icon_categories
-    for (feature, _) in features {
+    for feature in features.keys() {
         template.push_str(&format!("{feature} = []\n"));
     }
 
@@ -90,56 +85,15 @@ default = ["all"]
 
 fn icon_template(
     icon_name: &str,
-    icon_weights: Vec<(String, String)>,
-    features: &String,
-) -> String {
-    let component_name = icon_name.to_case(Case::UpperCamel);
-    format!(
-        r#"//! GENERATED FILE
+    icon_weights: impl Iterator<Item = (String, String)>,
+) -> TokenStream {
+    let component_ident = format_ident!("{}", icon_name.to_case(Case::UpperSnake));
+    let weights = icon_weights.map(|w| w.1);
 
-use leptos::*;
-use crate::IconWeight;
-
-#[cfg(any({features}))]
-#[component]
-pub fn {component_name}(
-    #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<IconWeight>,
-    #[prop(into, default = TextProp::from("1em"))] size: TextProp,
-    #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
-    #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
-    #[prop(into, optional)] id: MaybeProp<TextProp>,
-    #[prop(into, optional)] class: MaybeProp<TextProp>,
-) -> impl IntoView {{
-    let body = Signal::derive(move || {{
-        match weight.get() {{
-            {}
-        }}
-    }});
-
-    let transform = move || if mirrored.get() {{ "scale(-1, 1)" }} else {{ "" }};
-    let height = size.clone();
-
-    view! {{
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width=move || size.get()
-            height=move || height.get()
-            fill=color
-            transform=transform
-            viewBox="0 0 256 256"
-            id=move || id.get().map(|id| id.get())
-            class=move || class.get().map(|cls| cls.get())
-        >
-            {{body}}
-        </svg>
-    }}
-}}"#,
-        icon_weights
-            .iter()
-            .map(|w| match_case(&w.0, &w.1))
-            .collect::<Vec<_>>()
-            .join(",\n")
-    )
+    quote! {
+        //! GENERATED FILE
+        pub const #component_ident: &crate::IconWeightData = &crate::IconWeightData([#(#weights),*]);
+    }
 }
 
 const OUTPUT_DIR: &str = "src/icons";
@@ -154,82 +108,231 @@ pub fn run() {
     let (icon_categories, categories_set) =
         extract_categories(fs::read_to_string(TYPESCRIPT_EXPORT_FILE).unwrap().as_str());
 
+    let uncategorized = vec!["uncategorized".into()];
+
     // Clean up the icons folder
     let _ = fs::remove_dir_all(OUTPUT_DIR);
     fs::write("src/lib.rs", "").unwrap();
     fs::create_dir(OUTPUT_DIR).unwrap();
 
     // Get a list of all the icon weights
-    let weights: Vec<_> = fs::read_dir(ASSETS_DIR)
+    let mut weights: Vec<_> = fs::read_dir(ASSETS_DIR)
         .unwrap()
         .map(|entry| entry.unwrap().file_name().into_string().unwrap())
         .collect();
+
+    // Sort the weights so their ordering is stable.
+    weights.sort_unstable();
+
     let regular_icons = fs::read_dir(format!("{ASSETS_DIR}/regular")).unwrap();
-    let mut mod_content = String::new();
-    for entry in regular_icons {
-        let entry = entry.unwrap();
-        if entry.path().is_file() {
-            let file_name = entry.file_name().into_string().unwrap();
-            let icon_name = file_name.strip_suffix(".svg").unwrap().to_string();
 
-            //derive the feature set string for this icon from its mappings.
-            //If we haven't been able to match the icon's category, assign in to 'Uncategorized'
-            let features = icon_categories
-                .get(&icon_name)
-                .unwrap_or(&vec!["uncategorized".to_string()])
-                .iter()
-                .map(|category| format!(r#"feature ="{category}""#))
-                .collect::<Vec<_>>();
-            let features = features.join(", ");
+    let mut file_names: Vec<_> = regular_icons
+        .into_iter()
+        .filter_map(|e| {
+            let entry = e.unwrap();
+            if entry.path().is_file() {
+                Some(entry.file_name().into_string().unwrap())
+            } else {
+                None
+            }
+        })
+        .collect();
 
-            let icon_weights: Vec<_> = weights
-                .iter()
-                .map(|weight| {
-                    let file_name = if weight == "regular" {
-                        format!("{icon_name}.svg")
-                    } else {
-                        format!("{icon_name}-{weight}.svg")
-                    };
-                    let svg =
-                        fs::read_to_string(format!("{ASSETS_DIR}/{weight}/{file_name}")).unwrap();
-                    let svg = svg_tag_regex.replace(&svg, "");
-                    let svg = svg_closing_tag_regex.replace(&svg, "");
-                    (weight.to_string(), svg.to_string())
-                })
-                .collect();
-            fs::write(
-                format!("{OUTPUT_DIR}/{}.rs", icon_name.to_case(Case::Snake)),
-                icon_template(&icon_name, icon_weights, &features),
-            )
-            .unwrap();
+    // We'll also sort the file names so each generation run has a
+    // stable order. This should improve `src/mod.rs` diffs.
+    file_names.sort_unstable();
 
-            mod_content.push_str(&format!(
-                "#[cfg(any({features}))]\nmod {name};\n#[cfg(any({features}))]\npub use {name}::*;\n",
-                name = icon_name.to_case(Case::Snake)
-            ));
-        };
+    let mut mod_content = Vec::new();
+    for file_name in file_names {
+        let icon_name = file_name.strip_suffix(".svg").unwrap().to_string();
+
+        //derive the feature set string for this icon from its mappings.
+        //If we haven't been able to match the icon's category, assign in to 'Uncategorized'
+        let features = icon_categories.get(&icon_name).unwrap_or(&uncategorized);
+
+        let icon_weights = weights.iter().map(|weight| {
+            let file_name = if weight == "regular" {
+                format!("{icon_name}.svg")
+            } else {
+                format!("{icon_name}-{weight}.svg")
+            };
+            let svg = fs::read_to_string(format!("{ASSETS_DIR}/{weight}/{file_name}")).unwrap();
+            let svg = svg_tag_regex.replace(&svg, "");
+            let svg = svg_closing_tag_regex.replace(&svg, "");
+            (weight.to_string(), svg.to_string())
+        });
+
+        let file = icon_template(&icon_name, icon_weights);
+
+        fs::write(
+            format!("{OUTPUT_DIR}/{}.rs", icon_name.to_case(Case::Snake)),
+            file.to_string(),
+        )
+        .unwrap();
+
+        let mod_name = format_ident!("{}", icon_name.to_case(Case::Snake));
+        mod_content.push(quote! {
+            #[cfg(any(#(feature = #features),*))]
+            #[doc(hidden)]
+            mod #mod_name;
+
+            #[cfg(any(#(feature = #features),*))]
+            #[doc(hidden)]
+            pub use #mod_name::*;
+        });
     }
 
-    fs::write(format!("{OUTPUT_DIR}/mod.rs"), mod_content).unwrap();
-    fs::write(
-        "src/lib.rs",
-        format!(
-            r#"mod icons;
-pub use icons::*;
+    let module = quote! { #(#mod_content)* }.to_string();
+    fs::write(format!("{OUTPUT_DIR}/mod.rs"), module).unwrap();
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum IconWeight {{
-    {}
-}}
-"#,
-            weights
-                .iter()
-                .map(|w| w.to_case(Case::UpperCamel))
-                .collect::<Vec<_>>()
-                .join(", ")
-        ),
-    )
-    .unwrap();
+    let weight_variants: Vec<_> = weights
+        .iter()
+        .map(|w| format_ident!("{}", w.to_case(Case::UpperCamel)))
+        .collect();
+
+    let weight_len = weight_variants.len();
+    let weight_indeces = weight_variants.iter().enumerate().map(|(i, v)| {
+        quote! { IconWeight::#v => self.0[#i] }
+    });
+
+    let lib = quote! {
+        //! Phosphor is a flexible icon family for interfaces, diagrams,
+        //! presentations — whatever, really.
+        //! You can explore the available icons at [phosphoricons.com](https://phosphoricons.com).
+        //!
+        //! ```
+        //! use leptos::*;
+        //! use phosphor_leptos::{Icon, IconWeight, HORSE, HEART, CUBE};
+        //!
+        //! #[component]
+        //! fn MyComponent() -> impl IntoView {
+        //!     view! {
+        //!         <Icon icon=HORSE />
+        //!         <Icon icon=HEART color="#AE2983" weight=IconWeight::Fill size="32px" />
+        //!         <Icon icon=CUBE color="teal" weight=IconWeight::Duotone />
+        //!     }
+        //! }
+        //! ```
+        use leptos::*;
+
+        mod icons;
+        pub use icons::*;
+
+        /// An icon's weight or style.
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum IconWeight {
+            #(#weight_variants),*
+        }
+
+        /// The SVG path data for all weights of a particular icon.
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub struct IconWeightData([&'static str; #weight_len]);
+
+        impl IconWeightData {
+            /// Retrieve the SVG paths for the given weight.
+            ///
+            /// The returned string slice contains raw path elements.
+            /// To render them manually, you'll need to provide them to
+            /// an SVG component's `inner_html` property.
+            ///
+            /// ```
+            /// # use leptos::*;
+            /// # #[component]
+            /// # fn MyComponent() -> impl IntoView {
+            /// use phosphor_leptos::{ACORN, IconWeight};
+            ///
+            /// let raw_html = ACORN.get(IconWeight::Regular);
+            /// view! {
+            ///     <svg inner_html=raw_html />
+            /// }
+            /// # }
+            /// ```
+            pub fn get(&self, weight: IconWeight) -> &'static str {
+                match weight {
+                    #(#weight_indeces),*
+                }
+            }
+        }
+
+        /// A convenient alias for passing around references to [IconWeightData].
+        ///
+        /// While [IconWeightData] is `Copy`, it's not particularly beneficial to pass
+        /// all those bytes around (48 bytes on WASM, 96 bytes on 64 bit systems).
+        pub type IconData = &'static IconWeightData;
+
+        /// A thin wrapper around `<svg />` for displaying Phosphor icons.
+        ///
+        /// ```
+        /// use leptos::*;
+        /// use phosphor_leptos::{Icon, IconWeight, HORSE, HEART, CUBE};
+        ///
+        /// #[component]
+        /// fn MyComponent() -> impl IntoView {
+        ///     view! {
+        ///         <Icon icon=HORSE />
+        ///         <Icon icon=HEART color="#AE2983" weight=IconWeight::Fill size="32px" />
+        ///         <Icon icon=CUBE color="teal" weight=IconWeight::Duotone />
+        ///     }
+        /// }
+        /// ```
+        #[component]
+        pub fn Icon(
+            /// The icon data to display.
+            icon: IconData,
+
+            /// Icon weight/style. This can also be used, for example, to "toggle" an icon's state:
+            /// a rating component could use Stars with [IconWeight::Regular] to denote an empty star,
+            /// and [IconWeight::Fill] to denote a filled star.
+            #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
+                IconWeight,
+            >,
+
+            /// Icon height & width. As with standard React elements,
+            /// this can be a number, or a string with units in
+            /// `px`, `%`, `em`, `rem`, `pt`, `cm`, `mm`, `in`.
+            #[prop(into, default = TextProp::from("1em"))] size: TextProp,
+
+            /// Icon stroke/fill color.
+            ///
+            /// This can be any CSS color string, including
+            /// `hex`, `rgb`, `rgba`, `hsl`, `hsla`, named colors,
+            /// or the special `currentColor` variable.
+            ///
+            #[prop(into, default = TextProp::from("currentColor"))] color: TextProp,
+
+            /// Flip the icon horizontally.
+            ///
+            /// This can be useful in RTL languages where normal
+            /// icon orientation is not appropriate.
+            #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
+
+            /// The HTML ID of the underlying SVG element.
+            #[prop(into, optional)] id: MaybeProp<TextProp>,
+
+            /// The CSS class property of the underlying SVG element.
+            #[prop(into, optional)] class: MaybeProp<TextProp>,
+        ) -> impl IntoView {
+            let html = move || icon.get(weight.get());
+            let transform = move || mirrored.get().then_some("scale(-1, 1)");
+            let height = size.clone();
+
+            view! {
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width=move || size.get()
+                    height=move || height.get()
+                    fill=color
+                    transform=transform
+                    viewBox="0 0 256 256"
+                    id=move || id.get().map(|id| id.get())
+                    class=move || class.get().map(|cls| cls.get())
+                    inner_html=html
+                />
+            }
+        }
+    };
+
+    fs::write("src/lib.rs", lib.to_string()).expect("Error writing lib file");
 
     // Write out the newly generated cargo file
     fs::write("Cargo.toml", cargo_template(&categories_set)).unwrap();
