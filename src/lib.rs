@@ -108,12 +108,6 @@ pub fn Icon(
     #[doc = r" icon orientation is not appropriate."]
     # [prop (into , default = Signal :: stored (false))]
     mirrored: Signal<bool>,
-    #[doc = r" The HTML ID of the underlying SVG element."]
-    #[prop(into, optional)]
-    id: MaybeProp<TextProp>,
-    #[doc = r" The CSS class property of the underlying SVG element."]
-    #[prop(into, optional)]
-    class: MaybeProp<TextProp>,
 ) -> impl IntoView {
     let html = move || icon.get(weight.get());
     let transform = move || mirrored.get().then_some("scale(-1, 1)");
@@ -126,8 +120,6 @@ pub fn Icon(
             fill=move || color.get()
             transform=transform
             viewBox="0 0 256 256"
-            id=move || id.get().map(|id| id.get())
-            class=move || class.get().map(|cls| cls.get())
             inner_html=html
         />
     }
