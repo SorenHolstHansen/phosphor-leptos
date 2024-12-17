@@ -318,6 +318,12 @@ pub fn run() {
             /// This can be useful in RTL languages where normal
             /// icon orientation is not appropriate.
             #[prop(into, default = Signal::stored(false))] mirrored: Signal<bool>,
+
+            /// The HTML ID of the underlying SVG element.
+            #[prop(into, optional)] id: TextProp,
+
+            /// The CSS class property of the underlying SVG element.
+            #[prop(into, optional)] class: TextProp,
         ) -> impl IntoView {
             let html = move || icon.get(weight.get());
             let transform = move || mirrored.get().then_some("scale(-1, 1)");
@@ -331,6 +337,8 @@ pub fn run() {
                     fill=move || color.get()
                     transform=transform
                     viewBox="0 0 256 256"
+                    id=move || id.get()
+                    class=move || class.get()
                     inner_html=html
                 />
             }
