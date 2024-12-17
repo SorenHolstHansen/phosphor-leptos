@@ -37,7 +37,7 @@ fn MyComponent() -> impl IntoView {
 
 ### Props
 
-All of the props are `MaybeSignal`s so they can be static or reactive.
+All of the props are `Signal`s so they can be static or reactive.
 
 - **color?**: `string` – Icon stroke/fill color. Can be any CSS color string, including `hex`, `rgb`, `rgba`, `hsl`, `hsla`, named colors, or the special `currentColor` variable.
 - **size?**: `number | string` – Icon height & width. As with standard React elements, this can be a number, or a string with units in `px`, `%`, `em`, `rem`, `pt`, `cm`, `mm`, `in`.

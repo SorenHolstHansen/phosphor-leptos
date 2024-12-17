@@ -16,7 +16,7 @@ exclude = ["/core"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-leptos = "0.6"
+leptos = "0.7.1"
 
 [workspace]
 members = ["xtask"]
