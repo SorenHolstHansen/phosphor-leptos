@@ -3,7 +3,7 @@
 #![doc = r" You can explore the available icons at [phosphoricons.com](https://phosphoricons.com)."]
 #![doc = r""]
 #![doc = r" ```"]
-#![doc = r" use leptos::*;"]
+#![doc = r" use leptos::prelude::*;"]
 #![doc = r" use phosphor_leptos::{Icon, IconWeight, HORSE, HEART, CUBE};"]
 #![doc = r""]
 #![doc = r" #[component]"]
@@ -15,7 +15,7 @@
 #![doc = r"     }"]
 #![doc = r" }"]
 #![doc = r" ```"]
-use leptos::*;
+use leptos::{prelude::*, text_prop::TextProp};
 mod icons;
 pub use icons::*;
 #[doc = r" An icon's weight or style."]
@@ -39,7 +39,7 @@ impl IconWeightData {
     #[doc = r" an SVG component's `inner_html` property."]
     #[doc = r""]
     #[doc = r" ```"]
-    #[doc = r" # use leptos::*;"]
+    #[doc = r" # use leptos::prelude::*;"]
     #[doc = r" # #[component]"]
     #[doc = r" # fn MyComponent() -> impl IntoView {"]
     #[doc = r" use phosphor_leptos::{ACORN, IconWeight};"]
@@ -69,7 +69,7 @@ pub type IconData = &'static IconWeightData;
 #[doc = r" A thin wrapper around `<svg />` for displaying Phosphor icons."]
 #[doc = r""]
 #[doc = r" ```"]
-#[doc = r" use leptos::*;"]
+#[doc = r" use leptos::prelude::*;"]
 #[doc = r" use phosphor_leptos::{Icon, IconWeight, HORSE, HEART, CUBE};"]
 #[doc = r""]
 #[doc = r" #[component]"]
@@ -87,8 +87,8 @@ pub fn Icon(
     #[doc = r#" Icon weight/style. This can also be used, for example, to "toggle" an icon's state:"#]
     #[doc = r" a rating component could use Stars with [IconWeight::Regular] to denote an empty star,"]
     #[doc = r" and [IconWeight::Fill] to denote a filled star."]
-    # [prop (into , default = MaybeSignal :: Static (IconWeight :: Regular))]
-    weight: MaybeSignal<IconWeight>,
+    # [prop (into , default = Signal :: stored (IconWeight :: Regular))]
+    weight: Signal<IconWeight>,
     #[doc = r" Icon height & width. As with standard React elements,"]
     #[doc = r" this can be a number, or a string with units in"]
     #[doc = r" `px`, `%`, `em`, `rem`, `pt`, `cm`, `mm`, `in`."]
@@ -106,14 +106,8 @@ pub fn Icon(
     #[doc = r""]
     #[doc = r" This can be useful in RTL languages where normal"]
     #[doc = r" icon orientation is not appropriate."]
-    # [prop (into , default = MaybeSignal :: Static (false))]
-    mirrored: MaybeSignal<bool>,
-    #[doc = r" The HTML ID of the underlying SVG element."]
-    #[prop(into, optional)]
-    id: MaybeProp<TextProp>,
-    #[doc = r" The CSS class property of the underlying SVG element."]
-    #[prop(into, optional)]
-    class: MaybeProp<TextProp>,
+    # [prop (into , default = Signal :: stored (false))]
+    mirrored: Signal<bool>,
 ) -> impl IntoView {
     let html = move || icon.get(weight.get());
     let transform = move || mirrored.get().then_some("scale(-1, 1)");
@@ -123,12 +117,10 @@ pub fn Icon(
             xmlns="http://www.w3.org/2000/svg"
             width=move || size.get()
             height=move || height.get()
-            fill=color
+            fill=move || color.get()
             transform=transform
             viewBox="0 0 256 256"
-            id=move || id.get().map(|id| id.get())
-            class=move || class.get().map(|cls| cls.get())
             inner_html=html
-        ></svg>
+        />
     }
 }

@@ -4,22 +4,22 @@ mod acorn;
 #[cfg(any(feature = "finance", feature = "nature"))]
 #[doc(hidden)]
 pub use acorn::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod address_book_tabs;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use address_book_tabs::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod address_book;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use address_book::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod air_traffic_control;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use air_traffic_control::*;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -64,16 +64,16 @@ mod airplay;
 #[cfg(any(feature = "media", feature = "system"))]
 #[doc(hidden)]
 pub use airplay::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod alarm;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use alarm::*;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 mod alien;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 pub use alien::*;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -148,10 +148,10 @@ mod align_top;
 #[cfg(any(feature = "design", feature = "editor"))]
 #[doc(hidden)]
 pub use align_top::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod amazon_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use amazon_logo::*;
 #[cfg(any(feature = "health", feature = "map", feature = "objects"))]
@@ -196,10 +196,10 @@ mod aperture;
 #[cfg(any(feature = "design", feature = "media"))]
 #[doc(hidden)]
 pub use aperture::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod app_store_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use app_store_logo::*;
 #[cfg(any(feature = "communication", feature = "system"))]
@@ -208,10 +208,10 @@ mod app_window;
 #[cfg(any(feature = "communication", feature = "system"))]
 #[doc(hidden)]
 pub use app_window::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod apple_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use apple_logo::*;
 #[cfg(any(feature = "brand", feature = "media"))]
@@ -238,502 +238,502 @@ mod armchair;
 #[cfg(any(feature = "objects", feature = "commerce"))]
 #[doc(hidden)]
 pub use armchair::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_arc_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_arc_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_arc_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_arc_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_bend_double_up_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_bend_double_up_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_bend_double_up_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_bend_double_up_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_bend_down_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_bend_down_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_bend_down_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_bend_down_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_bend_left_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_bend_left_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_bend_left_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_bend_left_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_bend_right_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_bend_right_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_bend_right_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_bend_right_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_bend_up_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_bend_up_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_bend_up_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_bend_up_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_circle_down_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_circle_down_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_circle_down_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_circle_down_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_circle_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_circle_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_circle_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_circle_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_circle_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_circle_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_circle_up_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_circle_up_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_circle_up_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_circle_up_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_circle_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_circle_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_clockwise;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_clockwise::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_counter_clockwise;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_counter_clockwise::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_down_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_down_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_down_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_down_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_elbow_down_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_elbow_down_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_elbow_down_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_elbow_down_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_elbow_left_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_elbow_left_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_elbow_left_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_elbow_left_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_elbow_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_elbow_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_elbow_right_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_elbow_right_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_elbow_right_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_elbow_right_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_elbow_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_elbow_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_elbow_up_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_elbow_up_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_elbow_up_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_elbow_up_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_line_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_line_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_line_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_line_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_line_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_line_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_line_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_line_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_lines_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_lines_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_lines_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_lines_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_lines_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_lines_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_lines_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_lines_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_fat_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_fat_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_line_down_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_line_down_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_line_down_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_line_down_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_line_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_line_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_line_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_line_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_line_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_line_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_line_up_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_line_up_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_line_up_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_line_up_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_line_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_line_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_square_down_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_square_down_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_square_down_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_square_down_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_square_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_square_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_square_in;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_square_in::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_square_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_square_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_square_out;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_square_out::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_square_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_square_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_square_up_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_square_up_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_square_up_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_square_up_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_square_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_square_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_u_down_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_u_down_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_u_down_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_u_down_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_u_left_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_u_left_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_u_left_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_u_left_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_u_right_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_u_right_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_u_right_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_u_right_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_u_up_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_u_up_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_u_up_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_u_up_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_up_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_up_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_up_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_up_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrow_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrow_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_clockwise;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_clockwise::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_counter_clockwise;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_counter_clockwise::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_down_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_down_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_horizontal;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_horizontal::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_in_cardinal;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_in_cardinal::*;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
@@ -748,34 +748,34 @@ mod arrows_in_line_vertical;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
 #[doc(hidden)]
 pub use arrows_in_line_vertical::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_in_simple;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_in_simple::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_in;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_in::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_left_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_left_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_merge;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_merge::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_out_cardinal;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_out_cardinal::*;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
@@ -790,28 +790,28 @@ mod arrows_out_line_vertical;
 #[cfg(any(feature = "arrows", feature = "design", feature = "editor"))]
 #[doc(hidden)]
 pub use arrows_out_line_vertical::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_out_simple;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_out_simple::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_out;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_out::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_split;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_split::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod arrows_vertical;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use arrows_vertical::*;
 #[cfg(any(feature = "media", feature = "objects"))]
@@ -832,28 +832,28 @@ mod article;
 #[cfg(any(feature = "media", feature = "objects"))]
 #[doc(hidden)]
 pub use article::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod asclepius;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use asclepius::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod asterisk_simple;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use asterisk_simple::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod asterisk;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use asterisk::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod at;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use at::*;
 #[cfg(any(feature = "development", feature = "nature"))]
@@ -892,10 +892,10 @@ mod backpack;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use backpack::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod backspace;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use backspace::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -916,10 +916,10 @@ mod balloon;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use balloon::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod bandaids;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use bandaids::*;
 #[cfg(any(feature = "finance", feature = "map"))]
@@ -928,10 +928,10 @@ mod bank;
 #[cfg(any(feature = "finance", feature = "map"))]
 #[doc(hidden)]
 pub use bank::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod barbell;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use barbell::*;
 #[cfg(any(feature = "commerce", feature = "system"))]
@@ -982,106 +982,106 @@ mod basketball;
 #[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 #[doc(hidden)]
 pub use basketball::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod bathtub;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use bathtub::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_charging_vertical;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_charging_vertical::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_charging;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_charging::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_empty;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_empty::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_full;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_full::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_high;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_high::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_low;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_low::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_medium;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_medium::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_plus_vertical;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_plus_vertical::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_plus;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_plus::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_vertical_empty;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_vertical_empty::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_vertical_full;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_vertical_full::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_vertical_high;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_vertical_high::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_vertical_low;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_vertical_low::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_vertical_medium;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_vertical_medium::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_warning_vertical;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_warning_vertical::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod battery_warning;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use battery_warning::*;
 #[cfg(any(feature = "games", feature = "health", feature = "objects"))]
@@ -1120,28 +1120,28 @@ mod behance_logo;
 #[cfg(any(feature = "brand", feature = "design"))]
 #[doc(hidden)]
 pub use behance_logo::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod bell_ringing;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use bell_ringing::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod bell_simple_ringing;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use bell_simple_ringing::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod bell_simple_slash;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use bell_simple_slash::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod bell_simple_z;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use bell_simple_z::*;
 #[cfg(any(feature = "system", feature = "objects"))]
@@ -1150,16 +1150,16 @@ mod bell_simple;
 #[cfg(any(feature = "system", feature = "objects"))]
 #[doc(hidden)]
 pub use bell_simple::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod bell_slash;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use bell_slash::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod bell_z;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use bell_z::*;
 #[cfg(any(feature = "system", feature = "objects"))]
@@ -1174,10 +1174,10 @@ mod belt;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use belt::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod bezier_curve;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use bezier_curve::*;
 #[cfg(any(feature = "health", feature = "map", feature = "objects"))]
@@ -1198,16 +1198,16 @@ mod binoculars;
 #[cfg(any(feature = "nature", feature = "objects", feature = "map"))]
 #[doc(hidden)]
 pub use binoculars::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod biohazard;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use biohazard::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod bird;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use bird::*;
 #[cfg(any(feature = "commerce", feature = "design"))]
@@ -1216,28 +1216,28 @@ mod blueprint;
 #[cfg(any(feature = "commerce", feature = "design"))]
 #[doc(hidden)]
 pub use blueprint::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod bluetooth_connected;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use bluetooth_connected::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod bluetooth_slash;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use bluetooth_slash::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod bluetooth_x;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use bluetooth_x::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod bluetooth;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use bluetooth::*;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -1350,10 +1350,10 @@ mod boules;
 #[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 #[doc(hidden)]
 pub use boules::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod bounding_box;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use bounding_box::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
@@ -1374,10 +1374,10 @@ mod bowling_ball;
 #[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 #[doc(hidden)]
 pub use bowling_ball::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod box_arrow_down;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use box_arrow_down::*;
 #[cfg(any(feature = "office", feature = "system"))]
@@ -1458,10 +1458,10 @@ mod broadcast;
 #[cfg(any(feature = "communication", feature = "media", feature = "system"))]
 #[doc(hidden)]
 pub use broadcast::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod broom;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use broom::*;
 #[cfg(any(feature = "communication", feature = "system"))]
@@ -1530,10 +1530,10 @@ mod bus;
 #[cfg(any(feature = "map", feature = "objects"))]
 #[doc(hidden)]
 pub use bus::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod butterfly;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use butterfly::*;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -1542,16 +1542,16 @@ mod cable_car;
 #[cfg(any(feature = "map", feature = "objects"))]
 #[doc(hidden)]
 pub use cable_car::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod cactus;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use cactus::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod cake;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use cake::*;
 #[cfg(any(
@@ -1666,10 +1666,10 @@ mod camera;
 #[cfg(any(feature = "media", feature = "system", feature = "objects"))]
 #[doc(hidden)]
 pub use camera::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod campfire;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use campfire::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -1714,136 +1714,136 @@ mod cards;
 #[cfg(any(feature = "design", feature = "system"))]
 #[doc(hidden)]
 pub use cards::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_circle_double_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_circle_double_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_circle_double_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_circle_double_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_circle_double_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_circle_double_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_circle_double_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_circle_double_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_circle_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_circle_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_circle_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_circle_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_circle_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_circle_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_circle_up_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_circle_up_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_circle_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_circle_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_double_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_double_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_double_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_double_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_double_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_double_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_double_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_double_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_line_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_line_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_line_left;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_line_left::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_line_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_line_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_line_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_line_up::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_right;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_right::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_up_down;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_up_down::*;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 mod caret_up;
-#[cfg(any(feature = "arrows"))]
+#[cfg(feature = "arrows")]
 #[doc(hidden)]
 pub use caret_up::*;
 #[cfg(any(feature = "commerce", feature = "nature"))]
@@ -1870,64 +1870,64 @@ mod castle_turret;
 #[cfg(any(feature = "map", feature = "objects", feature = "games"))]
 #[doc(hidden)]
 pub use castle_turret::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod cat;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use cat::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cell_signal_full;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cell_signal_full::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cell_signal_high;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cell_signal_high::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cell_signal_low;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cell_signal_low::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cell_signal_medium;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cell_signal_medium::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cell_signal_none;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cell_signal_none::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cell_signal_slash;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cell_signal_slash::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cell_signal_x;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cell_signal_x::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cell_tower;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cell_tower::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod certificate;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use certificate::*;
 #[cfg(any(feature = "objects", feature = "commerce"))]
@@ -2026,160 +2026,160 @@ mod chart_scatter;
 #[cfg(any(feature = "finance", feature = "office"))]
 #[doc(hidden)]
 pub use chart_scatter::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_centered_dots;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_centered_dots::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_centered_slash;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_centered_slash::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_centered_text;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_centered_text::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_centered;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_centered::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_circle_dots;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_circle_dots::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_circle_slash;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_circle_slash::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_circle_text;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_circle_text::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_circle;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_circle::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_dots;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_dots::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_slash;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_slash::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_teardrop_dots;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_teardrop_dots::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_teardrop_slash;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_teardrop_slash::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_teardrop_text;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_teardrop_text::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_teardrop;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_teardrop::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat_text;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat_text::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chat;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chat::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chats_circle;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chats_circle::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chats_teardrop;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chats_teardrop::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod chats;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use chats::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod check_circle;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use check_circle::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod check_fat;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use check_fat::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod check_square_offset;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use check_square_offset::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod check_square;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use check_square::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod check;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use check::*;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 mod checkerboard;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 pub use checkerboard::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod checks;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use checks::*;
 #[cfg(any(feature = "commerce", feature = "map"))]
@@ -2188,10 +2188,10 @@ mod cheers;
 #[cfg(any(feature = "commerce", feature = "map"))]
 #[doc(hidden)]
 pub use cheers::*;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 mod cheese;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 pub use cheese::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -2206,10 +2206,10 @@ mod cherries;
 #[cfg(any(feature = "nature", feature = "commerce"))]
 #[doc(hidden)]
 pub use cherries::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod church;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use church::*;
 #[cfg(any(feature = "commerce", feature = "health"))]
@@ -2224,10 +2224,10 @@ mod cigarette;
 #[cfg(any(feature = "commerce", feature = "health"))]
 #[doc(hidden)]
 pub use cigarette::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod circle_dashed;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use circle_dashed::*;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -2242,40 +2242,40 @@ mod circle_half;
 #[cfg(any(feature = "design", feature = "editor"))]
 #[doc(hidden)]
 pub use circle_half::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod circle_notch;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use circle_notch::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod circle;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use circle::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod circles_four;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use circles_four::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod circles_three_plus;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use circles_three_plus::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod circles_three;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use circles_three::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod circuitry;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use circuitry::*;
 #[cfg(any(feature = "map", feature = "commerce"))]
@@ -2296,34 +2296,34 @@ mod clipboard;
 #[cfg(any(feature = "office", feature = "editor", feature = "system"))]
 #[doc(hidden)]
 pub use clipboard::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod clock_afternoon;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use clock_afternoon::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod clock_clockwise;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use clock_clockwise::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod clock_countdown;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use clock_countdown::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod clock_counter_clockwise;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use clock_counter_clockwise::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod clock_user;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use clock_user::*;
 #[cfg(any(feature = "system", feature = "objects"))]
@@ -2332,82 +2332,82 @@ mod clock;
 #[cfg(any(feature = "system", feature = "objects"))]
 #[doc(hidden)]
 pub use clock::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod closed_captioning;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use closed_captioning::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cloud_arrow_down;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cloud_arrow_down::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cloud_arrow_up;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cloud_arrow_up::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cloud_check;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cloud_check::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod cloud_fog;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use cloud_fog::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod cloud_lightning;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use cloud_lightning::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod cloud_moon;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use cloud_moon::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod cloud_rain;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use cloud_rain::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cloud_slash;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cloud_slash::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod cloud_snow;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use cloud_snow::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod cloud_sun;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use cloud_sun::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cloud_warning;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cloud_warning::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod cloud_x;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use cloud_x::*;
 #[cfg(any(feature = "system", feature = "weather"))]
@@ -2416,16 +2416,16 @@ mod cloud;
 #[cfg(any(feature = "system", feature = "weather"))]
 #[doc(hidden)]
 pub use cloud::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod clover;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use clover::*;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 mod club;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 pub use club::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -2434,10 +2434,10 @@ mod coat_hanger;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use coat_hanger::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod coda_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use coda_logo::*;
 #[cfg(any(feature = "development", feature = "editor"))]
@@ -2500,22 +2500,22 @@ mod coins;
 #[cfg(any(feature = "commerce", feature = "finance"))]
 #[doc(hidden)]
 pub use coins::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod columns_plus_left;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use columns_plus_left::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod columns_plus_right;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use columns_plus_right::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod columns;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use columns::*;
 #[cfg(any(feature = "editor", feature = "system"))]
@@ -2548,22 +2548,22 @@ mod computer_tower;
 #[cfg(any(feature = "development", feature = "objects"))]
 #[doc(hidden)]
 pub use computer_tower::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod confetti;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use confetti::*;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 mod contactless_payment;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 pub use contactless_payment::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod control;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use control::*;
 #[cfg(any(feature = "map", feature = "objects", feature = "development"))]
@@ -2602,16 +2602,16 @@ mod copyright;
 #[cfg(any(feature = "commerce", feature = "media"))]
 #[doc(hidden)]
 pub use copyright::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod corners_in;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use corners_in::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod corners_out;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use corners_out::*;
 #[cfg(any(feature = "objects", feature = "commerce"))]
@@ -2638,10 +2638,10 @@ mod cowboy_hat;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use cowboy_hat::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod cpu;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use cpu::*;
 #[cfg(any(feature = "commerce", feature = "development"))]
@@ -2830,10 +2830,10 @@ mod cursor;
 #[cfg(any(feature = "design", feature = "system"))]
 #[doc(hidden)]
 pub use cursor::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod cylinder;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use cylinder::*;
 #[cfg(any(feature = "development", feature = "system"))]
@@ -2872,10 +2872,10 @@ mod dev_to_logo;
 #[cfg(any(feature = "brand", feature = "development"))]
 #[doc(hidden)]
 pub use dev_to_logo::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod device_mobile_camera;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use device_mobile_camera::*;
 #[cfg(any(feature = "objects", feature = "system"))]
@@ -2884,16 +2884,16 @@ mod device_mobile_slash;
 #[cfg(any(feature = "objects", feature = "system"))]
 #[doc(hidden)]
 pub use device_mobile_slash::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod device_mobile_speaker;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use device_mobile_speaker::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod device_mobile;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use device_mobile::*;
 #[cfg(any(feature = "objects", feature = "system"))]
@@ -2902,28 +2902,28 @@ mod device_rotate;
 #[cfg(any(feature = "objects", feature = "system"))]
 #[doc(hidden)]
 pub use device_rotate::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod device_tablet_camera;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use device_tablet_camera::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod device_tablet_speaker;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use device_tablet_speaker::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod device_tablet;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use device_tablet::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod devices;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use devices::*;
 #[cfg(any(feature = "design", feature = "games"))]
@@ -2932,10 +2932,10 @@ mod diamond;
 #[cfg(any(feature = "design", feature = "games"))]
 #[doc(hidden)]
 pub use diamond::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod diamonds_four;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use diamonds_four::*;
 #[cfg(any(feature = "games", feature = "objects"))]
@@ -3004,100 +3004,100 @@ mod dna;
 #[cfg(any(feature = "health", feature = "nature"))]
 #[doc(hidden)]
 pub use dna::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod dog;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use dog::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod door_open;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use door_open::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod door;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use door::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod dot_outline;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use dot_outline::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod dot;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use dot::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod dots_nine;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use dots_nine::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod dots_six_vertical;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use dots_six_vertical::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod dots_six;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use dots_six::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod dots_three_circle_vertical;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use dots_three_circle_vertical::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod dots_three_circle;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use dots_three_circle::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod dots_three_outline_vertical;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use dots_three_outline_vertical::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod dots_three_outline;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use dots_three_outline::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod dots_three_vertical;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use dots_three_vertical::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod dots_three;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use dots_three::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod download_simple;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use download_simple::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod download;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use download::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -3194,10 +3194,10 @@ mod drop;
 #[cfg(any(feature = "nature", feature = "weather"))]
 #[doc(hidden)]
 pub use drop::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod dropbox_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use dropbox_logo::*;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -3224,16 +3224,16 @@ mod egg;
 #[cfg(any(feature = "commerce", feature = "nature"))]
 #[doc(hidden)]
 pub use egg::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod eject_simple;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use eject_simple::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod eject;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use eject::*;
 #[cfg(any(feature = "objects", feature = "map"))]
@@ -3254,28 +3254,28 @@ mod engine;
 #[cfg(any(feature = "map", feature = "objects"))]
 #[doc(hidden)]
 pub use engine::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod envelope_open;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use envelope_open::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod envelope_simple_open;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use envelope_simple_open::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod envelope_simple;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use envelope_simple::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod envelope;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use envelope::*;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -3308,16 +3308,16 @@ mod escalator_up;
 #[cfg(any(feature = "map", feature = "objects"))]
 #[doc(hidden)]
 pub use escalator_up::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod exam;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use exam::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod exclamation_mark;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use exclamation_mark::*;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -3374,16 +3374,16 @@ mod eyeglasses;
 #[cfg(any(feature = "health", feature = "objects"))]
 #[doc(hidden)]
 pub use eyeglasses::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod eyes;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use eyes::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod face_mask;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use face_mask::*;
 #[cfg(any(feature = "brand", feature = "communication"))]
@@ -3410,10 +3410,10 @@ mod faders;
 #[cfg(any(feature = "media", feature = "system"))]
 #[doc(hidden)]
 pub use faders::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod fallout_shelter;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use fallout_shelter::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -3524,10 +3524,10 @@ mod file_csv;
 #[cfg(any(feature = "office", feature = "editor"))]
 #[doc(hidden)]
 pub use file_csv::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod file_dashed;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use file_dashed::*;
 #[cfg(any(feature = "office", feature = "editor"))]
@@ -3578,10 +3578,10 @@ mod file_lock;
 #[cfg(any(feature = "office", feature = "editor", feature = "system"))]
 #[doc(hidden)]
 pub use file_lock::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod file_magnifying_glass;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use file_magnifying_glass::*;
 #[cfg(any(feature = "office", feature = "editor", feature = "development"))]
@@ -3728,34 +3728,34 @@ mod film_slate;
 #[cfg(any(feature = "media", feature = "objects"))]
 #[doc(hidden)]
 pub use film_slate::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod film_strip;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use film_strip::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod fingerprint_simple;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use fingerprint_simple::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod fingerprint;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use fingerprint::*;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 mod finn_the_human;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 pub use finn_the_human::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod fire_extinguisher;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use fire_extinguisher::*;
 #[cfg(any(feature = "nature", feature = "weather"))]
@@ -3764,10 +3764,10 @@ mod fire_simple;
 #[cfg(any(feature = "nature", feature = "weather"))]
 #[doc(hidden)]
 pub use fire_simple::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod fire_truck;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use fire_truck::*;
 #[cfg(any(feature = "nature", feature = "weather"))]
@@ -3776,16 +3776,16 @@ mod fire;
 #[cfg(any(feature = "nature", feature = "weather"))]
 #[doc(hidden)]
 pub use fire::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod first_aid_kit;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use first_aid_kit::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod first_aid;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use first_aid::*;
 #[cfg(any(feature = "nature", feature = "commerce"))]
@@ -3888,22 +3888,22 @@ mod flow_arrow;
 #[cfg(any(feature = "arrows", feature = "design", feature = "office"))]
 #[doc(hidden)]
 pub use flow_arrow::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod flower_lotus;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use flower_lotus::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod flower_tulip;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use flower_tulip::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod flower;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use flower::*;
 #[cfg(any(feature = "games", feature = "objects"))]
@@ -3912,10 +3912,10 @@ mod flying_saucer;
 #[cfg(any(feature = "games", feature = "objects"))]
 #[doc(hidden)]
 pub use flying_saucer::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod folder_dashed;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use folder_dashed::*;
 #[cfg(any(feature = "office", feature = "editor", feature = "system"))]
@@ -3924,28 +3924,28 @@ mod folder_lock;
 #[cfg(any(feature = "office", feature = "editor", feature = "system"))]
 #[doc(hidden)]
 pub use folder_lock::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod folder_minus;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use folder_minus::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod folder_open;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use folder_open::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod folder_plus;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use folder_plus::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod folder_simple_dashed;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use folder_simple_dashed::*;
 #[cfg(any(feature = "office", feature = "editor", feature = "system"))]
@@ -3996,10 +3996,10 @@ mod folder_user;
 #[cfg(any(feature = "office", feature = "editor", feature = "system"))]
 #[doc(hidden)]
 pub use folder_user::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod folder;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use folder::*;
 #[cfg(any(feature = "office", feature = "editor", feature = "system"))]
@@ -4032,16 +4032,16 @@ mod fork_knife;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
 #[doc(hidden)]
 pub use fork_knife::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod four_k;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use four_k::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod frame_corners;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use frame_corners::*;
 #[cfg(any(feature = "brand", feature = "design"))]
@@ -4050,10 +4050,10 @@ mod framer_logo;
 #[cfg(any(feature = "brand", feature = "design"))]
 #[doc(hidden)]
 pub use framer_logo::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod function;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use function::*;
 #[cfg(any(feature = "editor", feature = "objects"))]
@@ -4116,58 +4116,58 @@ mod gavel;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use gavel::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod gear_fine;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use gear_fine::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod gear_six;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use gear_six::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod gear;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use gear::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod gender_female;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use gender_female::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod gender_intersex;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use gender_intersex::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod gender_male;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use gender_male::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod gender_neuter;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use gender_neuter::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod gender_nonbinary;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use gender_nonbinary::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod gender_transgender;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use gender_transgender::*;
 #[cfg(any(feature = "games", feature = "objects"))]
@@ -4176,10 +4176,10 @@ mod ghost;
 #[cfg(any(feature = "games", feature = "objects"))]
 #[doc(hidden)]
 pub use ghost::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod gif;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use gif::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -4188,40 +4188,40 @@ mod gift;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use gift::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod git_branch;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use git_branch::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod git_commit;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use git_commit::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod git_diff;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use git_diff::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod git_fork;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use git_fork::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod git_merge;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use git_merge::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod git_pull_request;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use git_pull_request::*;
 #[cfg(any(feature = "development", feature = "brand"))]
@@ -4242,46 +4242,46 @@ mod gitlab_logo;
 #[cfg(any(feature = "brand", feature = "development"))]
 #[doc(hidden)]
 pub use gitlab_logo::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod globe_hemisphere_east;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use globe_hemisphere_east::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod globe_hemisphere_west;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use globe_hemisphere_west::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod globe_simple_x;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use globe_simple_x::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod globe_simple;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use globe_simple::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod globe_stand;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use globe_stand::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod globe_x;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use globe_x::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod globe;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use globe::*;
 #[cfg(any(feature = "health", feature = "objects"))]
@@ -4296,34 +4296,34 @@ mod golf;
 #[cfg(any(feature = "games", feature = "health", feature = "objects"))]
 #[doc(hidden)]
 pub use golf::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod goodreads_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use goodreads_logo::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod google_cardboard_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use google_cardboard_logo::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod google_chrome_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use google_chrome_logo::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod google_drive_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use google_drive_logo::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod google_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use google_logo::*;
 #[cfg(any(feature = "brand", feature = "media"))]
@@ -4362,10 +4362,10 @@ mod gps;
 #[cfg(any(feature = "map", feature = "system"))]
 #[doc(hidden)]
 pub use gps::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod gradient;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use gradient::*;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -4374,10 +4374,10 @@ mod graduation_cap;
 #[cfg(any(feature = "map", feature = "objects"))]
 #[doc(hidden)]
 pub use graduation_cap::*;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 mod grains_slash;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 pub use grains_slash::*;
 #[cfg(any(feature = "commerce", feature = "nature"))]
@@ -4392,10 +4392,10 @@ mod graph;
 #[cfg(any(feature = "office", feature = "development"))]
 #[doc(hidden)]
 pub use graph::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod graphics_card;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use graphics_card::*;
 #[cfg(any(feature = "finance", feature = "development"))]
@@ -4470,16 +4470,16 @@ mod hand_deposit;
 #[cfg(any(feature = "people", feature = "commerce", feature = "finance"))]
 #[doc(hidden)]
 pub use hand_deposit::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod hand_eye;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use hand_eye::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod hand_fist;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use hand_fist::*;
 #[cfg(any(feature = "system", feature = "people"))]
@@ -4488,10 +4488,10 @@ mod hand_grabbing;
 #[cfg(any(feature = "system", feature = "people"))]
 #[doc(hidden)]
 pub use hand_grabbing::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod hand_heart;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use hand_heart::*;
 #[cfg(any(feature = "system", feature = "people"))]
@@ -4572,10 +4572,10 @@ mod hands_clapping;
 #[cfg(any(feature = "system", feature = "people"))]
 #[doc(hidden)]
 pub use hands_clapping::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod hands_praying;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use hands_praying::*;
 #[cfg(any(feature = "people", feature = "commerce"))]
@@ -4584,16 +4584,16 @@ mod handshake;
 #[cfg(any(feature = "people", feature = "commerce"))]
 #[doc(hidden)]
 pub use handshake::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod hard_drive;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use hard_drive::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod hard_drives;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use hard_drives::*;
 #[cfg(any(feature = "commerce", feature = "objects", feature = "development"))]
@@ -4602,22 +4602,22 @@ mod hard_hat;
 #[cfg(any(feature = "commerce", feature = "objects", feature = "development"))]
 #[doc(hidden)]
 pub use hard_hat::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod hash_straight;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use hash_straight::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod hash;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use hash::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod head_circuit;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use head_circuit::*;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -4638,10 +4638,10 @@ mod headset;
 #[cfg(any(feature = "media", feature = "games", feature = "objects"))]
 #[doc(hidden)]
 pub use headset::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod heart_break;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use heart_break::*;
 #[cfg(any(feature = "communication", feature = "games", feature = "health"))]
@@ -4650,10 +4650,10 @@ mod heart_half;
 #[cfg(any(feature = "communication", feature = "games", feature = "health"))]
 #[doc(hidden)]
 pub use heart_half::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod heart_straight_break;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use heart_straight_break::*;
 #[cfg(any(feature = "communication", feature = "games", feature = "health"))]
@@ -4674,16 +4674,16 @@ mod heartbeat;
 #[cfg(any(feature = "health", feature = "system"))]
 #[doc(hidden)]
 pub use heartbeat::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod hexagon;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use hexagon::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod high_definition;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use high_definition::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -4794,10 +4794,10 @@ mod house;
 #[cfg(any(feature = "map", feature = "system"))]
 #[doc(hidden)]
 pub use house::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod hurricane;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use hurricane::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
@@ -4806,16 +4806,16 @@ mod ice_cream;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
 #[doc(hidden)]
 pub use ice_cream::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod identification_badge;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use identification_badge::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod identification_card;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use identification_card::*;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -4848,16 +4848,16 @@ mod images;
 #[cfg(any(feature = "media", feature = "system"))]
 #[doc(hidden)]
 pub use images::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod infinity;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use infinity::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod info;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use info::*;
 #[cfg(any(feature = "brand", feature = "communication"))]
@@ -4926,16 +4926,16 @@ mod joystick;
 #[cfg(any(feature = "games", feature = "media", feature = "objects"))]
 #[doc(hidden)]
 pub use joystick::*;
-#[cfg(any(feature = "office"))]
+#[cfg(feature = "office")]
 #[doc(hidden)]
 mod kanban;
-#[cfg(any(feature = "office"))]
+#[cfg(feature = "office")]
 #[doc(hidden)]
 pub use kanban::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod key_return;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use key_return::*;
 #[cfg(any(feature = "objects", feature = "system"))]
@@ -4944,10 +4944,10 @@ mod key;
 #[cfg(any(feature = "objects", feature = "system"))]
 #[doc(hidden)]
 pub use key::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod keyboard;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use keyboard::*;
 #[cfg(any(feature = "objects", feature = "system"))]
@@ -4962,16 +4962,16 @@ mod knife;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use knife::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod ladder_simple;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use ladder_simple::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod ladder;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use ladder::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -5010,10 +5010,10 @@ mod layout;
 #[cfg(any(feature = "design", feature = "editor"))]
 #[doc(hidden)]
 pub use layout::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod leaf;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use leaf::*;
 #[cfg(any(feature = "objects", feature = "finance", feature = "office"))]
@@ -5028,10 +5028,10 @@ mod lego_smiley;
 #[cfg(any(feature = "games", feature = "communication", feature = "people"))]
 #[doc(hidden)]
 pub use lego_smiley::*;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 mod lego;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 pub use lego::*;
 #[cfg(any(feature = "finance", feature = "development"))]
@@ -5082,22 +5082,22 @@ mod lightbulb;
 #[cfg(any(feature = "system", feature = "objects"))]
 #[doc(hidden)]
 pub use lightbulb::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod lighthouse;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use lighthouse::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod lightning_a;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use lightning_a::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod lightning_slash;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use lightning_slash::*;
 #[cfg(any(feature = "weather", feature = "system"))]
@@ -5106,16 +5106,16 @@ mod lightning;
 #[cfg(any(feature = "weather", feature = "system"))]
 #[doc(hidden)]
 pub use lightning::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod line_segment;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use line_segment::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod line_segments;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use line_segments::*;
 #[cfg(any(feature = "design", feature = "development"))]
@@ -5178,10 +5178,10 @@ mod linux_logo;
 #[cfg(any(feature = "brand", feature = "development"))]
 #[doc(hidden)]
 pub use linux_logo::*;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 mod list_bullets;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 pub use list_bullets::*;
 #[cfg(any(feature = "office", feature = "editor"))]
@@ -5190,10 +5190,10 @@ mod list_checks;
 #[cfg(any(feature = "office", feature = "editor"))]
 #[doc(hidden)]
 pub use list_checks::*;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 mod list_dashes;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 pub use list_dashes::*;
 #[cfg(any(feature = "editor", feature = "system"))]
@@ -5208,16 +5208,16 @@ mod list_magnifying_glass;
 #[cfg(any(feature = "editor", feature = "system"))]
 #[doc(hidden)]
 pub use list_magnifying_glass::*;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 mod list_numbers;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 pub use list_numbers::*;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 mod list_plus;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 pub use list_plus::*;
 #[cfg(any(feature = "editor", feature = "system"))]
@@ -5280,16 +5280,16 @@ mod lock;
 #[cfg(any(feature = "objects", feature = "system"))]
 #[doc(hidden)]
 pub use lock::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod lockers;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use lockers::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod log;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use log::*;
 #[cfg(any(feature = "design", feature = "games", feature = "objects"))]
@@ -5334,52 +5334,52 @@ mod mailbox;
 #[cfg(any(feature = "communication", feature = "objects", feature = "map"))]
 #[doc(hidden)]
 pub use mailbox::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod map_pin_area;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use map_pin_area::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod map_pin_line;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use map_pin_line::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod map_pin_plus;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use map_pin_plus::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod map_pin_simple_area;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use map_pin_simple_area::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod map_pin_simple_line;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use map_pin_simple_line::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod map_pin_simple;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use map_pin_simple::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod map_pin;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use map_pin::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod map_trifold;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use map_trifold::*;
 #[cfg(any(
@@ -5452,10 +5452,10 @@ mod medal;
 #[cfg(any(feature = "objects", feature = "games"))]
 #[doc(hidden)]
 pub use medal::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod medium_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use medium_logo::*;
 #[cfg(any(feature = "communication", feature = "objects"))]
@@ -5476,10 +5476,10 @@ mod member_of;
 #[cfg(any(feature = "finance", feature = "development"))]
 #[doc(hidden)]
 pub use member_of::*;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 mod memory;
-#[cfg(any(feature = "development"))]
+#[cfg(feature = "development")]
 #[doc(hidden)]
 pub use memory::*;
 #[cfg(any(feature = "brand", feature = "communication"))]
@@ -5488,10 +5488,10 @@ mod messenger_logo;
 #[cfg(any(feature = "brand", feature = "communication"))]
 #[doc(hidden)]
 pub use messenger_logo::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod meta_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use meta_logo::*;
 #[cfg(any(feature = "weather", feature = "nature"))]
@@ -5612,10 +5612,10 @@ mod monitor_play;
 #[cfg(any(feature = "system", feature = "media"))]
 #[doc(hidden)]
 pub use monitor_play::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod monitor;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use monitor::*;
 #[cfg(any(feature = "nature", feature = "weather"))]
@@ -5642,10 +5642,10 @@ mod moped;
 #[cfg(any(feature = "map", feature = "objects"))]
 #[doc(hidden)]
 pub use moped::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod mosque;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use mosque::*;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -5660,82 +5660,82 @@ mod mountains;
 #[cfg(any(feature = "nature", feature = "map"))]
 #[doc(hidden)]
 pub use mountains::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod mouse_left_click;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use mouse_left_click::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod mouse_middle_click;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use mouse_middle_click::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod mouse_right_click;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use mouse_right_click::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod mouse_scroll;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use mouse_scroll::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod mouse_simple;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use mouse_simple::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod mouse;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use mouse::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod music_note_simple;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use music_note_simple::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod music_note;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use music_note::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod music_notes_minus;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use music_notes_minus::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod music_notes_plus;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use music_notes_plus::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod music_notes_simple;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use music_notes_simple::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod music_notes;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use music_notes::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod navigation_arrow;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use navigation_arrow::*;
 #[cfg(any(feature = "objects", feature = "commerce"))]
@@ -5744,22 +5744,22 @@ mod needle;
 #[cfg(any(feature = "objects", feature = "commerce"))]
 #[doc(hidden)]
 pub use needle::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod network_slash;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use network_slash::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod network_x;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use network_x::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod network;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use network::*;
 #[cfg(any(feature = "media", feature = "objects"))]
@@ -5834,16 +5834,16 @@ mod notepad;
 #[cfg(any(feature = "office", feature = "editor"))]
 #[doc(hidden)]
 pub use notepad::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod notification;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use notification::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod notion_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use notion_logo::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -5852,184 +5852,184 @@ mod nuclear_plant;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use nuclear_plant::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_circle_eight;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_circle_eight::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_circle_five;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_circle_five::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_circle_four;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_circle_four::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_circle_nine;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_circle_nine::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_circle_one;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_circle_one::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_circle_seven;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_circle_seven::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_circle_six;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_circle_six::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_circle_three;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_circle_three::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_circle_two;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_circle_two::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_circle_zero;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_circle_zero::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_eight;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_eight::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_five;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_five::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_four;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_four::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_nine;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_nine::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_one;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_one::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_seven;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_seven::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_six;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_six::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_square_eight;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_square_eight::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_square_five;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_square_five::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_square_four;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_square_four::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_square_nine;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_square_nine::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_square_one;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_square_one::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_square_seven;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_square_seven::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_square_six;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_square_six::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_square_three;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_square_three::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_square_two;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_square_two::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_square_zero;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_square_zero::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_three;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_three::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_two;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_two::*;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 mod number_zero;
-#[cfg(any(feature = "finance"))]
+#[cfg(feature = "finance")]
 #[doc(hidden)]
 pub use number_zero::*;
 #[cfg(any(feature = "communication", feature = "system"))]
@@ -6044,16 +6044,16 @@ mod nut;
 #[cfg(any(feature = "objects", feature = "system"))]
 #[doc(hidden)]
 pub use nut::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod ny_times_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use ny_times_logo::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod octagon;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use octagon::*;
 #[cfg(any(feature = "objects", feature = "commerce"))]
@@ -6140,10 +6140,10 @@ mod palette;
 #[cfg(any(feature = "design", feature = "editor", feature = "objects"))]
 #[doc(hidden)]
 pub use palette::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod panorama;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use panorama::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -6208,10 +6208,10 @@ mod parachute;
 #[cfg(any(feature = "objects", feature = "development"))]
 #[doc(hidden)]
 pub use parachute::*;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 mod paragraph;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 pub use paragraph::*;
 #[cfg(any(feature = "brand", feature = "media", feature = "design"))]
@@ -6226,10 +6226,10 @@ mod park;
 #[cfg(any(feature = "map", feature = "nature"))]
 #[doc(hidden)]
 pub use park::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod password;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use password::*;
 #[cfg(any(feature = "design", feature = "map"))]
@@ -6238,10 +6238,10 @@ mod path;
 #[cfg(any(feature = "design", feature = "map"))]
 #[doc(hidden)]
 pub use path::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod patreon_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use patreon_logo::*;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -6268,10 +6268,10 @@ mod paypal_logo;
 #[cfg(any(feature = "brand", feature = "finance", feature = "commerce"))]
 #[doc(hidden)]
 pub use paypal_logo::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod peace;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use peace::*;
 #[cfg(any(feature = "design", feature = "editor", feature = "office"))]
@@ -6340,10 +6340,10 @@ mod pencil;
 #[cfg(any(feature = "design", feature = "editor", feature = "office"))]
 #[doc(hidden)]
 pub use pencil::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod pentagon;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use pentagon::*;
 #[cfg(any(feature = "games", feature = "design"))]
@@ -6376,10 +6376,10 @@ mod person_simple_bike;
 #[cfg(any(feature = "map", feature = "people", feature = "health"))]
 #[doc(hidden)]
 pub use person_simple_bike::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod person_simple_circle;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use person_simple_circle::*;
 #[cfg(any(
@@ -6524,10 +6524,10 @@ mod phone;
 #[cfg(any(feature = "communication", feature = "system"))]
 #[doc(hidden)]
 pub use phone::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod phosphor_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use phosphor_logo::*;
 #[cfg(any(feature = "finance", feature = "development"))]
@@ -6560,10 +6560,10 @@ mod piggy_bank;
 #[cfg(any(feature = "finance", feature = "objects"))]
 #[doc(hidden)]
 pub use piggy_bank::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod pill;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use pill::*;
 #[cfg(any(feature = "games", feature = "health", feature = "objects"))]
@@ -6620,10 +6620,10 @@ mod placeholder;
 #[cfg(any(feature = "design", feature = "editor"))]
 #[doc(hidden)]
 pub use placeholder::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod planet;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use planet::*;
 #[cfg(any(feature = "commerce", feature = "nature"))]
@@ -6704,10 +6704,10 @@ mod plus;
 #[cfg(any(feature = "development", feature = "finance", feature = "system"))]
 #[doc(hidden)]
 pub use plus::*;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 mod poker_chip;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 pub use poker_chip::*;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -6716,10 +6716,10 @@ mod police_car;
 #[cfg(any(feature = "map", feature = "objects"))]
 #[doc(hidden)]
 pub use police_car::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod polygon;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use polygon::*;
 #[cfg(any(feature = "map", feature = "commerce"))]
@@ -6740,16 +6740,16 @@ mod potted_plant;
 #[cfg(any(feature = "commerce", feature = "nature"))]
 #[doc(hidden)]
 pub use potted_plant::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod power;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use power::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod prescription;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use prescription::*;
 #[cfg(any(feature = "finance", feature = "office"))]
@@ -6794,10 +6794,10 @@ mod projector_screen;
 #[cfg(any(feature = "finance", feature = "media", feature = "office"))]
 #[doc(hidden)]
 pub use projector_screen::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod pulse;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use pulse::*;
 #[cfg(any(feature = "office", feature = "map", feature = "objects"))]
@@ -6830,22 +6830,22 @@ mod puzzle_piece;
 #[cfg(any(feature = "games", feature = "development"))]
 #[doc(hidden)]
 pub use puzzle_piece::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod qr_code;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use qr_code::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod question_mark;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use question_mark::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod question;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use question::*;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -6860,10 +6860,10 @@ mod quotes;
 #[cfg(any(feature = "communication", feature = "editor", feature = "media"))]
 #[doc(hidden)]
 pub use quotes::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod rabbit;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use rabbit::*;
 #[cfg(any(feature = "games", feature = "health", feature = "objects"))]
@@ -6878,10 +6878,10 @@ mod radical;
 #[cfg(any(feature = "development", feature = "finance"))]
 #[doc(hidden)]
 pub use radical::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod radio_button;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use radio_button::*;
 #[cfg(any(feature = "communication", feature = "media", feature = "objects"))]
@@ -6896,16 +6896,16 @@ mod radioactive;
 #[cfg(any(feature = "nature", feature = "health"))]
 #[doc(hidden)]
 pub use radioactive::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod rainbow_cloud;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use rainbow_cloud::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod rainbow;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use rainbow::*;
 #[cfg(any(feature = "games", feature = "objects"))]
@@ -6914,10 +6914,10 @@ mod ranking;
 #[cfg(any(feature = "games", feature = "objects"))]
 #[doc(hidden)]
 pub use ranking::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod read_cv_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use read_cv_logo::*;
 #[cfg(any(feature = "commerce", feature = "finance"))]
@@ -6938,16 +6938,16 @@ mod record;
 #[cfg(any(feature = "media", feature = "system"))]
 #[doc(hidden)]
 pub use record::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod rectangle_dashed;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use rectangle_dashed::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod rectangle;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use rectangle::*;
 #[cfg(any(feature = "arrows", feature = "nature"))]
@@ -6998,10 +6998,10 @@ mod rewind;
 #[cfg(any(feature = "media", feature = "system"))]
 #[doc(hidden)]
 pub use rewind::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod road_horizon;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use road_horizon::*;
 #[cfg(any(feature = "development", feature = "objects"))]
@@ -7022,40 +7022,40 @@ mod rocket;
 #[cfg(any(feature = "development", feature = "map", feature = "objects"))]
 #[doc(hidden)]
 pub use rocket::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod rows_plus_bottom;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use rows_plus_bottom::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod rows_plus_top;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use rows_plus_top::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod rows;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use rows::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod rss_simple;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use rss_simple::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod rss;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use rss::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod rug;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use rug::*;
 #[cfg(any(feature = "design", feature = "editor", feature = "objects"))]
@@ -7082,10 +7082,10 @@ mod scan_smiley;
 #[cfg(any(feature = "system", feature = "people"))]
 #[doc(hidden)]
 pub use scan_smiley::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod scan;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use scan::*;
 #[cfg(any(
@@ -7122,16 +7122,16 @@ mod screwdriver;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use screwdriver::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod scribble_loop;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use scribble_loop::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod scribble;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use scribble::*;
 #[cfg(any(feature = "games", feature = "objects"))]
@@ -7140,34 +7140,34 @@ mod scroll;
 #[cfg(any(feature = "games", feature = "objects"))]
 #[doc(hidden)]
 pub use scroll::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod seal_check;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use seal_check::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod seal_percent;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use seal_percent::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod seal_question;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use seal_question::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod seal_warning;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use seal_warning::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod seal;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use seal::*;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -7230,10 +7230,10 @@ mod selection;
 #[cfg(any(feature = "design", feature = "editor"))]
 #[doc(hidden)]
 pub use selection::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod shapes;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use shapes::*;
 #[cfg(any(feature = "arrows", feature = "system", feature = "communication"))]
@@ -7314,10 +7314,10 @@ mod shirt_folded;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use shirt_folded::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod shooting_star;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use shooting_star::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
@@ -7350,10 +7350,10 @@ mod shovel;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use shovel::*;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 mod shower;
-#[cfg(any(feature = "objects"))]
+#[cfg(feature = "objects")]
 #[doc(hidden)]
 pub use shower::*;
 #[cfg(any(feature = "commerce", feature = "nature"))]
@@ -7398,16 +7398,16 @@ mod sigma;
 #[cfg(any(feature = "finance", feature = "development"))]
 #[doc(hidden)]
 pub use sigma::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod sign_in;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use sign_in::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod sign_out;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use sign_out::*;
 #[cfg(any(feature = "communication", feature = "office"))]
@@ -7416,10 +7416,10 @@ mod signature;
 #[cfg(any(feature = "communication", feature = "office"))]
 #[doc(hidden)]
 pub use signature::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod signpost;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use signpost::*;
 #[cfg(any(feature = "communication", feature = "system"))]
@@ -7434,10 +7434,10 @@ mod siren;
 #[cfg(any(feature = "objects", feature = "map"))]
 #[doc(hidden)]
 pub use siren::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod sketch_logo;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use sketch_logo::*;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -7464,10 +7464,10 @@ mod skip_forward;
 #[cfg(any(feature = "media", feature = "system"))]
 #[doc(hidden)]
 pub use skip_forward::*;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 mod skull;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 pub use skull::*;
 #[cfg(any(feature = "brand", feature = "communication"))]
@@ -7578,10 +7578,10 @@ mod sneaker;
 #[cfg(any(feature = "commerce", feature = "objects", feature = "health"))]
 #[doc(hidden)]
 pub use sneaker::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod snowflake;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use snowflake::*;
 #[cfg(any(feature = "games", feature = "health", feature = "objects"))]
@@ -7608,16 +7608,16 @@ mod solar_roof;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use solar_roof::*;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 mod sort_ascending;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 pub use sort_ascending::*;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 mod sort_descending;
-#[cfg(any(feature = "editor"))]
+#[cfg(feature = "editor")]
 #[doc(hidden)]
 pub use sort_descending::*;
 #[cfg(any(feature = "brand", feature = "media"))]
@@ -7626,10 +7626,10 @@ mod soundcloud_logo;
 #[cfg(any(feature = "brand", feature = "media"))]
 #[doc(hidden)]
 pub use soundcloud_logo::*;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 mod spade;
-#[cfg(any(feature = "games"))]
+#[cfg(feature = "games")]
 #[doc(hidden)]
 pub use spade::*;
 #[cfg(any(feature = "communication", feature = "nature"))]
@@ -7710,28 +7710,28 @@ mod speedometer;
 #[cfg(any(feature = "development", feature = "objects", feature = "system"))]
 #[doc(hidden)]
 pub use speedometer::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod sphere;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use sphere::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod spinner_ball;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use spinner_ball::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod spinner_gap;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use spinner_gap::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod spinner;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use spinner::*;
 #[cfg(any(feature = "communication", feature = "design"))]
@@ -7764,16 +7764,16 @@ mod spray_bottle;
 #[cfg(any(feature = "objects", feature = "health"))]
 #[doc(hidden)]
 pub use spray_bottle::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod square_half_bottom;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use square_half_bottom::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod square_half;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use square_half::*;
 #[cfg(any(feature = "brand", feature = "commerce", feature = "finance"))]
@@ -7794,10 +7794,10 @@ mod square_split_vertical;
 #[cfg(any(feature = "design", feature = "editor"))]
 #[doc(hidden)]
 pub use square_split_vertical::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod square;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use square::*;
 #[cfg(any(feature = "design", feature = "system"))]
@@ -7848,10 +7848,10 @@ mod stamp;
 #[cfg(any(feature = "design", feature = "objects"))]
 #[doc(hidden)]
 pub use stamp::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod standard_definition;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use standard_definition::*;
 #[cfg(any(feature = "communication", feature = "people"))]
@@ -7866,10 +7866,10 @@ mod star_four;
 #[cfg(any(feature = "communication", feature = "nature"))]
 #[doc(hidden)]
 pub use star_four::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod star_half;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use star_half::*;
 #[cfg(any(feature = "communication", feature = "people"))]
@@ -7908,10 +7908,10 @@ mod stethoscope;
 #[cfg(any(feature = "health", feature = "objects"))]
 #[doc(hidden)]
 pub use stethoscope::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod sticker;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use sticker::*;
 #[cfg(any(feature = "objects", feature = "commerce"))]
@@ -7950,10 +7950,10 @@ mod stripe_logo;
 #[cfg(any(feature = "brand", feature = "commerce", feature = "finance"))]
 #[doc(hidden)]
 pub use stripe_logo::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod student;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use student::*;
 #[cfg(any(feature = "finance", feature = "development"))]
@@ -7968,16 +7968,16 @@ mod subset_proper_of;
 #[cfg(any(feature = "finance", feature = "development"))]
 #[doc(hidden)]
 pub use subset_proper_of::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod subtitles_slash;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use subtitles_slash::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod subtitles;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use subtitles::*;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -8076,16 +8076,16 @@ mod sword;
 #[cfg(any(feature = "games", feature = "objects"))]
 #[doc(hidden)]
 pub use sword::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod synagogue;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use synagogue::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod syringe;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use syringe::*;
 #[cfg(any(feature = "objects", feature = "commerce"))]
@@ -8100,10 +8100,10 @@ mod table;
 #[cfg(any(feature = "finance", feature = "office", feature = "editor"))]
 #[doc(hidden)]
 pub use table::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod tabs;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use tabs::*;
 #[cfg(any(feature = "commerce", feature = "development", feature = "objects"))]
@@ -8246,10 +8246,10 @@ mod text_align_right;
 #[cfg(any(feature = "design", feature = "editor"))]
 #[doc(hidden)]
 pub use text_align_right::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod text_b;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use text_b::*;
 #[cfg(any(feature = "design", feature = "editor"))]
@@ -8456,16 +8456,16 @@ mod tire;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use tire::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod toggle_left;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use toggle_left::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod toggle_right;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use toggle_right::*;
 #[cfg(any(feature = "health", feature = "objects"))]
@@ -8486,16 +8486,16 @@ mod toolbox;
 #[cfg(any(feature = "objects", feature = "system", feature = "commerce"))]
 #[doc(hidden)]
 pub use toolbox::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod tooth;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use tooth::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod tornado;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use tornado::*;
 #[cfg(any(feature = "commerce", feature = "objects"))]
@@ -8522,34 +8522,34 @@ mod tractor;
 #[cfg(any(feature = "commerce", feature = "objects"))]
 #[doc(hidden)]
 pub use tractor::*;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 mod trademark_registered;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 pub use trademark_registered::*;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 mod trademark;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 pub use trademark::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod traffic_cone;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use traffic_cone::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod traffic_sign;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use traffic_sign::*;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 mod traffic_signal;
-#[cfg(any(feature = "map"))]
+#[cfg(feature = "map")]
 #[doc(hidden)]
 pub use traffic_signal::*;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -8594,10 +8594,10 @@ mod trash;
 #[cfg(any(feature = "office", feature = "system"))]
 #[doc(hidden)]
 pub use trash::*;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 mod tray_arrow_down;
-#[cfg(any(feature = "uncategorized"))]
+#[cfg(feature = "uncategorized")]
 #[doc(hidden)]
 pub use tray_arrow_down::*;
 #[cfg(any(feature = "office", feature = "system"))]
@@ -8618,16 +8618,16 @@ mod treasure_chest;
 #[cfg(any(feature = "games", feature = "objects"))]
 #[doc(hidden)]
 pub use treasure_chest::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod tree_evergreen;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use tree_evergreen::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod tree_palm;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use tree_palm::*;
 #[cfg(any(feature = "development", feature = "office"))]
@@ -8636,16 +8636,16 @@ mod tree_structure;
 #[cfg(any(feature = "development", feature = "office"))]
 #[doc(hidden)]
 pub use tree_structure::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod tree_view;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use tree_view::*;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 mod tree;
-#[cfg(any(feature = "nature"))]
+#[cfg(feature = "nature")]
 #[doc(hidden)]
 pub use tree::*;
 #[cfg(any(feature = "finance", feature = "office"))]
@@ -8660,16 +8660,16 @@ mod trend_up;
 #[cfg(any(feature = "finance", feature = "office"))]
 #[doc(hidden)]
 pub use trend_up::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod triangle_dashed;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use triangle_dashed::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod triangle;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use triangle::*;
 #[cfg(any(feature = "office", feature = "objects"))]
@@ -8750,16 +8750,16 @@ mod unite;
 #[cfg(any(feature = "design", feature = "editor"))]
 #[doc(hidden)]
 pub use unite::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod upload_simple;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use upload_simple::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod upload;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use upload::*;
 #[cfg(any(feature = "objects", feature = "system"))]
@@ -8768,124 +8768,124 @@ mod usb;
 #[cfg(any(feature = "objects", feature = "system"))]
 #[doc(hidden)]
 pub use usb::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_check;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_check::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_circle_check;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_circle_check::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_circle_dashed;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_circle_dashed::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_circle_gear;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_circle_gear::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_circle_minus;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_circle_minus::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_circle_plus;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_circle_plus::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_circle;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_circle::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_focus;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_focus::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_gear;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_gear::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_list;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_list::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_minus;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_minus::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_plus;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_plus::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_rectangle;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_rectangle::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_sound;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_sound::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_square;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_square::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user_switch;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user_switch::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod user;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use user::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod users_four;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use users_four::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod users_three;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use users_three::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod users;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use users::*;
 #[cfg(any(feature = "map", feature = "objects"))]
@@ -8912,10 +8912,10 @@ mod vector_two;
 #[cfg(any(feature = "arrows", feature = "development", feature = "design"))]
 #[doc(hidden)]
 pub use vector_two::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod vibrate;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use vibrate::*;
 #[cfg(any(feature = "media", feature = "system"))]
@@ -8936,16 +8936,16 @@ mod video_conference;
 #[cfg(any(feature = "media", feature = "system", feature = "communication"))]
 #[doc(hidden)]
 pub use video_conference::*;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 mod video;
-#[cfg(any(feature = "people"))]
+#[cfg(feature = "people")]
 #[doc(hidden)]
 pub use video::*;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 mod vignette;
-#[cfg(any(feature = "design"))]
+#[cfg(feature = "design")]
 #[doc(hidden)]
 pub use vignette::*;
 #[cfg(any(feature = "media", feature = "office"))]
@@ -8960,10 +8960,10 @@ mod virtual_reality;
 #[cfg(any(feature = "games", feature = "media"))]
 #[doc(hidden)]
 pub use virtual_reality::*;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 mod virus;
-#[cfg(any(feature = "health"))]
+#[cfg(feature = "health")]
 #[doc(hidden)]
 pub use virus::*;
 #[cfg(any(feature = "development", feature = "media", feature = "objects"))]
@@ -8972,10 +8972,10 @@ mod visor;
 #[cfg(any(feature = "development", feature = "media", feature = "objects"))]
 #[doc(hidden)]
 pub use visor::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod voicemail;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use voicemail::*;
 #[cfg(any(feature = "games", feature = "health", feature = "objects"))]
@@ -9002,28 +9002,28 @@ mod warehouse;
 #[cfg(any(feature = "commerce", feature = "map"))]
 #[doc(hidden)]
 pub use warehouse::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod warning_circle;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use warning_circle::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod warning_diamond;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use warning_diamond::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod warning_octagon;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use warning_octagon::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod warning;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use warning::*;
 #[cfg(any(feature = "commerce", feature = "map", feature = "objects"))]
@@ -9038,40 +9038,40 @@ mod watch;
 #[cfg(any(feature = "system", feature = "objects"))]
 #[doc(hidden)]
 pub use watch::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod wave_sawtooth;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use wave_sawtooth::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod wave_sine;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use wave_sine::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod wave_square;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use wave_square::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod wave_triangle;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use wave_triangle::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod waveform_slash;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use waveform_slash::*;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 mod waveform;
-#[cfg(any(feature = "media"))]
+#[cfg(feature = "media")]
 #[doc(hidden)]
 pub use waveform::*;
 #[cfg(any(feature = "nature", feature = "weather"))]
@@ -9098,10 +9098,10 @@ mod webhooks_logo;
 #[cfg(any(feature = "development", feature = "brand"))]
 #[doc(hidden)]
 pub use webhooks_logo::*;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 mod wechat_logo;
-#[cfg(any(feature = "brand"))]
+#[cfg(feature = "brand")]
 #[doc(hidden)]
 pub use wechat_logo::*;
 #[cfg(any(feature = "brand", feature = "communication"))]
@@ -9122,52 +9122,52 @@ mod wheelchair;
 #[cfg(any(feature = "health", feature = "map", feature = "people"))]
 #[doc(hidden)]
 pub use wheelchair::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod wifi_high;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use wifi_high::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod wifi_low;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use wifi_low::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod wifi_medium;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use wifi_medium::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod wifi_none;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use wifi_none::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod wifi_slash;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use wifi_slash::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod wifi_x;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use wifi_x::*;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 mod wind;
-#[cfg(any(feature = "weather"))]
+#[cfg(feature = "weather")]
 #[doc(hidden)]
 pub use wind::*;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 mod windmill;
-#[cfg(any(feature = "commerce"))]
+#[cfg(feature = "commerce")]
 #[doc(hidden)]
 pub use windmill::*;
 #[cfg(any(feature = "brand", feature = "development"))]
@@ -9188,10 +9188,10 @@ mod wrench;
 #[cfg(any(feature = "system", feature = "objects", feature = "commerce"))]
 #[doc(hidden)]
 pub use wrench::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod x_circle;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use x_circle::*;
 #[cfg(any(feature = "brand", feature = "communication"))]
@@ -9200,10 +9200,10 @@ mod x_logo;
 #[cfg(any(feature = "brand", feature = "communication"))]
 #[doc(hidden)]
 pub use x_logo::*;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 mod x_square;
-#[cfg(any(feature = "system"))]
+#[cfg(feature = "system")]
 #[doc(hidden)]
 pub use x_square::*;
 #[cfg(any(feature = "development", feature = "finance", feature = "system"))]
@@ -9218,10 +9218,10 @@ mod yarn;
 #[cfg(any(feature = "games", feature = "commerce"))]
 #[doc(hidden)]
 pub use yarn::*;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 mod yin_yang;
-#[cfg(any(feature = "communication"))]
+#[cfg(feature = "communication")]
 #[doc(hidden)]
 pub use yin_yang::*;
 #[cfg(any(feature = "brand", feature = "communication", feature = "media"))]

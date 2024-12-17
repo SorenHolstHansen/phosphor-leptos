@@ -42,7 +42,7 @@ fn cargo_template(features: &BTreeMap<String, ()>) -> String {
 
 [package]
 name = "phosphor-leptos"
-version = "0.6.0"
+version = "0.7.0"
 description = "phosphor icons for leptos"
 authors = ["Søren H. Hansen"]
 readme = "README.md"
@@ -55,7 +55,7 @@ exclude = ["/core"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-leptos = "0.6"
+leptos = "0.7"
 
 [workspace]
 members = ["xtask"]
@@ -171,15 +171,28 @@ pub fn run() {
         .unwrap();
 
         let mod_name = format_ident!("{}", icon_name.to_case(Case::Snake));
-        mod_content.push(quote! {
-            #[cfg(any(#(feature = #features),*))]
-            #[doc(hidden)]
-            mod #mod_name;
+        if features.len() == 1 {
+            let feature = &features[0];
+            mod_content.push(quote! {
+                #[cfg(feature = #feature)]
+                #[doc(hidden)]
+                mod #mod_name;
 
-            #[cfg(any(#(feature = #features),*))]
-            #[doc(hidden)]
-            pub use #mod_name::*;
-        });
+                #[cfg(feature = #feature)]
+                #[doc(hidden)]
+                pub use #mod_name::*;
+            });
+        } else {
+            mod_content.push(quote! {
+                #[cfg(any(#(feature = #features),*))]
+                #[doc(hidden)]
+                mod #mod_name;
+
+                #[cfg(any(#(feature = #features),*))]
+                #[doc(hidden)]
+                pub use #mod_name::*;
+            });
+        }
     }
 
     let module = quote! { #(#mod_content)* }.to_string();
@@ -201,7 +214,7 @@ pub fn run() {
         //! You can explore the available icons at [phosphoricons.com](https://phosphoricons.com).
         //!
         //! ```
-        //! use leptos::*;
+        //! use leptos::prelude::*;
         //! use phosphor_leptos::{Icon, IconWeight, HORSE, HEART, CUBE};
         //!
         //! #[component]
@@ -213,7 +226,7 @@ pub fn run() {
         //!     }
         //! }
         //! ```
-        use leptos::*;
+        use leptos::{prelude::*, text_prop::TextProp};
 
         mod icons;
         pub use icons::*;
@@ -236,7 +249,7 @@ pub fn run() {
             /// an SVG component's `inner_html` property.
             ///
             /// ```
-            /// # use leptos::*;
+            /// # use leptos::prelude::*;
             /// # #[component]
             /// # fn MyComponent() -> impl IntoView {
             /// use phosphor_leptos::{ACORN, IconWeight};
@@ -263,7 +276,7 @@ pub fn run() {
         /// A thin wrapper around `<svg />` for displaying Phosphor icons.
         ///
         /// ```
-        /// use leptos::*;
+        /// use leptos::prelude::*;
         /// use phosphor_leptos::{Icon, IconWeight, HORSE, HEART, CUBE};
         ///
         /// #[component]
@@ -283,7 +296,7 @@ pub fn run() {
             /// Icon weight/style. This can also be used, for example, to "toggle" an icon's state:
             /// a rating component could use Stars with [IconWeight::Regular] to denote an empty star,
             /// and [IconWeight::Fill] to denote a filled star.
-            #[prop(into, default = MaybeSignal::Static(IconWeight::Regular))] weight: MaybeSignal<
+            #[prop(into, default = Signal::stored(IconWeight::Regular))] weight: Signal<
                 IconWeight,
             >,
 
@@ -304,13 +317,7 @@ pub fn run() {
             ///
             /// This can be useful in RTL languages where normal
             /// icon orientation is not appropriate.
-            #[prop(into, default = MaybeSignal::Static(false))] mirrored: MaybeSignal<bool>,
-
-            /// The HTML ID of the underlying SVG element.
-            #[prop(into, optional)] id: MaybeProp<TextProp>,
-
-            /// The CSS class property of the underlying SVG element.
-            #[prop(into, optional)] class: MaybeProp<TextProp>,
+            #[prop(into, default = Signal::stored(false))] mirrored: Signal<bool>,
         ) -> impl IntoView {
             let html = move || icon.get(weight.get());
             let transform = move || mirrored.get().then_some("scale(-1, 1)");
@@ -321,11 +328,9 @@ pub fn run() {
                     xmlns="http://www.w3.org/2000/svg"
                     width=move || size.get()
                     height=move || height.get()
-                    fill=color
+                    fill=move || color.get()
                     transform=transform
                     viewBox="0 0 256 256"
-                    id=move || id.get().map(|id| id.get())
-                    class=move || class.get().map(|cls| cls.get())
                     inner_html=html
                 />
             }
