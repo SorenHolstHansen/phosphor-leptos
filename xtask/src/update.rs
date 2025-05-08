@@ -42,7 +42,7 @@ fn cargo_template(features: &BTreeMap<String, ()>) -> String {
 
 [package]
 name = "phosphor-leptos"
-version = "0.7.0"
+version = "0.8.0"
 description = "phosphor icons for leptos"
 authors = ["Søren H. Hansen"]
 readme = "README.md"
@@ -55,7 +55,7 @@ exclude = ["/core"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-leptos = "0.7"
+leptos = "0.8"
 
 [workspace]
 members = ["xtask"]
